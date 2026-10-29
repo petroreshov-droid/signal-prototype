@@ -1,0 +1,1347 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="robots" content="noindex,nofollow">
+<meta name="theme-color" content="#ffffff">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Авито + Сигнал · кликабельный концепт">
+<meta property="og:description" content="Команда «ООО «Коммерсы»», Changellenge Cup Moscow 2026. Концепт, не является продуктом Авито.">
+<meta property="og:image" content="https://petroreshov-droid.github.io/signal-prototype/cover.png">
+<title>Авито + Сигнал · прототип</title>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='9' fill='%237a4cff'/%3E%3Ccircle cx='16' cy='16' r='3' fill='white'/%3E%3Cpath d='M11 11a7 7 0 0 0 0 10M21 11a7 7 0 0 1 0 10' stroke='white' stroke-width='2.2' fill='none' stroke-linecap='round'/%3E%3C/svg%3E">
+<style>
+:root{--blue:#00a2ff;--blue-t:#0089d6;--blue-s:#e6f5ff;--green:#00c45a;--green-t:#0b8a4a;--green-s:#e6f8ee;--ink:#000;--ink2:#2b2b2b;--muted:#8b8b8b;--line:#ededed;--chip:#f2f1f0;--soft:#f7f7f7;--sig:#7a4cff;--sig-s:#f2edff;--red:#ff4053;--hot:#ff6a00;--hot-s:#fff4ec}
+*{box-sizing:border-box;margin:0;padding:0;-webkit-tap-highlight-color:transparent}
+html,body{height:100%}
+body{background:#e8e8ed;font-family:-apple-system,BlinkMacSystemFont,"SF Pro Text","Inter","Segoe UI",Roboto,Arial,sans-serif;color:var(--ink);display:flex;align-items:center;justify-content:center;min-height:100vh;-webkit-font-smoothing:antialiased}
+button,input,textarea,select{font-family:inherit;color:inherit}
+button{cursor:pointer}
+svg{display:block}
+.stage{display:flex;align-items:center;justify-content:center;gap:56px;padding:20px}
+.phone{width:390px;height:844px;background:#fff;border-radius:50px;box-shadow:0 0 0 11px #121212,0 30px 80px rgba(0,0,0,.35);position:relative;overflow:hidden;display:flex;flex-direction:column;flex:none}
+.island{position:absolute;top:11px;left:50%;transform:translateX(-50%);width:120px;height:34px;border-radius:20px;background:#000;z-index:80;pointer-events:none}
+.hbar{position:absolute;bottom:8px;left:50%;transform:translateX(-50%);width:134px;height:5px;border-radius:3px;background:#111;z-index:80;pointer-events:none}
+.status{height:47px;flex:none;display:flex;align-items:flex-end;justify-content:space-between;padding:0 30px 7px 38px;font-weight:600;font-size:16px;background:#fff;position:relative;z-index:30}
+.status .ic{display:flex;gap:6px;align-items:center}
+.body{position:relative;flex:1;display:flex;flex-direction:column;min-height:0}
+.vp{position:relative;flex:1;overflow:hidden}
+.tab{position:absolute;inset:0;overflow-y:auto;display:none;background:#fff;scrollbar-width:none}
+.tab::-webkit-scrollbar,.pc::-webkit-scrollbar,.cats::-webkit-scrollbar,.hs::-webkit-scrollbar,.seg::-webkit-scrollbar,.utabs::-webkit-scrollbar,.pills::-webkit-scrollbar,.fil::-webkit-scrollbar,.taste::-webkit-scrollbar,.circ::-webkit-scrollbar,.qq .row::-webkit-scrollbar{display:none}
+.tab.on{display:block}
+/* панель для показа */
+.guide{width:320px;color:#1d1d1f}
+.guide .k{font-size:12px;font-weight:700;color:var(--sig);text-transform:uppercase;letter-spacing:.6px}
+.guide h1{font-size:28px;line-height:1.1;margin:6px 0 4px;letter-spacing:-.4px}
+.guide .sub{font-size:13.5px;color:#6e6e73;line-height:1.4}
+.guide ol{list-style:none;margin:16px 0 0;display:flex;flex-direction:column;gap:6px}
+.guide li button{width:100%;text-align:left;border:0;background:#fff;border-radius:14px;padding:9px 12px;display:flex;gap:12px;align-items:flex-start;box-shadow:0 1px 3px rgba(0,0,0,.06);transition:box-shadow .15s}
+.guide li button:hover{box-shadow:0 4px 14px rgba(0,0,0,.12)}
+.guide .n{width:26px;height:26px;border-radius:8px;background:var(--sig-s);color:var(--sig);font-weight:800;font-size:13px;display:flex;align-items:center;justify-content:center;flex:none}
+.guide li b{display:block;font-size:14.5px}
+.guide li small{display:block;font-size:12.5px;color:#6e6e73;margin-top:2px;line-height:1.35}
+.guide .goal{margin-top:12px;font-size:12.5px;line-height:1.45;color:#3a3a3c;background:#fff;border-radius:14px;padding:11px 14px}
+.guide .keys{margin-top:10px;font-size:12px;color:#6e6e73;line-height:1.75}
+.guide kbd{display:inline-block;min-width:22px;padding:1px 6px;border-radius:6px;background:#fff;border:1px solid #d2d2d7;font:600 11.5px/1.5 -apple-system,sans-serif;text-align:center}
+.guide .reset{margin-top:10px;border:0;background:#1d1d1f;color:#fff;border-radius:12px;height:38px;padding:0 16px;font-weight:600;font-size:14px}
+.guide .ft{margin-top:10px;font-size:11.5px;color:#8e8e93;line-height:1.4}
+@media (max-width:1099px){.guide{display:none}}
+@media (max-width:500px){body{display:block;background:#fff}.stage{display:block;padding:0}.phone{width:100vw;height:100dvh;border-radius:0;box-shadow:none}.island,.hbar{display:none}
+  body:not(.shot) .status{display:none}
+  body:not(.shot) .nav{padding-bottom:max(10px,env(safe-area-inset-bottom))}
+  input,textarea{font-size:16px!important}}
+html{-webkit-text-size-adjust:100%;overscroll-behavior:none}
+body{overscroll-behavior:none}
+.tab,.pc,.sheet{overscroll-behavior:contain}
+/* заставка на телефоне: что это и что попробовать */
+.intro{position:absolute;inset:0;z-index:75;background:linear-gradient(180deg,#f3eeff,#fff 45%);display:none;flex-direction:column;justify-content:center;padding:28px 26px 34px;overflow-y:auto}
+@media (max-width:1099px){.intro{display:flex}}
+.intro.off{display:none!important}
+.intro .mk{width:60px;height:60px;border-radius:18px;background:linear-gradient(135deg,#6f3cff,#b18cff);display:flex;align-items:center;justify-content:center;color:#fff;margin-bottom:20px;flex:none}
+.intro .mk svg{width:34px;height:34px}
+.intro .k{font-size:12px;font-weight:700;color:var(--sig);text-transform:uppercase;letter-spacing:.6px}
+.intro h1{font-size:32px;line-height:1.1;margin:8px 0;letter-spacing:-.4px}
+.intro p{font-size:14.5px;color:#6e6e73;line-height:1.4}
+.intro ol{margin:22px 0 24px;padding-left:20px;display:flex;flex-direction:column;gap:10px;font-size:15.5px;line-height:1.35}
+.intro .btn{flex:none;width:100%}
+.intro small{display:block;margin-top:14px;font-size:12px;color:#8e8e93;line-height:1.4;text-align:center}
+/* навигация */
+.nav{flex:none;display:flex;border-top:1px solid var(--line);background:#fff;padding:7px 0 26px}
+.nav button{flex:1;border:0;background:none;display:flex;flex-direction:column;align-items:center;gap:3px;font-size:10px;color:#9b9b9b;position:relative;font-weight:500;min-width:0}
+.nav button.on{color:#000}
+.nav button.sg{color:var(--sig)}
+.nav button.sg.on{font-weight:700}
+.nav svg{width:26px;height:26px}
+.nav button > span:last-child{white-space:nowrap;max-width:100%;overflow:hidden;text-overflow:ellipsis}
+@media (max-width:380px){.nav button{font-size:9px}}
+.badge{position:absolute;top:-3px;left:calc(50% + 5px);background:var(--red);color:#fff;font-size:10px;font-weight:700;border-radius:9px;min-width:18px;height:18px;padding:0 4px;display:flex;align-items:center;justify-content:center;border:2px solid #fff}
+.newtag{position:absolute;top:-6px;left:calc(50% + 4px);background:var(--sig);color:#fff;font-size:8.5px;font-weight:800;border-radius:6px;padding:2px 4px;border:2px solid #fff;letter-spacing:.2px}
+/* общие */
+.ava{border-radius:50%;display:inline-flex;align-items:center;justify-content:center;color:#fff;font-weight:700;flex:none}
+.sec{font-size:20px;font-weight:800;padding:6px 16px 12px}
+.sec small{display:block;font-size:13px;font-weight:600;color:var(--sig);margin-top:2px}
+.muted{color:var(--muted)}
+.chip{display:inline-flex;align-items:center;gap:4px;background:var(--chip);border-radius:8px;padding:4px 8px;font-size:12.5px;font-weight:500}
+.btn{flex:1;height:48px;border-radius:12px;border:0;font-size:16px;font-weight:600;display:flex;align-items:center;justify-content:center;gap:6px}
+.btn.blue{background:var(--blue);color:#fff}.btn.light{background:var(--blue-s);color:var(--blue-t)}.btn.sig{background:var(--sig);color:#fff}.btn.grey{background:var(--chip)}.btn.ghost{background:var(--sig-s);color:var(--sig)}.btn.green{background:var(--green);color:#fff}.btn.black{background:#000;color:#fff}
+.btn.sm{height:36px;font-size:14px;border-radius:10px;flex:none;padding:0 14px}
+.seg{display:flex;gap:6px;overflow-x:auto;scrollbar-width:none}
+.seg button{border:0;background:var(--chip);border-radius:20px;padding:8px 14px;font-size:14px;font-weight:600;flex:none}
+.seg button.on{background:#000;color:#fff}
+.empty{padding:40px 24px;text-align:center;color:var(--muted);font-size:14px;line-height:1.45}
+.rule{margin:0 16px 14px;font-size:12.5px;color:var(--muted);line-height:1.4;background:var(--soft);border-radius:14px;padding:12px 14px}
+/* главная */
+.hd{position:sticky;top:0;background:#fff;z-index:5;padding:6px 16px 8px}
+.sbar{display:flex;align-items:center;gap:8px;background:var(--chip);border-radius:12px;height:42px;padding:0 12px}
+.sbar input{border:0;background:transparent;font-size:16px;flex:1;outline:0;min-width:0}
+.sbar .x{border:0;background:none;color:var(--muted);font-size:18px}
+.loc{font-size:13px;color:var(--muted);margin-top:8px;display:flex;align-items:center;gap:4px}
+.cats{display:grid;grid-auto-flow:column;grid-template-rows:84px 84px;grid-auto-columns:112px;gap:8px;overflow-x:auto;padding:4px 16px 14px;scrollbar-width:none}
+.cat{border-radius:14px;background:var(--chip);position:relative;overflow:hidden;padding:9px 10px;font-size:12.5px;font-weight:600;line-height:1.15;cursor:pointer}
+.cat img{position:absolute;right:-10px;bottom:-8px;width:72px;height:54px;object-fit:cover;border-radius:10px;transform:rotate(-6deg)}
+.sigb{margin:2px 16px 18px;border-radius:16px;background:linear-gradient(135deg,#6f3cff,#a57bff);color:#fff;padding:14px 14px 14px 16px;display:flex;gap:12px;align-items:center;cursor:pointer}
+.sigb b{display:block;font-size:16px;margin-bottom:3px}
+.sigb span{font-size:13px;opacity:.92;line-height:1.3}
+.sigb .go{flex:none;background:#fff;color:var(--sig);border-radius:10px;padding:8px 12px;font-weight:700;font-size:13.5px;border:0}
+.grid{display:grid;grid-template-columns:1fr 1fr;gap:18px 10px;padding:0 16px 24px}
+.tile{min-width:0;cursor:pointer}
+.tile .pi{position:relative;aspect-ratio:1/1;border-radius:12px;overflow:hidden;background:var(--soft)}
+.tile img{width:100%;height:100%;object-fit:cover;display:block}
+.heart{position:absolute;right:4px;top:4px;width:34px;height:34px;border:0;background:none;display:flex;align-items:center;justify-content:center;color:#fff;filter:drop-shadow(0 1px 2px rgba(0,0,0,.45))}
+.heart.on{color:var(--red)}
+.pr{font-weight:700;font-size:16px;margin-top:7px}
+.tt{font-size:14px;line-height:1.25;margin-top:2px;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+.mt{font-size:12px;color:var(--muted);margin-top:4px}
+.own{display:inline-flex;align-items:center;gap:4px;margin-top:6px;font-size:11.5px;color:var(--sig);background:var(--sig-s);border-radius:6px;padding:3px 6px;font-weight:600}
+.hotc{grid-column:1/-1;border-radius:16px;background:var(--hot-s);padding:14px 16px;border:1px solid #ffe0c7;cursor:pointer}
+.hotc .k{font-size:12px;font-weight:700;color:var(--hot);text-transform:uppercase;letter-spacing:.3px}
+.hotc .h{font-size:17px;font-weight:700;margin:5px 0 4px}
+.hotc .s{font-size:13px;color:var(--ink2)}
+.hotc .row2{display:flex;align-items:center;justify-content:space-between;margin-top:10px}
+.avs{display:flex}.avs .ava{border:2px solid #fff;margin-left:-8px}.avs .ava:first-child{margin-left:0}
+.suggest{margin:0 16px 14px;border-radius:14px;background:var(--sig-s);padding:12px 14px;display:flex;gap:10px;align-items:center;font-size:14px;line-height:1.35;cursor:pointer}
+.suggest b{color:var(--sig)}
+.aihint{margin:0 16px 12px;font-size:12.5px;color:var(--sig);font-weight:600;display:flex;gap:6px;align-items:center}
+/* сигнал */
+.sh{padding:2px 16px 0;position:sticky;top:0;background:#fff;z-index:5}
+.sh-top{display:flex;align-items:center;justify-content:space-between;height:46px}
+.logo{display:flex;align-items:center;gap:9px;font-size:25px;font-weight:800;letter-spacing:-.3px}
+.mark{width:30px;height:30px;border-radius:10px;background:linear-gradient(135deg,#6f3cff,#b18cff);display:flex;align-items:center;justify-content:center;color:#fff;flex:none}
+.bell{position:relative;width:40px;height:40px;border:0;background:var(--chip);border-radius:12px;display:flex;align-items:center;justify-content:center}
+.bell .badge{left:auto;right:-4px;top:-4px}
+.sh .seg{padding:8px 0 10px}
+.taste{display:flex;gap:6px;flex-wrap:nowrap;overflow-x:auto;scrollbar-width:none;padding:0 16px 10px;font-size:12.5px;align-items:center;min-height:34px}
+.taste .tl{color:var(--sig);flex:none}
+.tchip{flex:none;background:var(--sig-s);color:var(--sig);border-radius:8px;padding:5px 8px;font-weight:600;border:0;font-size:12.5px}
+.tchip.cmp{background:var(--sig);color:#fff}
+.taste .hint{color:var(--muted)}
+.deck{position:relative;height:440px;margin:0 16px}
+.card{position:absolute;inset:0;border-radius:22px;background:#fff;box-shadow:0 6px 26px rgba(0,0,0,.13);overflow:hidden;touch-action:none;user-select:none;-webkit-user-select:none;transition:transform .3s,opacity .3s}
+.card.top{cursor:grab;z-index:3}
+.card.b1{transform:scale(.955) translateY(14px);z-index:2}
+.card.b2{transform:scale(.91) translateY(28px);z-index:1}
+.card img{width:100%;height:calc(100% - 120px);object-fit:cover;pointer-events:none;display:block}
+.card .ci{padding:11px 16px}
+.why{font-size:12px;color:var(--sig);font-weight:600;display:flex;align-items:center;gap:5px;margin-bottom:4px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.cp{font-size:22px;font-weight:800}
+.ct{font-size:15.5px;margin-top:2px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.cm{font-size:12.5px;color:var(--muted);margin-top:4px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.stamp{position:absolute;top:26px;padding:4px 10px;border:3px solid;border-radius:10px;font-weight:800;font-size:19px;opacity:0;background:rgba(255,255,255,.85);z-index:2}
+.stamp.like{left:18px;color:var(--green);transform:rotate(-12deg)}
+.stamp.nope{right:18px;color:var(--red);transform:rotate(12deg)}
+.stamp.fr{left:50%;top:auto;bottom:170px;color:var(--blue);transform:translateX(-50%)}
+.card.ask{background:linear-gradient(160deg,#6f3cff,#a57bff);color:#fff;display:flex;flex-direction:column;justify-content:flex-end;padding:24px}
+.card.ask .big{font-size:26px;font-weight:800;line-height:1.15;margin-bottom:10px}
+.card.ask p{font-size:15px;line-height:1.4;opacity:.95}
+.card.ask .pp{margin:18px 0}
+.card.ask .btns{display:flex;flex-direction:column;gap:8px}
+.card.ask .btn{flex:none;width:100%}
+.card.ask .w{background:#fff;color:var(--sig)}
+.card.ask .t{background:rgba(255,255,255,.18);color:#fff}
+.card.end{display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:30px;box-shadow:none;border:1.5px dashed #d8d8d8;gap:12px}
+.card.end .btn{flex:none;width:100%}
+.acts{display:flex;justify-content:center;gap:28px;padding:16px 0 4px}
+.actw{display:flex;flex-direction:column;align-items:center;gap:5px;font-size:11.5px;color:var(--muted)}
+.act{width:60px;height:60px;border-radius:50%;border:0;background:#fff;box-shadow:0 4px 16px rgba(0,0,0,.12);display:flex;align-items:center;justify-content:center}
+.fab{position:absolute;right:16px;bottom:16px;z-index:6;background:var(--sig);color:#fff;border:0;border-radius:28px;height:52px;padding:0 20px;font-size:16px;font-weight:700;display:flex;align-items:center;gap:6px;box-shadow:0 8px 22px rgba(122,76,255,.45)}
+.fil{display:flex;gap:6px;overflow-x:auto;scrollbar-width:none;padding:2px 16px 4px}
+.fil button{flex:none;border:1.5px solid var(--line);background:#fff;border-radius:10px;padding:6px 11px;font-size:13.5px;font-weight:600}
+.fil button.on{border-color:#000}
+.dsec{display:flex;align-items:baseline;justify-content:space-between;padding:14px 16px 8px;gap:10px}
+.dsec h4{font-size:17px;font-weight:800;white-space:nowrap}
+.dsec span{font-size:12.5px;color:var(--muted);text-align:right}
+.dc{margin:0 16px 10px;border-radius:16px;border:1px solid var(--line);padding:13px 14px;cursor:pointer}
+.dc.hot{border-color:#ffd9bd;background:linear-gradient(180deg,#fff7f1,#fff 70%)}
+.dc .who{display:flex;align-items:center;gap:8px;font-size:13px;color:var(--muted);flex-wrap:wrap}
+.dc .who b{color:var(--ink);font-weight:600}
+.dc .h{font-size:16.5px;font-weight:700;margin:8px 0 4px;line-height:1.25}
+.dc .tx{font-size:14px;color:var(--ink2);line-height:1.35;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+.dc .tags{display:flex;gap:6px;flex-wrap:wrap;margin-top:9px}
+.dc .ft{display:flex;align-items:center;justify-content:space-between;margin-top:11px;font-size:13px}
+.heat{color:var(--hot);font-weight:700}
+.wait{color:var(--blue-t);font-weight:600}
+.done{color:var(--green);font-weight:700}
+.cir{display:inline-flex;align-items:center;font-size:11px;font-weight:700;color:var(--green-t);background:var(--green-s);border-radius:6px;padding:2px 6px}
+.cir.me{background:var(--sig-s);color:var(--sig)}
+.circ{display:flex;gap:12px;overflow-x:auto;scrollbar-width:none;padding:4px 16px 14px}
+.cc{flex:none;width:150px;border-radius:16px;background:var(--soft);padding:12px}
+.cc b{display:block;font-size:15px;margin:8px 0 3px}
+.cc span{font-size:12px;color:var(--muted)}
+.cc.add{display:flex;flex-direction:column;align-items:center;justify-content:center;background:#fff;border:1.5px dashed #d6d6d6;color:var(--sig);font-weight:700;font-size:14px;gap:6px;text-align:center;cursor:pointer}
+.feed{padding:0 16px}
+.fi{display:flex;gap:12px;padding:12px 0;border-bottom:1px solid var(--line);align-items:center;cursor:pointer}
+.fi .tx{font-size:14px;line-height:1.35;flex:1}
+.fi .tx small{display:block;color:var(--muted);font-size:12px;margin-top:3px}
+.fi img{width:56px;height:56px;border-radius:10px;object-fit:cover;flex:none}
+/* страницы */
+.layer{position:absolute;inset:0;pointer-events:none;z-index:20}
+.page{position:absolute;inset:0;background:#fff;display:flex;flex-direction:column;transform:translateX(100%);transition:transform .3s cubic-bezier(.2,.8,.2,1);pointer-events:auto;box-shadow:-8px 0 24px rgba(0,0,0,.06)}
+.page.in{transform:none}
+.ph{height:50px;display:flex;align-items:center;gap:4px;padding:0 6px;flex:none}
+.ph .ttl{flex:1;font-weight:700;font-size:17px;text-align:center;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.ph .lnk{border:0;background:none;color:var(--sig);font-weight:600;font-size:15px;padding:0 10px;height:44px}
+.ib{width:44px;height:44px;border:0;background:none;display:flex;align-items:center;justify-content:center;border-radius:12px;flex:none}
+.pc{flex:1;overflow-y:auto;scrollbar-width:none}
+.pf{flex:none;padding:10px 16px 30px;border-top:1px solid var(--line);display:flex;gap:8px;background:#fff}
+/* карточка */
+.hero{width:100%;aspect-ratio:1/1;object-fit:cover;display:block;background:var(--soft)}
+.blk{padding:14px 16px}
+.price{font-size:26px;font-weight:800}
+.ttl2{font-size:19px;line-height:1.25;margin-top:4px}
+.chips{display:flex;gap:6px;flex-wrap:wrap;margin-top:10px}
+.chip.dl{background:var(--green-s);color:var(--green-t);font-weight:600}
+.qq{padding:0 16px 14px}
+.qq .t{font-size:15px;font-weight:700;margin-bottom:8px}
+.qq .row{display:flex;gap:8px;overflow-x:auto;scrollbar-width:none}
+.qq button{flex:none;border:0;background:var(--blue-s);color:var(--blue-t);border-radius:18px;padding:9px 13px;font-size:14px;font-weight:600}
+.sel{display:flex;align-items:center;gap:12px;padding:14px 16px;border-top:8px solid var(--soft);border-bottom:8px solid var(--soft)}
+.sel b{font-size:16px}.sel .r{font-size:13px;color:var(--muted);margin-top:2px}
+.ok{color:var(--green-t);font-size:12.5px;font-weight:600;margin-top:3px}
+.sbox{margin:14px 16px 4px;border-radius:18px;background:var(--sig-s);padding:14px}
+.sbox .st{display:flex;align-items:center;gap:8px;font-weight:800;font-size:16px}
+.sbox .st small{font-weight:600;color:var(--sig);font-size:12px;background:#fff;border-radius:6px;padding:2px 6px}
+.op{background:#fff;border-radius:14px;padding:11px 12px;margin-top:10px}
+.op .w{display:flex;align-items:center;gap:8px;font-size:13px;flex-wrap:wrap}
+.op .w b{font-weight:700}
+.op .w i{font-style:normal;color:var(--muted);font-size:12px}
+.op p{font-size:14px;line-height:1.38;margin-top:6px}
+.sbox .row3{display:flex;gap:8px;margin-top:12px}
+.sbox .row3 .btn{height:40px;font-size:14px;border-radius:10px}
+.desc{padding:16px;font-size:15px;line-height:1.45}
+.desc h5{font-size:18px;margin-bottom:6px}
+/* обсуждение */
+.req{padding:6px 16px 14px;border-bottom:8px solid var(--soft)}
+.req .who{display:flex;align-items:center;gap:8px;font-size:13px;color:var(--muted);flex-wrap:wrap}
+.req .who b{color:var(--ink)}
+.req h2{font-size:21px;line-height:1.22;margin:10px 0 6px}
+.req p{font-size:15px;line-height:1.42;color:var(--ink2)}
+.req .tags{display:flex;gap:6px;flex-wrap:wrap;margin-top:10px}
+.req .stats{display:flex;gap:14px;margin-top:12px;font-size:13px;flex-wrap:wrap}
+.aib{margin:14px 16px 0;border-radius:16px;border:1px solid var(--line);padding:12px}
+.aib .k{font-size:13px;font-weight:700;display:flex;align-items:center;gap:6px}
+.aib .k span{background:#000;color:#fff;font-size:10px;border-radius:5px;padding:2px 5px}
+.hs{display:flex;gap:10px;overflow-x:auto;margin-top:10px;scrollbar-width:none}
+.hs .m{flex:none;width:120px;cursor:pointer}
+.hs .m img{width:120px;height:96px;object-fit:cover;border-radius:10px;display:block}
+.hs .m b{display:block;font-size:14px;margin-top:5px}
+.hs .m span{font-size:12px;color:var(--ink2);display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+.legend{font-size:12.5px;color:var(--muted);padding:0 16px 8px;line-height:1.35}
+.ans{margin:0 16px 10px;border-radius:16px;border:1px solid var(--line);padding:12px 13px}
+.ans.best{border:1.5px solid #8fe0b5;background:linear-gradient(180deg,#f0fbf5,#fff 60%)}
+.ans.seller{background:var(--soft);border-color:var(--soft)}
+.ans .w{display:flex;align-items:center;gap:9px;cursor:pointer}
+.ans .w b{font-size:15px}
+.bdg{display:flex;gap:4px;flex-wrap:wrap;margin-top:3px}
+.bd{font-size:10.5px;font-weight:700;border-radius:5px;padding:2px 5px}
+.bd.own{background:var(--blue-s);color:var(--blue-t)}.bd.exp{background:var(--sig-s);color:var(--sig)}.bd.sel{background:#e4e4e4;color:#555}.bd.best{background:var(--green-s);color:var(--green-t)}.bd.buy{background:#fff1d6;color:#9a5b00}
+.ans p{font-size:14.5px;line-height:1.4;margin-top:9px}
+.mini{display:flex;gap:10px;align-items:center;margin-top:10px;border-radius:12px;background:#fff;border:1px solid var(--line);padding:8px;cursor:pointer}
+.mini img{width:52px;height:52px;border-radius:9px;object-fit:cover;flex:none}
+.mini b{display:block;font-size:15px}
+.mini span{font-size:12.5px;color:var(--ink2);display:block;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.mini > div{min-width:0;flex:1}
+.ans .af{display:flex;justify-content:space-between;align-items:center;gap:10px;margin-top:10px;font-size:12.5px;color:var(--muted)}
+.hb{border:1.5px solid var(--green);color:var(--green-t);background:#fff;border-radius:10px;height:34px;padding:0 12px;font-weight:700;font-size:13.5px;display:flex;align-items:center;gap:5px;flex:none}
+.hb.on{background:var(--green);color:#fff}
+.wait-box{margin:4px 16px 14px;border-radius:14px;background:var(--blue-s);padding:14px;font-size:14px;line-height:1.4;color:#04547f}
+/* формы */
+.form{padding:4px 16px 20px}
+.form label{display:block;font-size:13px;color:var(--muted);margin:16px 0 7px;font-weight:600}
+.form textarea,.inp1{width:100%;border:1.5px solid var(--line);border-radius:14px;padding:12px;font-size:15.5px;line-height:1.4;resize:none;outline:0}
+.form textarea{min-height:104px}
+.form textarea:focus,.inp1:focus{border-color:var(--sig)}
+.opts{display:flex;gap:7px;flex-wrap:wrap}
+.opt{border:1.5px solid var(--line);background:#fff;border-radius:11px;padding:9px 12px;font-size:14.5px;font-weight:500}
+.opt.on{border-color:var(--sig);color:var(--sig);background:var(--sig-s);font-weight:700}
+.tg{display:flex;align-items:center;justify-content:space-between;gap:12px;border-radius:14px;background:var(--soft);padding:12px 14px;margin-top:16px;font-size:14px;line-height:1.35}
+.sw{width:50px;height:30px;border-radius:15px;background:#d6d6d6;position:relative;flex:none;border:0}
+.sw::after{content:"";position:absolute;top:3px;left:3px;width:24px;height:24px;border-radius:50%;background:#fff;transition:left .2s;box-shadow:0 1px 3px rgba(0,0,0,.2)}
+.sw.on{background:var(--sig)}.sw.on::after{left:23px}
+.note{font-size:12.5px;color:var(--muted);line-height:1.4;margin-top:14px}
+.sim{margin-top:16px;border-radius:14px;background:var(--hot-s);padding:12px 14px;font-size:14px}
+.sim b{display:block;margin-bottom:4px}
+.simr{display:flex;justify-content:space-between;gap:10px;padding:8px 0;border-bottom:1px solid #ffe0c7;cursor:pointer}
+.simr:last-of-type{border-bottom:0}
+.simr span{color:var(--ink);font-weight:600}
+.simr i{font-style:normal;color:var(--hot);font-weight:700;flex:none;font-size:13px}
+.sim small{display:block;color:var(--muted);font-size:12.5px;margin-top:6px;line-height:1.35}
+/* листы, баннер, тост */
+.sbg{position:absolute;inset:0;background:rgba(0,0,0,.38);z-index:40;opacity:0;transition:opacity .25s;pointer-events:none}
+.sbg.in{opacity:1;pointer-events:auto}
+.sheet{position:absolute;left:0;right:0;bottom:0;background:#fff;border-radius:22px 22px 0 0;padding:8px 16px 32px;max-height:86%;overflow-y:auto;transform:translateY(100%);transition:transform .3s cubic-bezier(.2,.8,.2,1);z-index:41}
+.sheet.in{transform:none}
+.grab{width:38px;height:5px;border-radius:3px;background:#dadada;margin:0 auto 14px}
+.sheet h3{font-size:20px;font-weight:800;margin-bottom:4px}
+.sheet .sub{font-size:13.5px;color:var(--muted);margin-bottom:12px;line-height:1.35}
+.sheet .h5{font-size:14px;font-weight:700;margin:14px 0 4px}
+.li{display:flex;align-items:center;gap:12px;padding:11px 0;border-bottom:1px solid var(--line);width:100%;background:none;border-left:0;border-right:0;border-top:0;text-align:left;font-size:15.5px}
+.li:last-child{border-bottom:0}
+.li .tx{flex:1;min-width:0}
+.li small{display:block;font-size:12.5px;color:var(--muted);margin-top:2px}
+.li img{width:48px;height:48px;border-radius:9px;object-fit:cover}
+.li.on{background:var(--sig-s);border-radius:12px;padding-left:8px;padding-right:8px}
+.ck{width:24px;height:24px;border-radius:50%;border:2px solid #cfcfcf;flex:none;display:flex;align-items:center;justify-content:center;color:transparent}
+.li.on .ck{background:var(--sig);border-color:var(--sig);color:#fff}
+.cmpt{display:grid;gap:8px;margin-top:6px}
+.cmpt .cl{font-size:12.5px;color:var(--muted)}
+.cmpt img{width:100%;aspect-ratio:1/1;object-fit:cover;border-radius:10px}
+.cmpt b{font-size:15px}
+.cmpt div{font-size:13px;line-height:1.3}
+.sum{border-radius:14px;background:var(--soft);padding:12px 14px;margin:12px 0;font-size:14.5px}
+.sum div{display:flex;justify-content:space-between;padding:4px 0;gap:10px}
+.sum .tot{font-weight:800;font-size:16px;border-top:1px solid #e2e2e2;margin-top:6px;padding-top:9px}
+.hp{display:flex;gap:14px;align-items:center;margin-bottom:14px}
+.hp h3{margin:0}
+.proof{display:flex;gap:10px;align-items:flex-start;padding:9px 0;border-bottom:1px solid var(--line);font-size:14.5px;line-height:1.35}
+.proof:last-of-type{border-bottom:0}
+.proof i{font-style:normal;color:var(--green-t);font-weight:800;width:16px;flex:none;text-align:center}
+.lv{display:flex;gap:12px;align-items:center;padding:10px 0;border-bottom:1px solid var(--line)}
+.lv .d{width:34px;height:34px;border-radius:10px;background:var(--soft);display:flex;align-items:center;justify-content:center;font-weight:800;color:var(--muted);flex:none}
+.lv b{font-size:15.5px}.lv small{display:block;font-size:12.5px;color:var(--muted);margin-top:2px}
+.lv.cur .d{background:var(--sig);color:#fff}
+.lv .you{margin-left:auto;font-size:11.5px;font-weight:700;color:var(--sig);background:var(--sig-s);border-radius:6px;padding:3px 7px;flex:none}
+.set{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:12px 0;border-bottom:1px solid var(--line);font-size:15px}
+.set:last-child{border-bottom:0}
+.set small{display:block;color:var(--muted);font-size:12.5px;margin-top:2px}
+.banner{position:absolute;top:8px;left:8px;right:8px;background:rgba(255,255,255,.97);border-radius:20px;box-shadow:0 10px 30px rgba(0,0,0,.18);padding:12px 14px;display:flex;gap:11px;align-items:center;z-index:55;transform:translateY(-150%);opacity:0;pointer-events:none;transition:transform .4s cubic-bezier(.2,.8,.2,1),opacity .3s;cursor:pointer}
+.banner.in{transform:none;opacity:1;pointer-events:auto}
+.banner .tx{font-size:14px;line-height:1.3;flex:1}
+.banner .tx b{display:block;font-size:13px;color:var(--muted);font-weight:600;margin-bottom:2px}
+.toast{position:absolute;left:16px;right:16px;bottom:104px;background:rgba(20,20,20,.92);color:#fff;border-radius:14px;padding:12px 14px;font-size:14px;line-height:1.35;z-index:60;opacity:0;transform:translateY(10px);transition:all .25s;pointer-events:none}
+.toast.in{opacity:1;transform:none}
+/* избранное */
+.utabs{display:flex;gap:20px;overflow-x:auto;scrollbar-width:none;border-bottom:1px solid var(--line);padding:0 16px;background:#fff}
+.utabs button{flex:none;border:0;background:none;padding:10px 0 11px;font-size:15.5px;font-weight:600;color:#8b8b8b;position:relative}
+.utabs button.on{color:#000}
+.utabs button.on::after{content:"";position:absolute;left:0;right:0;bottom:-1px;height:2.5px;background:#000;border-radius:2px}
+.utabs .dt{position:absolute;top:7px;right:-9px;width:7px;height:7px;border-radius:50%;background:var(--red)}
+.pills{display:flex;gap:8px;padding:12px 16px 4px;overflow-x:auto;scrollbar-width:none}
+.pills button{flex:none;border:1.5px solid var(--line);background:#fff;border-radius:12px;padding:8px 14px;font-size:14.5px;font-weight:600}
+.pills button.on{border-color:#000}
+.post{padding:12px 16px;border-bottom:8px solid var(--soft)}
+.post .who{display:flex;gap:8px;align-items:center;font-size:13px}
+.post img{width:100%;border-radius:14px;margin-top:10px;aspect-ratio:4/3;object-fit:cover;cursor:pointer}
+.coll{display:flex;gap:12px;padding:12px 16px;align-items:center;cursor:pointer}
+.coll .pv{width:72px;height:72px;border-radius:14px;overflow:hidden;display:grid;grid-template-columns:1fr 1fr;gap:2px;background:var(--soft);flex:none}
+.coll .pv img{width:100%;height:100%;object-fit:cover}
+.coll .tx{flex:1;min-width:0}
+.coll b{font-size:16px}
+.coll .s{font-size:13px;color:var(--muted);margin-top:3px}
+.ci2{padding:12px 16px;border-bottom:1px solid var(--line)}
+.ci2 .top{display:flex;gap:12px;cursor:pointer}
+.ci2 img{width:80px;height:80px;border-radius:12px;object-fit:cover;flex:none}
+.cm2{margin-top:8px;font-size:13.5px;background:var(--soft);border-radius:12px;padding:8px 10px;display:flex;gap:8px;align-items:flex-start;line-height:1.35}
+.vote{display:flex;gap:6px;margin-top:8px}
+.vote button{border:1px solid var(--line);background:#fff;border-radius:9px;padding:5px 9px;font-size:13px}
+.vote button.on{border-color:var(--sig);background:var(--sig-s);color:var(--sig);font-weight:700}
+.srch{display:flex;align-items:center;gap:12px;padding:14px 16px;border-bottom:1px solid var(--line);cursor:pointer}
+.srch .tx{flex:1}
+.srch b{font-size:15.5px}
+.srch small{display:block;font-size:12.5px;color:var(--muted);margin-top:2px}
+.srch .nw{font-size:12.5px;font-weight:700;color:#fff;background:var(--green);border-radius:9px;padding:3px 8px}
+/* профиль, списки */
+.prof{display:flex;align-items:center;gap:14px;padding:12px 16px 16px}
+.prof h2{font-size:22px}
+.prof .r{font-size:13.5px;color:var(--muted);margin-top:3px}
+.lvl{margin:0 16px 12px;border-radius:18px;background:linear-gradient(135deg,#6f3cff,#a57bff);color:#fff;padding:16px;cursor:pointer}
+.lvl .k{font-size:12.5px;opacity:.9;font-weight:600}
+.lvl .n{font-size:21px;font-weight:800;margin:3px 0 10px}
+.bar{height:8px;border-radius:4px;background:rgba(255,255,255,.3);overflow:hidden}
+.bar i{display:block;height:100%;background:#fff;border-radius:4px}
+.lvl .s{font-size:12.5px;margin-top:8px;opacity:.95;display:flex;justify-content:space-between;gap:8px}
+.lvl .s u{text-decoration:none;font-weight:700;flex:none}
+.stats3{display:grid;grid-template-columns:1fr 1fr 1fr;gap:8px;margin:0 16px 12px}
+.stats3 div{background:var(--soft);border-radius:14px;padding:12px 6px;text-align:center}
+.stats3 b{display:block;font-size:22px}
+.stats3 span{font-size:12px;color:var(--muted);line-height:1.25;display:block}
+.menu .li{padding:14px 16px;font-size:16px}
+.foot{font-size:11.5px;color:#a2a2a2;padding:14px 16px 26px;line-height:1.4}
+.foot a{color:#8f8f8f;cursor:pointer;text-decoration:underline}
+.my{display:flex;gap:12px;padding:12px 16px;border-bottom:1px solid var(--line);cursor:pointer}
+.my img{width:84px;height:84px;border-radius:12px;object-fit:cover;flex:none}
+.my b{font-size:16px}
+.my .s{font-size:12.5px;color:var(--muted);margin-top:6px}
+.chat{display:flex;gap:12px;padding:10px 16px;align-items:center;cursor:pointer}
+.chat img{width:56px;height:56px;border-radius:12px;object-fit:cover;flex:none}
+.chat .tx{flex:1;min-width:0;border-bottom:1px solid var(--line);padding-bottom:10px;display:flex;gap:8px}
+.chat .tx > div:first-child{flex:1;min-width:0}
+.chat .tx b{font-size:15.5px}
+.chat .tx .l{font-size:13.5px;color:var(--muted);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;margin-top:2px}
+.chat .tx .l.it{color:#000}
+.chat .rt{display:flex;flex-direction:column;align-items:flex-end;gap:6px;flex:none}
+.chat .tm{font-size:12px;color:var(--muted)}
+.chat .un{min-width:20px;height:20px;border-radius:10px;background:var(--blue);color:#fff;font-size:12px;font-weight:700;display:flex;align-items:center;justify-content:center;padding:0 6px}
+.msgs{padding:12px 14px;display:flex;flex-direction:column;gap:8px}
+.msg{max-width:78%;padding:9px 12px;border-radius:18px;font-size:15px;line-height:1.35;background:var(--chip);align-self:flex-start}
+.msg.me{background:var(--blue);color:#fff;align-self:flex-end}
+.inp{display:flex;gap:8px;padding:8px 12px 30px;border-top:1px solid var(--line)}
+.inp input{flex:1;height:42px;border-radius:21px;border:1.5px solid var(--line);padding:0 14px;font-size:15px;outline:0;min-width:0}
+.inp button{width:42px;height:42px;border-radius:50%;border:0;background:var(--blue);color:#fff;display:flex;align-items:center;justify-content:center;flex:none}
+.ci-item{display:flex;gap:10px;align-items:center;padding:8px 16px;border-bottom:1px solid var(--line);background:var(--soft);cursor:pointer}
+.ci-item img{width:40px;height:40px;border-radius:8px;object-fit:cover}
+.ci-item div{font-size:13px}
+.nt{display:flex;gap:12px;padding:13px 16px;border-bottom:1px solid var(--line);align-items:flex-start;cursor:pointer}
+.nt.new{background:#faf8ff}
+.nt .e{width:40px;height:40px;border-radius:12px;background:var(--sig-s);display:flex;align-items:center;justify-content:center;font-size:19px;flex:none}
+.nt .tx{font-size:14.5px;line-height:1.35;flex:1}
+.nt small{display:block;color:var(--muted);font-size:12px;margin-top:3px}
+</style>
+</head>
+<body>
+<div class="stage">
+<div class="phone" id="phone">
+  <div class="island"></div>
+  <div class="status"><span>9:41</span><span class="ic">
+    <svg width="18" height="12" viewBox="0 0 18 12"><rect x="0" y="8" width="3" height="4" rx="1" fill="#000"/><rect x="5" y="5.5" width="3" height="6.5" rx="1" fill="#000"/><rect x="10" y="3" width="3" height="9" rx="1" fill="#000"/><rect x="15" y="0" width="3" height="12" rx="1" fill="#000"/></svg>
+    <svg width="16" height="12" viewBox="0 0 16 12"><path d="M8 11.5l2.2-2.6a3.2 3.2 0 0 0-4.4 0zM3.4 6.2l1.5 1.7a4.6 4.6 0 0 1 6.2 0l1.5-1.7a6.9 6.9 0 0 0-9.2 0zM.9 3.3l1.5 1.7a8.5 8.5 0 0 1 11.2 0l1.5-1.7a10.8 10.8 0 0 0-14.2 0z" fill="#000"/></svg>
+    <svg width="27" height="13" viewBox="0 0 27 13"><rect x=".5" y=".5" width="23" height="12" rx="3.5" fill="none" stroke="#000" opacity=".4"/><rect x="2" y="2" width="17" height="9" rx="2" fill="#000"/><rect x="24.5" y="4.5" width="2" height="4" rx="1" fill="#000" opacity=".4"/></svg>
+  </span></div>
+  <div class="body" id="body">
+    <div class="vp">
+      <section class="tab" id="t-home"></section>
+      <section class="tab" id="t-fav"></section>
+      <section class="tab" id="t-sig"></section>
+      <section class="tab" id="t-ads"></section>
+      <section class="tab" id="t-msg"></section>
+      <section class="tab" id="t-prof"></section>
+    </div>
+    <nav class="nav" id="nav"></nav>
+    <div class="layer" id="layer"></div>
+    <div class="sbg" id="sbg" data-a="sheetClose"></div>
+    <div class="sheet" id="sheet"></div>
+    <div class="banner" id="banner"></div>
+    <div class="toast" id="toast"></div>
+  </div>
+  <div class="intro" id="intro">
+    <span class="mk"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round"><circle cx="12" cy="12" r="2.2" fill="currentColor"/><path d="M8.2 8.2a5.4 5.4 0 0 0 0 7.6M15.8 8.2a5.4 5.4 0 0 1 0 7.6M5.4 5.4a9.3 9.3 0 0 0 0 13.2M18.6 5.4a9.3 9.3 0 0 1 0 13.2"/></svg></span>
+    <div class="k">Кликабельный концепт</div>
+    <h1>Авито + Сигнал</h1>
+    <p>Команда «ООО «Коммерсы»» · Changellenge Cup Moscow 2026</p>
+    <ol>
+      <li>Вкладка <b>«Сигнал»</b>: свайпните пару кроссовок вправо</li>
+      <li><b>Спросите знатоков</b>: ответы придут через несколько секунд</li>
+      <li>Откройте объявление: блок <b>«Опыт владельцев»</b></li>
+      <li><b>Профиль</b>: уровень знатока растёт только от «помогло»</li>
+    </ol>
+    <button class="btn sig" data-a="intro">Начать</button>
+    <small>Не является продуктом Авито. Данные вымышлены, оплата не настоящая.</small>
+  </div>
+  <div class="hbar"></div>
+</div>
+<aside class="guide">
+  <div class="k">Кликабельный концепт</div>
+  <h1>Авито + Сигнал</h1>
+  <div class="sub">Команда «ООО «Коммерсы»» · Changellenge Cup Moscow 2026</div>
+  <ol>
+    <li><button data-a="demo" data-v="1"><span class="n">1</span><span><b>Свайпы подстраивают подборку</b><small>Вкладка «Сигнал»: два раза вправо по кроссовкам</small></span></button></li>
+    <li><button data-a="demo" data-v="2"><span class="n">2</span><span><b>Спросить знатоков</b><small>Ави даёт варианты сразу, люди отвечают следом</small></span></button></li>
+    <li><button data-a="demo" data-v="3"><span class="n">3</span><span><b>Иерархия ответов</b><small>помогло автору, владелец, знаток, продавец ниже с пометкой «реклама»</small></span></button></li>
+    <li><button data-a="demo" data-v="4"><span class="n">4</span><span><b>Опыт владельцев в карточке</b><small>покупка и чат остаются как были</small></span></button></li>
+    <li><button data-a="demo" data-v="5"><span class="n">5</span><span><b>То же в Авто</b><small>владельцы модели рассказывают о слабых местах</small></span></button></li>
+    <li><button data-a="demo" data-v="6"><span class="n">6</span><span><b>Совместная подборка</b><small>голосуем и обсуждаем с близкими в Избранном</small></span></button></li>
+    <li><button data-a="demo" data-v="7"><span class="n">7</span><span><b>Уровень знатока</b><small>растёт только от отметок «помогло»</small></span></button></li>
+  </ol>
+  <div class="goal"><b>Цель:</b> больше активных дней между сделками. Сейчас на Авито заходят около 9,5 дня из 30 (Mediascope, апрель 2026). Поиск, контакты и сделки остаются как были.</div>
+  <div class="keys"><kbd>←</kbd> <kbd>→</kbd> <kbd>↑</kbd> свайпы во вкладке «Для вас»<br><kbd>Esc</kbd> назад или закрыть окно</div>
+  <button class="reset" data-a="reset">Начать заново</button>
+  <div class="ft">Данные в прототипе вымышлены. Не является продуктом Авито. Фото товаров: Wikimedia Commons.</div>
+</aside>
+</div>
+
+<script>
+/* ===== данные ===== */
+const IMG = n => `img/${n}.jpg`;
+const rub = n => n.toLocaleString("ru-RU") + " ₽";
+const esc = s => String(s).replace(/[&<>"]/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]));
+const RUN = new Set(["Бег", "Кроссовки"]);
+const ME = "Алексей";
+const MY_CAT = "Фото";
+const plIdx = n => n % 10 === 1 && n % 100 !== 11 ? 0 : n % 10 >= 2 && n % 10 <= 4 && (n % 100 < 10 || n % 100 >= 20) ? 1 : 2;
+const plw = (n, f) => f[plIdx(n)];
+const pl = (n, f) => `${n} ${plw(n, f)}`;
+const ANS = ["ответ", "ответа", "ответов"], ADV = ["совет", "совета", "советов"], REQS = ["запрос", "запроса", "запросов"], MARKS = ["отметка", "отметки", "отметок"], ADS = ["объявление", "объявления", "объявлений"];
+const PLACES = ["м. Сокольники", "м. Таганская", "м. Белорусская", "м. Динамо", "Химки", "м. Курская", "м. Парк культуры", "Мытищи", "м. Бауманская"];
+const AGOS = ["1 час назад", "3 часа назад", "вчера", "5 часов назад", "сегодня, 08:40", "2 дня назад"];
+
+const L = {
+  a25: { img: "vesta", t: "LADA Vesta 1.6 MT, 2019, 68 000 км", p: 1050000, c: "Авто", cond: "Не битая, 1 владелец", pl: "Мытищи", ago: "40 минут назад", s: "Евгений", sr: "5,0", sn: 9, d: "Один владелец, ТО у дилера до 60 000 км, сервисная книжка. Зимняя резина в комплекте. Можно осмотреть на любом сервисе." },
+  a1: { img: "run2_0", t: "Asics Gel-Cumulus 22, 42, полнота 2E", p: 7900, c: "Бег", sz: 42, cond: "Б/у, отличное", pl: "м. Сокольники", ago: "2 часа назад", s: "Дмитрий", sr: "4,9", sn: 37, d: "Брал под полумарафон, пробег около 150 км. Перешёл на трейл, поэтому продаю. Подошва без износа, коробка и чек есть." },
+  a2: { img: "run3_0", t: "Nike Pegasus 38, 42,5", p: 6500, c: "Бег", sz: 42, cond: "Б/у, хорошее", s: "Павел", sr: "5,0", sn: 12, d: "Лёгкие и отзывчивые, пробег около 300 км. Узковаты в носке." },
+  a3: { img: "run6_1", t: "Adidas Adizero Boston 12, 42", p: 11200, c: "Бег", sz: 42, cond: "Новые, последний размер", s: "Runlab", shop: true, sr: "4,8", sn: 214, d: "Новые, в коробке, скидка 30% на последний размер. Примерка при получении." },
+  a4: { img: "run6_2", t: "Adidas Ultraboost 4.0, 43", p: 6800, c: "Бег", sz: 43, s: "Артём", d: "Мягкие, больше для ходьбы и лёгких пробежек." },
+  a5: { img: "run4_2", t: "New Balance 1906R, новые, 43", p: 12900, c: "Кроссовки", sz: 43, cond: "Новые", s: "Sneakerhead", shop: true, sr: "4,9", sn: 530, d: "Оригинал, проверка на месте, чек." },
+  a6: { img: "run2_2", t: "Asics Gel-Trail Lahar 5 GTX, 42", p: 5200, c: "Бег", sz: 42, s: "Роман", d: "Непромокаемые, бегал по лесу один сезон, протектор живой." },
+  a7: { img: "run1_1", t: "Asics Gel женские, 39", p: 3900, c: "Бег", sz: 39 },
+  a8: { img: "run3_2", t: "Трейловые кроссовки, 44", p: 5900, c: "Бег", sz: 44 },
+  a9: { img: "watch_2", t: "Часы Garmin Forerunner 965", p: 42000, c: "Бег", cond: "Б/у, как новые", s: "Максим", sr: "5,0", sn: 16, d: "Полный комплект, ремешок новый, на экране плёнка с первого дня." },
+  a10: { img: "watch_0", t: "Garmin Forerunner 35, GPS и пульс", p: 7500, c: "Бег" },
+  a11: { img: "phones_0", t: "Наушники Sony WI-XB400", p: 2900, c: "Электроника", cond: "Новые" },
+  a12: { img: "insole_blue", t: "Стельки FootBalance, 42", p: 1900, c: "Бег", sz: 42, cond: "Новые" },
+  a13: { img: "console_0", t: "PlayStation 4, 500 ГБ, геймпад", p: 13500, c: "Электроника", s: "Станислав" },
+  a14: { img: "zenit_1", t: "Зенит-Е с Гелиос-44, проверен", p: 3200, c: "Фото", s: "Виктор", d: "Затвор и экспонометр работают, плёнку прогонял в сентябре." },
+  a15: { img: "guitar_2", t: "Электрогитара Ibanez Artist", p: 38000, c: "Хобби" },
+  a16: { img: "guitar_0", t: "Комбоусилитель ZT Lunchbox Acoustic", p: 19900, c: "Хобби", s: ME },
+  a17: { img: "coffee_0", t: "Рожковая кофеварка Krups", p: 4500, c: "Для дома", s: "Мария" },
+  a18: { img: "racket_1", t: "Теннисная ракетка и 2 мяча", p: 3900, c: "Спорт", s: "Ирина" },
+  a19: { img: "sofa_1", t: "Диван трёхместный, рыжий", p: 18000, c: "Для дома" },
+  a20: { img: "vinyl_1", t: "Проигрыватель Pioneer PL-200", p: 11000, c: "Хобби" },
+  a21: { img: "skate_1", t: "Скейтборд Nash, винтаж", p: 4800, c: "Спорт", s: ME },
+  a22: { img: "run4_0", t: "New Balance 2002R, 42", p: 8900, c: "Кроссовки", sz: 42 },
+  a23: { img: "run4_1", t: "New Balance 480, 41", p: 4900, c: "Кроссовки", sz: 41 },
+  a24: { img: "run1_2", t: "Беговые кроссовки, новые, 41", p: 4990, c: "Бег", sz: 41, cond: "Новые", s: "Магазин «Бегун»", shop: true, sr: "4,7", sn: 389 },
+};
+Object.entries(L).forEach(([id, x], i) => {
+  x.id = id;
+  x.cond = x.cond || "Б/у, хорошее";
+  x.pl = x.pl || PLACES[i % PLACES.length];
+  x.ago = x.ago || AGOS[i % AGOS.length];
+  x.s = x.s || ["Дарья", "Антон", "Елена", "Никита", "Ольга"][i % 5];
+  x.sr = x.sr || ["4,9", "5,0", "4,8"][i % 3];
+  x.sn = x.sn || 5 + ((i * 7) % 40);
+  x.d = x.d || "В хорошем состоянии, всё работает. Отправлю Авито Доставкой или встреча у метро.";
+});
+
+/* мнения владельцев в карточке */
+const OWN = {
+  a1: [
+    { who: "Илья", m: "бегает в таких же · 900 км", t: "Амортизация не просела. Полнота 2E - то, что нужно для широкой стопы: в обычной давит в носке." },
+    { who: "Света", m: "носила сезон", t: "Тяжеловаты для темповых, но на длинные спокойные - лучшие из того, что пробовала." },
+  ],
+  a2: [{ who: "Катя", m: "бегает в таких год", t: "Лёгкие, но узкие в носке. На широкую стопу только с примеркой." }],
+  a9: [{ who: "Кирилл", m: "владеет 2 года", t: "Батареи хватает на неделю тренировок. Для старта переплата, под марафон - лучшие." }],
+  a13: [{ who: "Игорь", m: "владеет 4 года", t: "Для игр с друзьями хватает. Проверьте, не шумит ли вентилятор, и берите с проверкой при получении." }],
+  a14: [
+    { who: "Вы", m: "снимаете на такой 3 года", t: "Гелиос-44 даёт мягкий фон, для портретов то, что надо. Проверьте затвор на всех выдержках и что стрелка экспонометра шевелится на свету." },
+    { who: "Нина", m: "владеет 5 лет", t: "Тяжёлый, но почти неубиваемый. Плёнку заряжать проще, чем кажется." },
+  ],
+  a25: [
+    { who: "Андрей", m: "владеет 3 года · 70 000 км", t: "За 3 года только плановое ТО. Из слабых мест - шумоизоляция и лючок бака зимой. Обязательно проверьте пороги и арки." },
+    { who: "Ольга", m: "владеет 2 года", t: "Для города удобная, клиренс выручает зимой. Механика лучше робота: в пробках не дёргается." },
+    { who: "Тимур", m: "продал в 2025", t: "Спросите, менялось ли сцепление: к 70 000 км его часто уже пора менять." },
+  ],
+};
+/* кто отвечает: подтверждения для профиля советчика */
+const HELP = {
+  "Илья": { lvl: "Знаток беговой обуви", helped: 48, ans: 112, since: 2016, proofs: ["Asics Gel-Cumulus 22 2E · куплены на Авито, 2025", "Asics Gel-Trail Lahar 5 · куплены на Авито, 2024", "Garmin Forerunner 255 · куплены на Авито, 2024"] },
+  "Света": { lvl: "Знаток беговой обуви", helped: 31, ans: 64, since: 2018, proofs: ["Asics Gel-Trail Lahar 5 GTX · куплены на Авито, 2025", "Sony WI-XB400 · куплены на Авито, 2025"] },
+  "Катя": { lvl: "Советчик · Бег", helped: 9, ans: 23, since: 2019, proofs: ["Nike Pegasus 38 · куплены на Авито, 2025"] },
+  "Игорь": { lvl: "Советчик · Электроника", helped: 7, ans: 15, since: 2015, proofs: ["PlayStation 4 · куплена на Авито, 2022"] },
+  "Нина": { lvl: "Знаток · Фото", helped: 22, ans: 41, since: 2017, proofs: ["Зенит-Е · куплен на Авито, 2021", "Киев-60 · куплен на Авито, 2023"] },
+  "Елена": { lvl: "Советчик · Для дома", helped: 6, ans: 11, since: 2020, proofs: ["Кофеварка Krups · куплена на Авито, 2024"] },
+  "Runlab": { shop: true }, "Магазин «Бегун»": { shop: true }, "Фотолавка": { shop: true },
+};
+
+/* обсуждения */
+const D = [
+  { id: "d6", who: "Олег", ago: "1 ч", title: "Кроссовки на зиму: шипы или протектор?", text: "Бегаю в парке по утрам, местами лёд. Кто что носит и не скользит?", tags: ["Бег", "зима"], cnt: 23, heat: 9, status: "hot",
+    ans: [{ by: "Света", b: ["own", "exp"], own: "Asics Gel-Trail Lahar 5 GTX", t: "Для парка хватает трейлового протектора и мембраны: ноги сухие, держит на снегу. Шипы нужны только на чистый лёд.", it: "a6" }] },
+  { id: "d1", who: "Марина", ago: "25 мин", title: "Кроссовки для первого полумарафона", text: "Бегаю два года, 30-40 км в неделю. Стопа широкая, размер 41-42. Нужна амортизация, но не тяжёлые. Бюджет до 10 000.", tags: ["Бег", "до 10 000 ₽", "41-42"], cnt: 14, heat: 6, status: "hot",
+    ans: [
+      { by: "Runlab", b: ["sel"], t: "Есть новые Adizero Boston 12 в 42 размере со скидкой, примерка при получении.", it: "a3" },
+      { by: "Катя", b: ["own"], own: "Nike Pegasus 38", t: "Pegasus лёгкие, но узкие в носке. С широкой стопой обязательно примерка при получении.", it: "a2" },
+      { by: "Илья", b: ["own", "exp"], own: "Asics Gel-Cumulus 22 2E · куплены на Авито", t: "С широкой стопой смотрите Cumulus в полноте 2E. Бегаю в таких 8 месяцев, 900 км, амортизация не просела. Сейчас на Авито есть пара 42 размера за 7 900.", it: "a1", helped: true },
+    ] },
+  { id: "d2", who: "Денис", ago: "35 мин", title: "Наушники для бега, чтобы не выпадали", text: "Обычные вкладыши вылетают на третьем километре. Бюджет до 4 000.", tags: ["Электроника", "до 4 000 ₽"], cnt: 9, heat: 4, status: "hot",
+    ans: [{ by: "Света", b: ["own"], own: "Sony WI-XB400 · год", t: "Берите с шейным шнурком: даже если вкладыш выпадет, наушники не потеряются. Бегаю с такими год.", it: "a11" }] },
+  { id: "d3", who: "Аня", circle: "Семья", ago: "12 мин", title: "Плёночный фотоаппарат папе в подарок", text: "Папа снимал на Зенит в молодости. Хочу похожий и рабочий, до 5 000. Как проверить, что он живой?", tags: ["Фото", "до 5 000 ₽", "подарок"], cnt: 0, heat: 0, status: "new", ans: [] },
+  { id: "d7", who: "Кирилл", ago: "50 мин", title: "Первый скейт, чтобы ездить до учёбы", text: "3 км по ровному асфальту. Скейт, круизер или лонгборд? Бюджет до 6 000.", tags: ["Спорт", "до 6 000 ₽"], cnt: 0, heat: 0, status: "new", ans: [] },
+  { id: "d4", who: "Сергей", ago: "40 мин", title: "PS4 сейчас или копить на PS5?", text: "Сыну 10 лет, играть с друзьями. Сколько реально стоит живая PS4 и что проверить при покупке?", tags: ["Электроника", "до 20 000 ₽"], cnt: 1, heat: 1, status: "new",
+    ans: [{ by: "Игорь", b: ["own"], own: "PlayStation 4 · 4 года", t: "Для игр с друзьями хватит. Проверьте, не шумит ли вентилятор, и берите через Доставку с проверкой при получении.", it: "a13" }] },
+  { id: "d5", who: "Олег", ago: "вчера", title: "Первый плёночный фотоаппарат до 5 000", text: "Хочу попробовать плёнку. С чего начать, чтобы не разочароваться?", tags: ["Фото", "до 5 000 ₽"], cnt: 4, heat: 0, status: "done",
+    ans: [{ by: "Вы", b: ["own", "exp"], own: "Зенит-Е · 3 года", t: "Для старта берите Зенит-Е с Гелиосом: недорого, надёжно, объектив отличный. Перед покупкой проверьте затвор на всех выдержках.", helped: true, bought: true }] },
+];
+
+const COLLS = [
+  { id: "c1", name: "К полумарафону", shared: false, members: ["Вы"], items: ["a1", "a12", "a10"], com: [], votes: {} },
+  { id: "c2", name: "Гостиная", shared: true, members: ["Вы", "Мама"], items: ["a19", "a17"], com: [{ who: "Мама", on: "a19", t: "Этот берём? Цвет как у кресла" }, { who: "Вы", on: "a19", t: "Да, съезжу посмотреть в субботу" }], votes: {} },
+  { id: "c3", name: "Подарок папе", shared: true, members: ["Вы", "Аня"], items: ["a14", "a20"], com: [{ who: "Аня", on: "a14", t: "Зенит, как у него был!" }], votes: {} },
+];
+const CIRCLES = [
+  { id: "fam", name: "Семья", people: ["Мама", "Папа", "Аня"] },
+  { id: "run", name: "Пробежки", people: ["Даня", "Кира", "Тимур"] },
+  { id: "fr", name: "Друзья", people: ["Никита", "Полина", "Ваня"] },
+];
+const CHATS = [
+  { id: "ch1", who: "Дмитрий", it: "a1", tm: "12:40", un: 1, msgs: [{ me: true, t: "Здравствуйте! Ещё продаёте?" }, { t: "Да, актуально. Могу отправить Авито Доставкой" }] },
+  { id: "ch2", who: "Runlab", it: "a3", tm: "11:02", un: 1, msgs: [{ t: "Примерка при получении доступна, размерная сетка в описании" }] },
+  { id: "ch3", who: "Мария", it: "a17", tm: "вчера", un: 1, msgs: [{ me: true, t: "Кофеварка рабочая?" }, { t: "Да, всё работает, могу показать видео" }] },
+];
+const REPLIES = ["Здравствуйте! Да, актуально", "Можно, оформляйте через Авито Доставку, проверка при получении", "Хорошо, жду заказ", "Да, пишите, если будут вопросы"];
+const REPLIES_CAR = ["Здравствуйте! Да, актуально", "Да, можно на любой сервис, по выходным удобнее", "Небольшой торг у капота", "Пишите, договоримся о времени"];
+const SAVED = [{ q: "кроссовки беговые 42", n: 3 }, { q: "зенит гелиос", n: 1 }];
+const DECK0 = ["a3", "a2", "a22", "a13", "a9", "a4", "a14", "a6", "a11", "a23", "a12", "a8"];
+
+const S = {
+  tab: "home", stack: [], q: "", fav: new Set(["a19", "a14"]), favTab: "items", feedTab: "you", sigTab: "you", dcat: "Все",
+  viewed: ["a5", "a13"], deck: DECK0.slice(), di: 0, likes: [], nopes: [], sent: [], adapted: false, busy: false, via: null,
+  notifs: [
+    { e: "🙌", t: "Олег отметил ваш совет «помогло» и купил Зенит-Е", ago: "1 ч", go: "disc:d5", n: true },
+    { e: "🙋", t: "Аня из круга «Семья» просит помочь: плёночный фотоаппарат папе", ago: "12 мин", go: "disc:d3", n: true },
+    { e: "🔥", t: "В категории «Бег» горит обсуждение: 9 ответов за час", ago: "20 мин", go: "disc:d6" },
+    { e: "📦", t: "Подошла ли теннисная ракетка? Ответ увидят те, кто выбирает такую же", ago: "вчера", go: "rate:a18" },
+  ],
+  nset: { mine: true, circle: true, hot: true, after: true, expert: false },
+  seq: 0, firstLike: true, myAns: 0,
+};
+const unread = () => S.notifs.filter(n => n.n).length;
+const unreadMsgs = () => CHATS.reduce((s, c) => s + c.un, 0);
+
+/* ===== иконки ===== */
+const I = {
+  search: '<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="M20 20l-3.5-3.5"/></svg>',
+  heart: '<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linejoin="round"><path d="M12 20s-7.5-4.6-7.5-10.2A4.3 4.3 0 0 1 12 7.2a4.3 4.3 0 0 1 7.5 2.6C19.5 15.4 12 20 12 20z"/></svg>',
+  heartF: '<svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><path d="M12 20s-7.5-4.6-7.5-10.2A4.3 4.3 0 0 1 12 7.2a4.3 4.3 0 0 1 7.5 2.6C19.5 15.4 12 20 12 20z"/></svg>',
+  heartL: '<svg width="28" height="28" viewBox="0 0 24 24" fill="currentColor"><path d="M12 20s-7.5-4.6-7.5-10.2A4.3 4.3 0 0 1 12 7.2a4.3 4.3 0 0 1 7.5 2.6C19.5 15.4 12 20 12 20z"/></svg>',
+  sig: '<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round"><circle cx="12" cy="12" r="2.2" fill="currentColor"/><path d="M8.2 8.2a5.4 5.4 0 0 0 0 7.6M15.8 8.2a5.4 5.4 0 0 1 0 7.6M5.4 5.4a9.3 9.3 0 0 0 0 13.2M18.6 5.4a9.3 9.3 0 0 1 0 13.2"/></svg>',
+  ads: '<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round"><rect x="4" y="4" width="16" height="16" rx="4.5"/><path d="M12 8.5v7M8.5 12h7"/></svg>',
+  chat: '<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linejoin="round"><path d="M4 7a3 3 0 0 1 3-3h10a3 3 0 0 1 3 3v7a3 3 0 0 1-3 3H10l-5 4v-4.3A3 3 0 0 1 4 14z"/></svg>',
+  user: '<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9"><circle cx="12" cy="8.5" r="3.8"/><path d="M4.5 20.5c1.4-3.8 4.2-5.6 7.5-5.6s6.1 1.8 7.5 5.6" stroke-linecap="round"/></svg>',
+  bell: '<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linejoin="round"><path d="M6 16.5V11a6 6 0 0 1 12 0v5.5l1.8 1.8H4.2z"/><path d="M10 20.5a2.2 2.2 0 0 0 4 0" stroke-linecap="round"/></svg>',
+  back: '<svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round"><path d="M15 5l-7 7 7 7"/></svg>',
+  send: '<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"><path d="M4 11.5L20 4l-6.5 16-2.3-6.6z"/></svg>',
+  folder: '<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linejoin="round"><path d="M3.5 7.5a2 2 0 0 1 2-2h4l2 2h7a2 2 0 0 1 2 2v7.5a2 2 0 0 1-2 2h-13a2 2 0 0 1-2-2z"/></svg>',
+  x: '<svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round"><path d="M6.5 6.5l11 11M17.5 6.5l-11 11"/></svg>',
+  check: '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg>',
+  pin: '<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 21s-6.5-6-6.5-11a6.5 6.5 0 0 1 13 0c0 5-6.5 11-6.5 11z"/><circle cx="12" cy="10" r="2.3"/></svg>',
+  spark: '<svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l2.3 6.2L21 10.5l-6.7 2.3L12 19l-2.3-6.2L3 10.5l6.7-2.3z"/></svg>',
+};
+
+/* ===== утилиты ===== */
+const $ = s => document.querySelector(s);
+const COLORS = ["#ff6b6b", "#f59f00", "#37b24d", "#1c7ed6", "#7048e8", "#e64980", "#0ca678", "#4263eb"];
+function col(n) { let x = 0; for (const ch of n) x = (x * 31 + ch.charCodeAt(0)) % 997; return COLORS[x % COLORS.length]; }
+const ava = (n, sz = 34) => `<span class="ava" style="width:${sz}px;height:${sz}px;background:${n === "Вы" ? "#111" : col(n)};font-size:${Math.round(sz * 0.42)}px">${n === "Вы" ? ME[0] : n.replace(/[«"]/g, "")[0]}</span>`;
+const ownCount = id => (OWN[id] || []).length;
+const short = id => L[id].t.split(",")[0];
+const sheetOpen = () => $("#sheet").classList.contains("in");
+let toastT;
+function toast(t, ms = 2800) { const el = $("#toast"); el.innerHTML = t; el.classList.add("in"); clearTimeout(toastT); toastT = setTimeout(() => el.classList.remove("in"), ms); }
+let banT;
+function banner(title, text, go) {
+  const el = $("#banner");
+  el.innerHTML = `<span class="mark">${I.sig}</span><div class="tx"><b>${title}</b>${text}</div>`;
+  el.dataset.a = "banner"; el.dataset.v = go || "";
+  el.classList.add("in"); clearTimeout(banT); banT = setTimeout(() => el.classList.remove("in"), 4200);
+}
+function notify(e, t, go, title) { S.notifs.unshift({ e, t, ago: "сейчас", go, n: true }); banner(title || "Сигнал", t, go); rerender(); }
+const NA = "Этот раздел Авито в прототипе не меняется";
+
+/* ===== навигация ===== */
+const TABS = [
+  ["home", "Поиск", I.search], ["fav", "Избранное", I.heart], ["sig", "Сигнал", I.sig],
+  ["ads", "Объявления", I.ads], ["msg", "Сообщения", I.chat], ["prof", "Профиль", I.user],
+];
+function renderNav() {
+  $("#nav").innerHTML = TABS.map(([k, n, ic]) => {
+    const extra = k === "sig" ? (unread() ? `<span class="badge">${unread()}</span>` : `<span class="newtag">NEW</span>`) : k === "msg" && unreadMsgs() ? `<span class="badge">${unreadMsgs()}</span>` : "";
+    return `<button class="${S.tab === k ? "on" : ""} ${k === "sig" ? "sg" : ""}" data-a="tab" data-v="${k}" aria-label="${n}">${ic}${extra}<span>${n}</span></button>`;
+  }).join("");
+}
+function setTab(k) {
+  S.tab = k;
+  closeAll();
+  document.querySelectorAll(".tab").forEach(t => t.classList.toggle("on", t.id === "t-" + k));
+  renderTab(); renderNav();
+}
+function renderTab() {
+  const fn = { home: homeHTML, fav: favHTML, sig: sigHTML, ads: adsHTML, msg: msgHTML, prof: profHTML }[S.tab];
+  const el = $("#t-" + S.tab); const y = el.scrollTop;
+  el.innerHTML = fn(); el.scrollTop = y;
+  if (S.tab === "sig" && S.sigTab === "you") { sizeDeck(); bindTop(); }
+}
+/* колода занимает всё, что остаётся над кнопками: на маленьких телефонах кнопки не уходят под меню */
+function sizeDeck() {
+  const tab = $("#t-sig"), deck = $("#deck");
+  if (!deck || !tab.clientHeight) return;
+  deck.style.height = Math.max(300, Math.min(440, tab.clientHeight - deck.offsetTop - 104)) + "px";
+}
+function push(fn, arg, keep) {
+  const el = document.createElement("div");
+  el.className = "page"; el.innerHTML = fn(arg);
+  $("#layer").appendChild(el);
+  const p = { fn, arg, el, keep };
+  S.stack.push(p);
+  requestAnimationFrame(() => requestAnimationFrame(() => el.classList.add("in")));
+  closeSheet();
+  return p;
+}
+function back() {
+  const p = S.stack.pop(); if (!p) return;
+  p.el.classList.remove("in"); setTimeout(() => p.el.remove(), 320);
+  rerender();
+}
+function closeAll() { S.stack.forEach(p => p.el.remove()); S.stack = []; closeSheet(); }
+function rerender() {
+  S.stack.forEach(p => {
+    if (p.keep) return;
+    const pc = p.el.querySelector(".pc"); const y = pc ? pc.scrollTop : 0;
+    p.el.innerHTML = p.fn(p.arg);
+    const pc2 = p.el.querySelector(".pc"); if (pc2) pc2.scrollTop = y;
+  });
+  renderTab(); renderNav();
+}
+function page(title, body, foot = "", right = "") {
+  return `<div class="ph"><button class="ib" data-a="back" aria-label="Назад">${I.back}</button><div class="ttl">${title}</div>${right || '<span class="ib"></span>'}</div><div class="pc">${body}</div>${foot ? `<div class="pf">${foot}</div>` : ""}`;
+}
+let sheetCb = null;
+function openSheet(html, cb) { $("#sheet").innerHTML = `<div class="grab"></div>${html}`; $("#sheet").scrollTop = 0; $("#sheet").classList.add("in"); $("#sbg").classList.add("in"); sheetCb = cb || null; }
+function closeSheet() { $("#sheet").classList.remove("in"); $("#sbg").classList.remove("in"); }
+function openItem(id, via) {
+  S.viewed = [id, ...S.viewed.filter(x => x !== id)].slice(0, 12);
+  if (via) { const [did, i] = via.split(":"); const d = D.find(x => x.id === did); S.via = { item: id, did, idx: +i, by: d.ans[+i].by }; }
+  else if (!S.via || S.via.item !== id) S.via = null;
+  return push(itemHTML, id);
+}
+function scrollToBox(p) {
+  setTimeout(() => {
+    const pc = p.el.querySelector(".pc"), box = p.el.querySelector(".sbox");
+    if (pc && box) pc.scrollTop += box.getBoundingClientRect().top - pc.getBoundingClientRect().top - 150;
+  }, 60);
+}
+function go(target) {
+  const [k, id] = target.split(":");
+  if (k === "item") openItem(id);
+  else if (k === "disc") push(discHTML, id);
+  else if (k === "coll") push(collHTML, id);
+  else if (k === "rate") openRate(id);
+}
+
+/* ===== главная ===== */
+const CATS = [["Авто", "vesta", "авто"], ["Недвижимость", "flat", null], ["Работа", "work", null], ["Услуги", "tools", null], ["Электроника", "console_0", "электроника"], ["Хобби", "guitar_2", "хобби"], ["Для дома", "sofa_1", "для дома"], ["Спорт и бег", "run6_1", "кроссовки"], ["Фото", "zenit_1", "фото"]];
+const HOME0 = ["a25", "a1", "a13", "a9", "HOT", "a14", "a5", "a17", "a19", "a3", "a15", "a20", "a11", "a22", "a10", "a24"];
+function tasteTop() {
+  const cnt = {}; S.likes.forEach(id => { const c = RUN.has(L[id].c) ? "Бег" : L[id].c; cnt[c] = (cnt[c] || 0) + 1; });
+  return Object.entries(cnt).sort((a, b) => b[1] - a[1])[0][0];
+}
+function tasteSize() {
+  const sizes = S.likes.map(id => L[id].sz).filter(Boolean);
+  if (!sizes.length) return null;
+  const freq = {}; sizes.forEach(s => freq[s] = (freq[s] || 0) + 1);
+  return +Object.entries(freq).sort((a, b) => b[1] - a[1])[0][0];
+}
+const tasteCap = () => Math.ceil(Math.max(...S.likes.map(id => L[id].p)) / 1000) * 1000;
+function tasteScore(id) {
+  if (!S.likes.length) return 0;
+  const x = L[id], sz = tasteSize(), runLiked = S.likes.some(l => RUN.has(L[l].c));
+  return (runLiked && RUN.has(x.c) ? 2 : 0) + (sz && x.sz === sz ? 1 : 0) + (x.p <= tasteCap() ? 1 : 0) - (S.nopes.includes(id) ? 3 : 0);
+}
+function match(id, q) {
+  const x = L[id], hay = (x.t + " " + x.c).toLowerCase();
+  if (hay.includes(q)) return true;
+  if (/кросс|бег/.test(q) && RUN.has(x.c)) return true;
+  const words = q.split(/\s+/).filter(w => w.length > 2);
+  return words.length > 0 && words.every(w => hay.includes(w.slice(0, 5)));
+}
+function homeOrder() {
+  if (!S.adapted) return HOME0;
+  const ids = HOME0.filter(i => i !== "HOT");
+  const all = [...ids.filter(i => RUN.has(L[i].c)), ...ids.filter(i => !RUN.has(L[i].c))];
+  all.splice(4, 0, "HOT");
+  return all;
+}
+function tile(id) {
+  const x = L[id]; const f = S.fav.has(id);
+  return `<div class="tile" data-a="item" data-v="${id}"><div class="pi"><img src="${IMG(x.img)}" alt="" loading="lazy"><button class="heart ${f ? "on" : ""}" data-a="like" data-v="${id}" aria-label="В избранное">${f ? I.heartF : I.heart}</button></div>
+  <div class="pr">${rub(x.p)}</div><div class="tt">${x.t}</div><div class="mt">${x.pl} · ${x.ago}</div>${ownCount(id) ? `<span class="own">${I.spark} ${pl(ownCount(id), ADV)} владельцев</span>` : ""}</div>`;
+}
+function hotCard() {
+  const d = D.find(x => x.id === "d1");
+  return `<div class="hotc" data-a="disc" data-v="d1"><div class="k">🔥 Сигнал · обсуждают сейчас</div><div class="h">${d.title}</div><div class="s">${pl(Math.max(d.cnt, d.ans.length), ANS)}, ${d.heat} за последний час. Помогите, если бегаете</div>
+  <div class="row2"><div class="avs">${["Илья", "Катя", "Света", "Олег"].map(n => ava(n, 28)).join("")}</div><button class="btn sm sig" data-a="disc" data-v="d1">Открыть</button></div></div>`;
+}
+function homeHTML() {
+  const q = S.q.trim().toLowerCase();
+  const head = `<div class="hd"><form class="sbar" data-f="search">${I.search}<input id="q" name="q" placeholder="Поиск по объявлениям" value="${esc(S.q)}" autocomplete="off" enterkeyhint="search">${q ? '<button type="button" class="x" data-a="clearq" aria-label="Очистить">✕</button>' : ""}</form><div class="loc">${I.pin} Москва и область</div></div>`;
+  if (q) {
+    const ids = Object.keys(L).filter(id => match(id, q)).sort((a, b) => tasteScore(b) - tasteScore(a));
+    return head + `<div class="sec" style="font-size:16px;padding-top:2px">Найдено ${pl(ids.length, ADS)} по запросу «${esc(S.q)}»</div>
+      ${S.likes.length && ids.length ? `<div class="aihint">${I.spark} Ави учёл ваши свайпы: выше то, что похоже на понравившееся</div>` : ""}
+      <div class="suggest" data-a="newreq" data-v="search"><span class="mark" style="width:36px;height:36px">${I.sig}</span><div>Не знаете, что выбрать? <b>Спросите тех, кто уже купил</b>: знатоки ответят по опыту</div></div>
+      <div class="grid">${ids.map(tile).join("") || '<div class="empty" style="grid-column:1/-1">Ничего не нашли. Спросите людей в Сигнале: вдруг кто-то продаёт или подскажет, где искать</div>'}</div>`;
+  }
+  return head + `<div class="cats">${CATS.map(([n, im], i) => `<div class="cat" data-a="cat" data-v="${i}">${n}<img src="${IMG(im)}" alt=""></div>`).join("")}</div>
+  <div class="sigb" data-a="tab" data-v="sig"><div><b>Новое: Сигнал</b><span>Листайте подборки, спрашивайте совета у тех, кто уже купил, выбирайте вместе с близкими</span></div><button class="go" data-a="tab" data-v="sig">Открыть</button></div>
+  <div class="sec">Рекомендации для вас${S.adapted ? `<small>Обновили по вашим свайпам в Сигнале</small>` : ""}</div>
+  <div class="grid">${homeOrder().map(i => i === "HOT" ? hotCard() : tile(i)).join("")}</div>`;
+}
+
+/* ===== карточка объявления ===== */
+function itemHTML(id) {
+  const x = L[id], f = S.fav.has(id), ops = OWN[id] || [], car = x.c === "Авто", mine = x.s === ME;
+  const qs = car ? ["Ещё продаёте?", "Можно на диагностику?", "Торг уместен?"] : RUN.has(x.c) ? ["Ещё продаёте?", "Можно с примеркой?", "Торг уместен?"] : ["Ещё продаёте?", "Торг уместен?", "Отправите Доставкой?"];
+  const body = `<img class="hero" src="${IMG(x.img)}" alt="">
+  <div class="blk"><div class="price">${rub(x.p)}</div><div class="ttl2">${x.t}</div>
+    <div class="chips"><span class="chip">${x.cond}</span>${car ? '<span class="chip">Проверка по VIN</span>' : '<span class="chip dl">Авито Доставка</span>'}${x.sz ? `<span class="chip">${x.sz} размер</span>` : ""}</div>
+    <div class="mt" style="margin-top:10px;font-size:13.5px">${x.pl} · ${x.ago}</div></div>
+  ${mine ? "" : `<div class="qq"><div class="t">Спросите у продавца</div><div class="row">${qs.map(q => `<button data-a="quickq" data-v="${id}|${q}">${q}</button>`).join("")}</div></div>`}
+  <div class="sel">${ava(mine ? "Вы" : x.s, 46)}<div style="flex:1"><b>${mine ? ME + " (вы)" : x.s}</b><div class="r">★ ${mine ? "4,9" : x.sr} · ${pl(mine ? 23 : x.sn, ["отзыв", "отзыва", "отзывов"])} · ${x.shop ? "компания" : "частное лицо"}</div><div class="ok">Документы и телефон подтверждены</div></div></div>
+  <div class="sbox"><div class="st"><span class="mark" style="width:26px;height:26px">${I.sig}</span>${car ? "Опыт владельцев модели" : "Опыт владельцев"} <small>Сигнал</small></div>
+    ${ops.length ? ops.map(o => `<div class="op"><div class="w">${ava(o.who, 26)}<b>${o.who}</b><i>${o.m}</i></div><p>${esc(o.t)}</p></div>`).join("")
+      : `<div class="op"><p class="muted" style="margin-top:0">Отзывов владельцев этой модели пока нет. Спросите: вопрос увидят те, кто её покупал</p></div>`}
+    <div class="row3"><button class="btn sig" data-a="askOwners" data-v="${id}">Спросить владельцев</button><button class="btn ghost" data-a="toColl" data-v="${id}" style="flex:none;width:44px;padding:0" aria-label="В подборку">${I.folder}</button><button class="btn ghost" data-a="toFriend" data-v="${id}" style="flex:none;width:44px;padding:0" aria-label="Показать кругу">${I.send}</button></div></div>
+  <div class="desc"><h5>Описание</h5>${x.d}</div><div style="height:12px"></div>`;
+  const right = `<button class="ib" data-a="like" data-v="${id}" style="color:${f ? "var(--red)" : "#000"}" aria-label="В избранное">${f ? I.heartF : I.heart}</button>`;
+  const foot = mine ? `<button class="btn grey" data-a="na">Редактировать</button><button class="btn blue" data-a="na">Продвинуть</button>`
+    : car ? `<button class="btn light" data-a="write" data-v="${id}">Написать</button><button class="btn green" data-a="call">Позвонить</button>`
+    : `<button class="btn light" data-a="write" data-v="${id}">Написать</button><button class="btn blue" data-a="buy" data-v="${id}">Купить с доставкой</button>`;
+  return page("", body, foot, right);
+}
+
+/* ===== сигнал ===== */
+function sigHTML() {
+  const segs = [["you", "Для вас"], ["disc", "Обсуждения"], ["circ", "Круги"]];
+  const head = `<div class="sh"><div class="sh-top"><div class="logo"><span class="mark">${I.sig}</span>Сигнал</div><button class="bell" data-a="notifs" aria-label="Уведомления">${I.bell}${unread() ? `<span class="badge">${unread()}</span>` : ""}</button></div>
+    <div class="seg">${segs.map(([k, n]) => `<button class="${S.sigTab === k ? "on" : ""}" data-a="sigtab" data-v="${k}">${n}</button>`).join("")}</div></div>`;
+  const body = S.sigTab === "you" ? youHTML() : S.sigTab === "disc" ? discListHTML() : circHTML();
+  const fab = S.sigTab === "you" ? "" : `<button class="fab" data-a="newreq" data-v="">＋ Спросить</button>`;
+  return head + body + fab;
+}
+function taste() {
+  if (!S.likes.length) return `<span class="hint">Свайпните пару карточек: подборка подстроится под вас</span>`;
+  const sz = tasteSize();
+  return `<span class="tl">${I.spark}</span><span class="tchip">${tasteTop()}</span>${sz ? `<span class="tchip">${sz} размер</span>` : ""}<span class="tchip">до ${rub(tasteCap())}</span>${S.likes.length >= 2 ? `<button class="tchip cmp" data-a="compare">Сравнить ${S.likes.length}</button>` : ""}`;
+}
+function why(id) {
+  if (id === "a9") return `${I.spark} Даня переслал вам: «тебе для полумарафона?»`;
+  if (S.adapted && RUN.has(L[id].c)) return `${I.spark} Похоже на то, что вам понравилось`;
+  if (ownCount(id)) return `${I.spark} ${pl(ownCount(id), ADV)} владельцев`;
+  return `${I.spark} По вашим просмотрам`;
+}
+function cardHTML(id, depth) {
+  const cls = ["top", "b1", "b2"][depth];
+  if (id === "ASK") {
+    return `<div class="card ask ${cls}" data-id="ASK"><div class="stamp like">СПРОСИТЬ</div><div class="stamp nope">ПОЗЖЕ</div>
+      <div class="big">Похоже, вы выбираете беговые кроссовки</div><p>Знатоки беговой обуви подскажут, какая модель подойдёт под вашу стопу и пробег. Запрос увидят 14 знатоков категории, ответы придут в уведомления.</p>
+      <div class="pp avs">${["Илья", "Катя", "Света", "Олег", "Марина"].map(n => ava(n, 34)).join("")}</div>
+      <div class="btns"><button class="btn w" data-a="askDeck">Спросить знатоков</button><button class="btn t" data-a="swipe" data-v="nope">Листать дальше</button></div></div>`;
+  }
+  const x = L[id];
+  return `<div class="card ${cls}" data-id="${id}"><div class="stamp like">НРАВИТСЯ</div><div class="stamp nope">НЕ МОЁ</div><div class="stamp fr">ДРУГУ</div>
+    <img src="${IMG(x.img)}" alt=""><div class="ci"><div class="why">${why(id)}</div><div class="cp">${rub(x.p)}</div><div class="ct">${x.t}</div><div class="cm">${x.cond} · ${x.pl} · Доставка</div></div></div>`;
+}
+function youHTML() {
+  let deck;
+  if (S.di >= S.deck.length) {
+    deck = `<div class="card end"><div style="font-size:40px">✨</div><b style="font-size:19px">На сегодня всё</b><div class="muted" style="font-size:14px;line-height:1.4">Новую подборку соберём к завтра по вашим свайпам. Понравилось: ${S.likes.length}, отправили близким: ${S.sent.length}</div>
+      ${S.likes.length >= 2 ? `<button class="btn sig" data-a="compare">Сравнить понравившиеся</button>` : ""}<button class="btn grey" data-a="deckReset">Листать заново</button></div>`;
+  } else {
+    const cards = [];
+    for (let k = Math.min(S.di + 2, S.deck.length - 1); k >= S.di; k--) cards.push(cardHTML(S.deck[k], k - S.di));
+    deck = cards.join("");
+  }
+  const acts = S.di < S.deck.length ? `<div class="acts">
+    <div class="actw"><button class="act" data-a="swipe" data-v="nope" style="color:var(--red)" aria-label="Не моё">${I.x}</button>не моё</div>
+    <div class="actw"><button class="act" data-a="swipe" data-v="friend" style="color:var(--blue)" aria-label="Другу">${I.send}</button>другу</div>
+    <div class="actw"><button class="act" data-a="swipe" data-v="like" style="color:var(--red)" aria-label="Нравится">${I.heartL}</button>нравится</div></div>` : "";
+  return `<div class="taste">${taste()}</div><div class="deck" id="deck">${deck}</div>${acts}`;
+}
+function bindTop() {
+  const el = document.querySelector("#deck .card.top"); if (!el) return;
+  let x0 = 0, y0 = 0, dx = 0, dy = 0, down = false;
+  const st = k => el.querySelector(".stamp." + k);
+  el.onpointerdown = e => { if (e.target.closest("button") || S.busy) return; down = true; x0 = e.clientX; y0 = e.clientY; dx = dy = 0; el.setPointerCapture(e.pointerId); el.style.transition = "none"; };
+  el.onpointermove = e => {
+    if (!down) return; dx = e.clientX - x0; dy = e.clientY - y0;
+    el.style.transform = `translate(${dx}px,${dy}px) rotate(${dx / 16}deg)`;
+    const l = st("like"), n = st("nope"), f = st("fr");
+    if (l) l.style.opacity = Math.max(0, Math.min(1, dx / 90));
+    if (n) n.style.opacity = Math.max(0, Math.min(1, -dx / 90));
+    if (f) f.style.opacity = Math.max(0, Math.min(1, (-dy - Math.abs(dx)) / 90));
+  };
+  const up = () => {
+    if (!down) return; down = false; el.style.transition = "";
+    if (Math.abs(dx) < 6 && Math.abs(dy) < 6) { el.style.transform = ""; if (el.dataset.id !== "ASK") openItem(el.dataset.id); return; }
+    if (dx > 100) decide("like"); else if (dx < -100) decide("nope"); else if (dy < -110 && el.dataset.id !== "ASK") decide("friend");
+    else { el.style.transform = ""; el.querySelectorAll(".stamp").forEach(s => s.style.opacity = 0); }
+  };
+  el.onpointerup = up; el.onpointercancel = up;
+}
+function fly(kind, cb) {
+  const el = document.querySelector("#deck .card.top");
+  if (!el) { cb(); return; }
+  S.busy = true;
+  el.style.transition = "transform .32s ease-in, opacity .32s";
+  const t = kind === "like" ? "translate(560px,40px) rotate(28deg)" : kind === "nope" ? "translate(-560px,40px) rotate(-28deg)" : "translate(0,-760px)";
+  const s = el.querySelector(".stamp." + (kind === "friend" ? "fr" : kind)); if (s) s.style.opacity = 1;
+  el.style.transform = t; el.style.opacity = ".2";
+  setTimeout(() => { S.busy = false; cb(); }, 300);
+}
+function decide(kind) {
+  if (S.busy) return;
+  const id = S.deck[S.di]; if (id === undefined) return;
+  if (id === "ASK") {
+    if (kind === "friend") return;
+    fly(kind === "like" ? "like" : "nope", () => { S.di++; renderTab(); if (kind === "like") openNewReq("deck"); });
+    return;
+  }
+  if (kind === "friend") {
+    openCircleSheet(id, () => fly("friend", () => { S.sent.push(id); S.di++; renderTab(); }));
+    return;
+  }
+  fly(kind, () => {
+    (kind === "like" ? S.likes : S.nopes).push(id);
+    if (kind === "like") {
+      S.fav.add(id);
+      if (S.firstLike) { S.firstLike = false; toast("Добавили в Избранное. Подборка учитывает, что вам нравится"); }
+    }
+    S.di++; adapt(); renderTab(); renderNav();
+  });
+}
+function adapt() {
+  const runLikes = S.likes.filter(id => RUN.has(L[id].c)).length;
+  if (S.adapted || runLikes < 2) return;
+  S.adapted = true;
+  const rest = S.deck.slice(S.di);
+  const run = rest.filter(id => RUN.has(L[id].c)), other = rest.filter(id => !RUN.has(L[id].c));
+  S.deck = S.deck.slice(0, S.di).concat(["ASK"], run, other);
+  toast("Подборка подстроилась: больше беговой обуви вашего размера. Поиск тоже это учтёт");
+}
+
+/* обсуждения */
+const nAns = d => Math.max(d.cnt, d.ans.length);
+function discCard(d) {
+  const st = d.status === "hot" ? `<span class="heat">🔥 +${d.heat} за час</span>` : d.status === "done" ? `<span class="done">✓ Помогло автору</span>` : `<span class="wait">${d.ans.length ? "Ждёт знатока" : "Ждёт первого ответа"}</span>`;
+  return `<div class="dc ${d.status === "hot" ? "hot" : ""}" data-a="disc" data-v="${d.id}">
+    <div class="who">${ava(d.who, 24)}<b>${d.who}</b> · ${d.ago}${d.circle ? ` <span class="cir">круг «${d.circle}»</span>` : ""}${d.mine ? ` <span class="cir me">ваш запрос</span>` : ""}${!d.mine && d.tags[0] === MY_CAT && d.status === "new" ? ` <span class="cir me">вы знаток</span>` : ""}</div>
+    <div class="h">${esc(d.title)}</div><div class="tx">${esc(d.text)}</div>
+    <div class="tags">${d.tags.map(t => `<span class="chip">${esc(t)}</span>`).join("")}</div>
+    <div class="ft">${st}<span class="muted">${nAns(d) ? pl(nAns(d), ANS) : "Будьте первым"}</span></div></div>`;
+}
+function discListHTML() {
+  const f = d => S.dcat === "Все" || d.tags[0] === S.dcat;
+  const mine = D.filter(d => d.mine);
+  const hot = D.filter(d => d.status === "hot" && !d.mine && f(d)).sort((a, b) => b.heat - a.heat);
+  const wait = D.filter(d => d.status === "new" && !d.mine && f(d)).sort((a, b) => (b.tags[0] === MY_CAT) - (a.tags[0] === MY_CAT));
+  const done = D.filter(d => d.status === "done" && !d.mine && f(d));
+  const fil = `<div class="fil">${["Все", "Бег", "Фото", "Электроника", "Спорт"].map(c => `<button class="${S.dcat === c ? "on" : ""}" data-a="dcat" data-v="${c}">${c}${c === MY_CAT ? " · вы знаток" : ""}</button>`).join("")}</div>`;
+  const sec = (t, s, arr) => arr.length ? `<div class="dsec"><h4>${t}</h4><span>${s}</span></div>${arr.map(discCard).join("")}` : "";
+  const list = sec("Ваши запросы", "", mine) + sec("🔥 Горит", "больше всего ответов за час", hot) + sec("Ждут ответа", "в категории «Фото» вы знаток", wait) + sec("Решено", "автор отметил «помогло»", done);
+  return fil + (list || `<div class="empty">В этой категории пока тихо. Спросите первым</div>`) + `<div style="height:80px"></div>`;
+}
+function ansScore(a) { return (a.helped ? 100 : 0) + (a.bought ? 40 : 0) + (a.b.includes("own") ? 20 : 0) + (a.b.includes("exp") ? 10 : 0) - (a.b.includes("sel") ? 200 : 0); }
+function discHTML(id) {
+  const d = D.find(x => x.id === id);
+  const ans = [...d.ans].sort((a, b) => ansScore(b) - ansScore(a));
+  const badges = a => [a.helped ? `<span class="bd best">✓ Помогло автору</span>` : "", a.bought ? `<span class="bd buy">Купили по совету</span>` : "", a.b.includes("own") ? `<span class="bd own">Владеет${a.own ? ": " + esc(a.own) : ""}</span>` : "", a.b.includes("exp") ? `<span class="bd exp">Знаток категории</span>` : "", a.b.includes("sel") ? `<span class="bd sel">Реклама · продавец</span>` : ""].join("");
+  const ai = d.ai && d.ai.length ? `<div class="aib"><div class="k"><span>ИИ</span>Ави подобрал по описанию, пока отвечают люди</div><div class="hs">${d.ai.map(i => `<div class="m" data-a="item" data-v="${i}"><img src="${IMG(L[i].img)}" alt=""><b>${rub(L[i].p)}</b><span>${L[i].t}</span></div>`).join("")}</div></div>` : "";
+  const list = ans.length ? `<div class="dsec"><h4>Ответы · ${ans.length}</h4></div><div class="legend">Сверху ответ, который помог автору, дальше владельцы вещи и знатоки. Ответы продавцов и советы своих объявлений помечены как реклама и стоят ниже.</div>` +
+    ans.map(a => {
+      const i = d.ans.indexOf(a);
+      return `<div class="ans ${a.helped ? "best" : ""} ${a.b.includes("sel") ? "seller" : ""}"><div class="w" ${a.by === "Вы" ? "" : `data-a="helper" data-v="${a.by}"`}>${ava(a.by, 34)}<div><b>${a.by}</b><div class="bdg">${badges(a)}</div></div></div>
+      <p>${esc(a.t)}</p>${a.it ? `<div class="mini" data-a="item" data-v="${a.it}" data-via="${d.id}:${i}"><img src="${IMG(L[a.it].img)}" alt=""><div><b>${rub(L[a.it].p)}</b><span>${L[a.it].t}</span></div></div>` : ""}
+      ${d.mine && !a.b.includes("sel") ? `<div class="af"><span>Помог совет? Отметка поднимет его выше</span><button class="hb ${a.helped ? "on" : ""}" data-a="helped" data-v="${d.id}:${i}">${I.check} Помогло</button></div>` : ""}</div>`;
+    }).join("")
+    : `<div class="wait-box">${d.mine ? "Запрос увидели 14 знатоков категории и ваш круг. Ответы придут в уведомления." : `Запрос увидели 14 знатоков категории, ответов пока нет. Ответьте первым: ${d.who} получит уведомление.`}</div>`;
+  const body = `<div class="req"><div class="who">${ava(d.who, 30)}<b>${d.who}</b> · ${d.ago}${d.circle ? ` <span class="cir">круг «${d.circle}»</span>` : ""}</div><h2>${esc(d.title)}</h2><p>${esc(d.text)}</p>
+    <div class="tags">${d.tags.map(t => `<span class="chip">${esc(t)}</span>`).join("")}</div>
+    <div class="stats">${d.status === "hot" ? `<span class="heat">🔥 +${d.heat} за час</span>` : ""}<span class="muted">${pl(nAns(d), ANS)}</span><span class="muted">${d.mine ? "видят знатоки и ваш круг" : d.tags[0] === MY_CAT ? "вы знаток этой категории" : "открытый запрос"}</span></div></div>${ai}${list}<div style="height:16px"></div>`;
+  const answered = d.ans.some(a => a.by === "Вы");
+  const foot = d.mine ? `<button class="btn ghost" data-a="toFriend" data-v="disc:${d.id}">Позвать круг</button><button class="btn sig" data-a="tab" data-v="sig">Готово</button>`
+    : `<button class="btn sig" data-a="answer" data-v="${d.id}">${answered ? "Ответить ещё" : d.ans.length ? "Ответить" : "Ответить первым"}</button>`;
+  return page("Обсуждение", body, foot);
+}
+function circHTML() {
+  return `<div class="circ">${CIRCLES.map(c => `<div class="cc"><div class="avs">${c.people.map(n => ava(n, 28)).join("")}</div><b>${c.name}</b><span>${c.people.length} человека</span></div>`).join("")}
+    <div class="cc add" data-a="invite">＋<span style="color:var(--sig);font-size:13px">Позвать по ссылке</span></div></div>
+    <div class="dsec" style="padding-top:4px"><h4>Что нового в кругах</h4></div><div class="feed">
+    <div class="fi" data-a="disc" data-v="d3">${ava("Аня", 40)}<div class="tx"><b>Аня</b> просит помочь: плёночный фотоаппарат папе, до 5 000 ₽<small>Семья · 12 мин</small></div><button class="btn sm sig" data-a="disc" data-v="d3">Помочь</button></div>
+    <div class="fi" data-a="coll" data-v="c2">${ava("Мама", 40)}<div class="tx"><b>Мама</b> прокомментировала диван в подборке «Гостиная»: «Этот берём?»<small>Семья · 40 мин</small></div><img src="${IMG("sofa_1")}" alt=""></div>
+    <div class="fi" data-a="item" data-v="a9">${ava("Даня", 40)}<div class="tx"><b>Даня</b> переслал: «тебе для полумарафона?»<small>Пробежки · 1 ч</small></div><img src="${IMG("watch_2")}" alt=""></div>
+    </div><div class="rule" style="margin-top:14px">Круг - это люди, которых вы позвали сами по ссылке. Контакты из телефона не загружаем. Круг видит только то, чем вы поделились: просмотры и покупки скрыты.</div><div style="height:80px"></div>`;
+}
+
+/* новый запрос */
+const REQ = { cat: "Бег", budget: "до 10 000 ₽", who: "Знатоки категории", ai: true, text: "" };
+function openNewReq(src) {
+  if (src === "deck") {
+    const run = S.likes.filter(id => RUN.has(L[id].c)).map(short);
+    const sz = tasteSize() || 42;
+    REQ.text = run.length ? `Выбираю беговые кроссовки, ${sz} размер. Понравились: ${run.join(", ")}. Что лучше для полумарафона? Стопа широкая.` : "Выбираю беговые кроссовки для первого полумарафона, 42 размер, стопа широкая. Что посмотреть?";
+    REQ.cat = "Бег"; REQ.budget = "до 10 000 ₽";
+  } else if (src === "search") {
+    REQ.text = `Ищу ${S.q || "кроссовки для бега"}. Помогите выбрать: на что смотреть и сколько это стоит на Авито?`;
+    if (/кросс|бег/.test(S.q.toLowerCase())) REQ.cat = "Бег";
+  } else if (src && L[src]) {
+    REQ.text = `Думаю взять ${L[src].t}. Стоит ли, или есть варианты лучше?`; REQ.cat = RUN.has(L[src].c) ? "Бег" : L[src].c;
+  } else REQ.text = "";
+  push(newReqHTML, null, true);
+}
+function newReqHTML() {
+  const g = (name, arr) => `<div class="opts">${arr.map(v => `<button class="opt ${REQ[name] === v ? "on" : ""}" data-a="opt" data-g="${name}" data-v="${v}">${v}</button>`).join("")}</div>`;
+  const stems = s => new Set(s.toLowerCase().split(/[^а-яёa-z0-9]+/).filter(w => w.length > 3).map(w => w.slice(0, 5)));
+  const mineW = stems(REQ.text || "");
+  const near = d => [...stems(d.title + " " + d.text)].filter(w => mineW.has(w)).length;
+  const sim = D.filter(d => !d.mine && d.tags[0] === REQ.cat).sort((a, b) => near(b) - near(a)).slice(0, 2);
+  const body = `<div class="form"><label>Что ищете и для чего</label><textarea id="rq" placeholder="Например: часы для бега, начинаю готовиться к полумарафону">${esc(REQ.text || "")}</textarea>
+    <label>Категория</label>${g("cat", ["Бег", "Фото", "Электроника", "Для дома", "Подарок"])}
+    <label>Бюджет</label>${g("budget", ["до 5 000 ₽", "до 10 000 ₽", "до 20 000 ₽", "не важно"])}
+    <label>Кого спросить</label>${g("who", ["Знатоки категории", "Мой круг", "Все"])}
+    <div class="tg"><div><b>Ави сразу подберёт варианты</b><br><span class="muted">ИИ ищет по описанию, люди уточняют по опыту</span></div><button class="sw ${REQ.ai ? "on" : ""}" data-a="toggleAi" aria-label="Ави"></button></div>
+    ${sim.length ? `<div class="sim"><b>Похожее уже обсуждали</b>${sim.map(d => `<div class="simr" data-a="disc" data-v="${d.id}"><span>${esc(d.title)}</span><i>${nAns(d) ? pl(nAns(d), ANS) : "новый"}</i></div>`).join("")}<small>Если там нет ответа на ваш вопрос, отправьте свой: его увидят знатоки</small></div>` : ""}
+    <div class="note">Отвечают люди с подтверждёнными покупками в категории. Продавцы тоже могут ответить, их ответы помечены как реклама. Обычный поиск и покупка остаются как были.</div></div>`;
+  return page("Спросить совета", body, `<button class="btn sig" data-a="reqSubmit">Отправить запрос</button>`);
+}
+const FIRST = {
+  "Бег": { by: "Илья", g: "m", tag: ", знаток беговой обуви,", b: ["own", "exp"], own: "Asics Gel-Cumulus 22 2E · куплены на Авито", t: "С широкой стопой смотрите Cumulus в полноте 2E. Бегаю в таких 8 месяцев, 900 км, амортизация не просела. Сейчас на Авито есть пара 42 размера за 7 900.", it: "a1" },
+  "Фото": { by: "Нина", g: "f", tag: ", знаток фототехники,", b: ["own", "exp"], own: "Зенит-Е · 5 лет", t: "Зенит-Е с Гелиосом - лучший старт. Проверьте затвор на всех выдержках и попросите у продавца снимки, сделанные этим аппаратом.", it: "a14" },
+  "Электроника": { by: "Игорь", g: "m", tag: "", b: ["own"], own: "PlayStation 4 · 4 года", t: "Берите через Доставку с проверкой при получении, так спокойнее.", it: "a13" },
+  "Для дома": { by: "Елена", g: "f", tag: "", b: ["own"], own: "Krups · 2 года", t: "Для дома рожковой хватит. Спросите у продавца, когда меняли уплотнитель.", it: "a17" },
+  "Подарок": { by: "Нина", g: "f", tag: "", b: [], own: "", t: "Подарок лучше выбирать по увлечению: напишите, чем человек занимается, подскажем точнее.", it: null },
+};
+function submitReq() {
+  const t = ($("#rq") && $("#rq").value.trim()) || "Помогите выбрать";
+  const id = "dn" + (++S.seq);
+  const title = t.split(/[.?!]/)[0].slice(0, 70);
+  const cat = REQ.cat;
+  const pool = Object.keys(L).filter(i => L[i].c === cat && !S.likes.includes(i) && L[i].s !== ME);
+  const d = { id, mine: true, who: "Вы", ago: "сейчас", title, text: t, tags: [cat, REQ.budget], cnt: 0, heat: 0, status: "new", ans: [], ai: REQ.ai && pool.length ? pool.slice(0, 4) : null };
+  D.unshift(d);
+  S.stack.pop().el.remove();
+  S.sigTab = "disc";
+  push(discHTML, id);
+  toast(`Запрос ушёл: ${REQ.who === "Мой круг" ? "вашему кругу" : "14 знатокам категории и вашему кругу"}. Ответы придут в уведомления`);
+  const f = FIRST[cat];
+  setTimeout(() => {
+    d.ans.push({ by: f.by, b: f.b, own: f.own, t: f.t, it: f.it });
+    d.cnt = 1; d.status = "hot"; d.heat = 1;
+    notify("💬", `${f.by}${f.tag} ответил${f.g === "f" ? "а" : ""} на ваш запрос`, "disc:" + id, "Новый ответ");
+  }, 4500);
+  if (cat === "Бег") setTimeout(() => {
+    d.ans.push({ by: "Катя", b: ["own"], own: "Nike Pegasus 38", t: "Pegasus легче, но узкие в носке. Если стопа широкая, лучше Asics, как советуют выше.", it: "a2" });
+    d.ans.push({ by: "Runlab", b: ["sel"], t: "Есть новые Adizero Boston 12 в 42 размере, примерка при получении.", it: "a3" });
+    d.cnt = 3; d.heat = 3;
+    notify("💬", "Ещё 2 ответа на ваш запрос", "disc:" + id, "Новые ответы");
+  }, 10000);
+}
+
+/* ===== избранное ===== */
+const FAV_TABS = { items: "Объявления", feed: "Лента", seen: "Просмотры", colls: "Подборки", searches: "Поиски" };
+function favHTML() {
+  const head = `<div class="sh" style="padding-bottom:0"><div class="sh-top"><div class="logo" style="font-size:24px">Избранное</div></div></div>
+    <div class="utabs" style="position:sticky;top:48px;z-index:5">${Object.entries(FAV_TABS).map(([k, n]) => `<button class="${S.favTab === k ? "on" : ""}" data-a="favtab" data-v="${k}">${n}${k === "feed" ? '<span class="dt"></span>' : ""}</button>`).join("")}</div>`;
+  if (S.favTab === "items") {
+    const ids = [...S.fav].reverse();
+    return head + (ids.length ? `<div class="grid" style="padding-top:14px">${ids.map(tile).join("")}</div>` : `<div class="empty">Здесь будет то, что вам понравилось</div>`);
+  }
+  if (S.favTab === "seen") return head + `<div class="grid" style="padding-top:14px">${S.viewed.map(tile).join("")}</div>`;
+  if (S.favTab === "searches") return head + SAVED.map(s => `<div class="srch" data-a="search" data-v="${s.q}"><div class="tx"><b>${s.q}</b><small>Москва и область · уведомления включены</small></div><span class="nw">+${s.n}</span></div>`).join("");
+  if (S.favTab === "colls") {
+    return head + `<div class="rule" style="margin-top:14px">Подборки теперь можно вести вместе: позовите близких, голосуйте «берём / мимо» и обсуждайте вещи прямо в подборке.</div>` +
+      COLLS.map(c => `<div class="coll" data-a="coll" data-v="${c.id}"><div class="pv">${c.items.slice(0, 4).map(i => `<img src="${IMG(L[i].img)}" alt="">`).join("")}</div><div class="tx"><b>${esc(c.name)}</b><div class="s">${pl(c.items.length, ADS)} · ${c.shared ? (c.members.length > 1 ? "совместная с " + c.members.filter(m => m !== "Вы").join(", ") : "совместная, ждёт приглашённых") : "личная"}</div>${c.com.length ? `<div class="s" style="color:var(--sig);font-weight:600">${pl(c.com.length, ["комментарий", "комментария", "комментариев"])}</div>` : ""}</div>${c.members.length > 1 ? `<div class="avs">${c.members.map(m => ava(m, 26)).join("")}</div>` : ""}</div>`).join("") +
+      `<div style="padding:12px 16px 20px"><button class="btn black" style="width:100%" data-a="newColl">Создать подборку</button></div>`;
+  }
+  const pills = `<div class="pills">${[["you", "Для вас"], ["profiles", "Профили"], ["posts", "Мои посты"]].map(([k, n]) => `<button class="${S.feedTab === k ? "on" : ""}" data-a="feedtab" data-v="${k}">${n}</button>`).join("")}</div>`;
+  if (S.feedTab === "profiles") return head + pills + ["Runlab", "Sneakerhead"].map(n => `<div class="li" style="padding:12px 16px">${ava(n, 44)}<span class="tx">${n}<small>магазин · вы подписаны</small></span><button class="btn sm grey" data-a="na">Отписаться</button></div>`).join("");
+  if (S.feedTab === "posts") return head + pills + `<div class="empty">Здесь будут ваши посты. Пока вы ничего не публиковали</div>`;
+  return head + pills + `<div class="suggest" style="margin-top:10px" data-a="tab" data-v="sig"><span class="mark" style="width:36px;height:36px">${I.sig}</span><div>Подборки от людей теперь в <b>Сигнале</b>: свайпайте и спрашивайте тех, кто уже купил</div></div>
+    <div class="post"><div class="who">${ava("Runlab", 30)}<b>Runlab</b><span class="muted">· магазин, вы подписаны</span></div><div style="margin-top:8px;font-size:15px">Новое поступление: Adizero Boston 12, размеры с 40 по 45</div><img src="${IMG("run6_1")}" alt="" data-a="item" data-v="a3"></div>
+    <div class="post"><div class="who">${ava("Sneakerhead", 30)}<b>Sneakerhead</b><span class="muted">· магазин, вы подписаны</span></div><div style="margin-top:8px;font-size:15px">1906R снова в наличии</div><img src="${IMG("run4_2")}" alt="" data-a="item" data-v="a5"></div>`;
+}
+function collHTML(id) {
+  const c = COLLS.find(x => x.id === id);
+  const others = c.members.filter(m => m !== "Вы");
+  const items = c.items.length ? c.items.map(i => `<div class="ci2"><div class="top" data-a="item" data-v="${i}"><img src="${IMG(L[i].img)}" alt=""><div><b style="font-size:16px">${rub(L[i].p)}</b><div style="font-size:14px;margin-top:2px">${L[i].t}</div><div class="mt">${L[i].pl}</div></div></div>
+    ${others.length ? `<div class="vote"><button class="${c.votes[i] === "up" ? "on" : ""}" data-a="vote" data-v="${id}:${i}:up">👍 Берём${c.votes[i] === "up" ? " · 2" : ""}</button><button class="${c.votes[i] === "dn" ? "on" : ""}" data-a="vote" data-v="${id}:${i}:dn">👎 Мимо</button></div>` : ""}
+    ${c.com.filter(m => m.on === i).map(m => `<div class="cm2">${ava(m.who, 24)}<div><b>${m.who}</b> ${esc(m.t)}</div></div>`).join("")}</div>`).join("")
+    : `<div class="empty">Пока пусто. Добавляйте объявления кнопкой с папкой в карточке</div>`;
+  const body = `<div class="blk" style="padding-bottom:6px"><div style="display:flex;align-items:center;gap:10px"><div class="avs">${c.members.map(m => ava(m, 32)).join("")}</div><div class="muted" style="font-size:13.5px">${others.length ? "Совместная подборка: вы, " + others.join(", ") : c.shared ? "Совместная: ждём приглашённых" : "Личная подборка"}</div></div></div>${items}
+  ${others.length ? `<form class="inp" style="padding-bottom:12px;border:0" data-f="cmt" data-v="${id}"><input id="cmt" placeholder="Написать комментарий в подборку" autocomplete="off"><button aria-label="Отправить">${I.send}</button></form>` : ""}`;
+  return page(esc(c.name), body, others.length ? "" : `<button class="btn ghost" data-a="invite">Позвать в подборку</button>`);
+}
+
+/* ===== объявления, сообщения, профиль ===== */
+function adsHTML() {
+  return `<div class="sh"><div class="sh-top"><div class="logo" style="font-size:24px">Мои объявления</div></div></div>
+  ${["a21", "a16"].map((i, k) => `<div class="my" data-a="item" data-v="${i}"><img src="${IMG(L[i].img)}" alt=""><div><b>${rub(L[i].p)}</b><div style="font-size:14px;margin-top:2px">${L[i].t}</div><div class="s">👁 ${[142, 87][k]} · ♥ ${[3, 5][k]} · 💬 ${[2, 1][k]}</div></div></div>`).join("")}
+  <div style="padding:16px"><button class="btn blue" style="width:100%" data-a="na">Разместить объявление</button></div>
+  <div class="suggest" data-a="disc" data-v="d7"><span class="mark" style="width:36px;height:36px">${I.sig}</span><div>Кирилл выбирает первый скейт. <b>Подскажите по опыту.</b> Если посоветуете своё объявление, ответ пометим как рекламу</div></div>`;
+}
+function msgHTML() {
+  return `<div class="sh"><div class="sh-top"><div class="logo" style="font-size:24px">Сообщения</div></div></div>` +
+    CHATS.map(c => `<div class="chat" data-a="chat" data-v="${c.id}"><img src="${IMG(L[c.it].img)}" alt=""><div class="tx"><div><b>${c.who}</b><div class="l it">${L[c.it].t}</div><div class="l">${c.msgs.length ? esc(c.msgs[c.msgs.length - 1].t) : "Новый чат"}</div></div><div class="rt"><span class="tm">${c.tm}</span>${c.un ? `<span class="un">${c.un}</span>` : ""}</div></div></div>`).join("");
+}
+function chatFor(id) { let c = CHATS.find(x => x.it === id); if (!c) { c = { id: "ch" + id, who: L[id].s, it: id, tm: "сейчас", un: 0, msgs: [] }; CHATS.unshift(c); } return c; }
+function chatHTML(id) {
+  const c = CHATS.find(x => x.id === id);
+  const body = `<div class="ci-item" data-a="item" data-v="${c.it}"><img src="${IMG(L[c.it].img)}" alt=""><div><b>${rub(L[c.it].p)}</b><br>${L[c.it].t}</div></div><div class="msgs">${c.msgs.map(m => `<div class="msg ${m.me ? "me" : ""}">${esc(m.t)}</div>`).join("")}</div>`;
+  return `<div class="ph"><button class="ib" data-a="back" aria-label="Назад">${I.back}</button><div class="ttl">${c.who}</div><span class="ib"></span></div><div class="pc">${body}</div><form class="inp" data-f="msg" data-v="${id}"><input id="mi" placeholder="Сообщение" autocomplete="off"><button aria-label="Отправить">${I.send}</button></form>`;
+}
+function openChat(c) { c.un = 0; const p = push(chatHTML, c.id, true); renderNav(); renderTab(); scrollChat(p); return p; }
+function scrollChat(p) { const pc = p.el.querySelector(".pc"); if (pc) pc.scrollTop = pc.scrollHeight; }
+function sendMsg(c, text) {
+  c.msgs.push({ me: true, t: text }); c.tm = "сейчас";
+  const p = S.stack.find(x => x.fn === chatHTML && x.arg === c.id);
+  if (p) { p.el.innerHTML = chatHTML(c.id); scrollChat(p); }
+  setTimeout(() => {
+    const pool = L[c.it].c === "Авто" ? REPLIES_CAR : REPLIES;
+    c.r = (c.r || 0) + 1;
+    c.msgs.push({ t: pool[(c.r - 1) % pool.length] });
+    const q = S.stack.find(x => x.fn === chatHTML && x.arg === c.id);
+    if (q) { q.el.innerHTML = chatHTML(c.id); scrollChat(q); } else c.un++;
+    renderTab(); renderNav();
+  }, 1400);
+}
+function profHTML() {
+  const helped = 12, answered = 31 + S.myAns, reqs = 3 + D.filter(d => d.mine).length;
+  return `<div class="prof">${ava("Вы", 64)}<div><h2>${ME}</h2><div class="r">★ 4,9 · 23 отзыва · на Авито с 2019</div></div></div>
+  <div class="lvl" data-a="levels"><div class="k">Сигнал · ваш уровень в категории «Фото»</div><div class="n">Знаток фототехники</div><div class="bar"><i style="width:${helped / 20 * 100}%"></i></div><div class="s"><span>До «Эксперта» ещё ${pl(20 - helped, MARKS)} «помогло»</span><u>Как растёт →</u></div></div>
+  <div class="stats3"><div><b>${helped}</b><span>${plw(helped, MARKS)} «помогло»</span></div><div><b>${answered}</b><span>${plw(answered, ANS)} в Сигнале</span></div><div><b>${reqs}</b><span>${plw(reqs, REQS)} о помощи</span></div></div>
+  <div class="rule">Уровень растёт только от отметок «помогло» и покупок по вашему совету. За количество ответов ничего не начисляем. Бонус на Авито Доставку - только если по совету купили через Доставку.</div>
+  <div class="menu">
+    <button class="li" data-a="notifs"><span class="tx">Уведомления Сигнала</span>${unread() ? `<span class="badge" style="position:static;border:0">${unread()}</span>` : ""}</button>
+    <button class="li" data-a="sigto" data-v="disc"><span class="tx">Мои запросы и ответы</span></button>
+    <button class="li" data-a="sigto" data-v="circ"><span class="tx">Мои круги</span></button>
+    <button class="li" data-a="na"><span class="tx">Кошелёк</span></button><button class="li" data-a="na"><span class="tx">Заказы и Доставка</span></button><button class="li" data-a="na"><span class="tx">Отзывы</span></button><button class="li" data-a="na"><span class="tx">Настройки</span></button></div>
+  <div class="foot">Кликабельный концепт команды «ООО «Коммерсы»» для Changellenge Cup Moscow 2026. Не является продуктом Авито, все данные вымышлены. <a data-a="credits">Фото: Wikimedia Commons</a></div>`;
+}
+function notifsHTML() {
+  const body = S.notifs.map((n, i) => `<div class="nt ${n.n ? "new" : ""}" data-a="nt" data-v="${i}"><span class="e">${n.e}</span><div class="tx">${esc(n.t)}<small>${n.ago}</small></div></div>`).join("");
+  return page("Уведомления", body, "", `<button class="lnk" data-a="nset">Настроить</button>`);
+}
+
+/* ===== листы ===== */
+function openCircleSheet(what, cb) {
+  const people = [["Мама", "Семья"], ["Аня", "Семья"], ["Даня", "Пробежки"], ["Никита", "Друзья"]];
+  openSheet(`<h3>Показать близким</h3><div class="sub">Увидят только те, кого выберете. Можно спросить мнение или проголосовать</div>
+    ${people.map(([n, s]) => `<button class="li" data-a="pickCircle" data-v="${n}">${ava(n, 40)}<span class="tx">${n}<small>${s}</small></span></button>`).join("")}
+    <button class="li" data-a="invite"><span class="ava" style="width:40px;height:40px;background:var(--sig-s);color:var(--sig)">＋</span><span class="tx">Скопировать ссылку<small>Для тех, кого ещё нет в круге</small></span></button>`, cb);
+}
+function compareHTML() {
+  const ids = S.likes.slice(-3), n = ids.length;
+  const cell = f => ids.map(id => `<div>${f(L[id], id)}</div>`).join("");
+  return `<h3>Сравнение</h3><div class="sub">То, что вы отметили «нравится»</div>
+    <div class="cmpt" style="grid-template-columns:repeat(${n},1fr)">${cell(x => `<img src="${IMG(x.img)}" alt="">`)}${cell(x => `<b>${rub(x.p)}</b>`)}${cell(x => x.t)}</div>
+    <div class="cmpt" style="grid-template-columns:repeat(${n},1fr);margin-top:12px"><div class="cl" style="grid-column:1/-1">Состояние</div>${cell(x => x.cond)}<div class="cl" style="grid-column:1/-1">Продавец</div>${cell(x => `★ ${x.sr} · ${x.sn} отз.`)}<div class="cl" style="grid-column:1/-1">Опыт владельцев</div>${cell((x, id) => ownCount(id) ? `<span style="color:var(--sig);font-weight:700">${pl(ownCount(id), ADV)}</span>` : '<span class="muted">пока нет</span>')}</div>
+    <div style="display:flex;gap:8px;margin-top:18px"><button class="btn ghost" data-a="toFriend" data-v="cmp">Спросить близких</button><button class="btn sig" data-a="askDeck">Спросить знатоков</button></div>`;
+}
+function answerSheet(id) {
+  const d = D.find(x => x.id === id), cat = d.tags[0];
+  const mine = Object.keys(L).filter(i => L[i].c === cat && L[i].s === ME);
+  const opts = mine.concat(Object.keys(L).filter(i => L[i].c === cat && L[i].s !== ME)).slice(0, 4);
+  const first = opts.find(i => L[i].s !== ME);
+  openSheet(`<h3>Ваш ответ</h3><div class="sub">${esc(d.title)}</div><div class="form" style="padding:0"><textarea id="at" placeholder="Что посоветуете и почему? Расскажите о своём опыте"></textarea></div>
+    ${opts.length ? `<div class="h5">Прикрепить объявление</div>
+    <div>${opts.map(i => `<button class="li ${i === first ? "on" : ""}" data-a="pickAns" data-v="${i}"><img src="${IMG(L[i].img)}" alt=""><span class="tx">${rub(L[i].p)}<small>${L[i].s === ME ? "Ваше объявление: ответ будет с пометкой «реклама»" : L[i].t}</small></span><span class="ck">${I.check}</span></button>`).join("")}</div>` : ""}
+    <button class="btn sig" style="width:100%;margin-top:14px" data-a="sendAns" data-v="${id}">Отправить ответ</button>`);
+}
+function openRate(id) {
+  const x = L[id];
+  openSheet(`<h3>Подошла покупка?</h3><div class="sub">Займёт 10 секунд. Ответ увидят те, кто выбирает такую же вещь</div>
+    <div class="mini" style="margin:0 0 12px"><img src="${IMG(x.img)}" alt=""><div><b>${rub(x.p)}</b><span>${x.t}</span></div></div>
+    <div class="opts">${["Подошла", "Есть нюансы", "Не подошла"].map((o, i) => `<button class="opt ${i === 0 ? "on" : ""}" data-a="rateOpt">${o}</button>`).join("")}</div>
+    <div class="form" style="padding:0;margin-top:12px"><textarea id="rtx" style="min-height:80px" placeholder="Пара слов о вещи, необязательно"></textarea></div>
+    <button class="btn sig" style="width:100%;margin-top:12px" data-a="rateSend" data-v="${id}">Отправить</button>`);
+}
+function helperSheet(name) {
+  const h = HELP[name] || { lvl: "Участник Сигнала", helped: 3, ans: 6, since: 2020, proofs: [] };
+  if (h.shop) return openSheet(`<div class="hp">${ava(name, 56)}<div><h3>${name}</h3><div class="sub" style="margin:0">Магазин на Авито</div></div></div><div class="rule" style="margin:0">Это продавец. Его ответы помечены как реклама и всегда стоят ниже ответов покупателей.</div>`);
+  openSheet(`<div class="hp">${ava(name, 56)}<div><h3>${name}</h3><div class="sub" style="margin:0">${h.lvl}</div></div></div>
+    <div class="stats3" style="margin:0 0 12px"><div><b>${h.helped}</b><span>${plw(h.helped, MARKS)} «помогло»</span></div><div><b>${h.ans}</b><span>${plw(h.ans, ANS)}</span></div><div><b>${h.since}</b><span>год регистрации</span></div></div>
+    <div class="h5">Подтверждено Авито</div>
+    ${h.proofs.length ? h.proofs.map(p => `<div class="proof"><i>✓</i><span>${p}</span></div>`).join("") : '<div class="proof muted"><i></i><span>Пока нет подтверждённых покупок в категории</span></div>'}
+    <div class="note">Значок «Владеет» ставится только по покупке на Авито или по чеку. Уровень растёт от отметок «помогло», а не от числа ответов.</div>`);
+}
+function levelSheet() {
+  const LV = [["Новичок", "первый ответ в категории"], ["Советчик", "5 отметок «помогло»"], ["Знаток", "10 отметок «помогло» и покупка в категории на Авито"], ["Эксперт", "20 отметок «помогло» и 3 покупки в категории"]];
+  openSheet(`<h3>Как растёт уровень</h3><div class="sub">Уровень свой в каждой категории. Сейчас вы знаток в категории «Фото»</div>
+    ${LV.map(([n, r], i) => `<div class="lv ${i === 2 ? "cur" : ""}"><span class="d">${i + 1}</span><div><b>${n}</b><small>${r}</small></div>${i === 2 ? '<span class="you">вы здесь</span>' : ""}</div>`).join("")}
+    <div class="h5" style="margin-top:16px">Что даёт уровень</div>
+    <div class="proof"><i>↑</i><span>Ваши ответы выше в обсуждениях категории</span></div>
+    <div class="proof"><i>✓</i><span>Значок рядом с именем в ответах и в карточке</span></div>
+    <div class="proof"><i>₽</i><span>Бонус на Авито Доставку, когда по вашему совету купили через Доставку</span></div>
+    <div class="note">Ничего не даём за количество ответов и лайки: так советы остаются честными, а накрутка бессмысленна.</div>`);
+}
+const NSET = [["mine", "Ответы на мои запросы", "сразу"], ["circle", "Просьбы моего круга", "сразу"], ["hot", "Горящие обсуждения в моих категориях", "не чаще раза в день"], ["after", "Вопрос «подошла ли покупка»", "через 7 дней после доставки"], ["expert", "Новые запросы для знатока", "раз в день, одной подборкой"]];
+function nsetSheet() {
+  openSheet(`<h3>Уведомления Сигнала</h3><div class="sub">Без рекламы и не больше 3 уведомлений в день</div>${NSET.map(([k, n, s]) => `<div class="set"><div>${n}<small>${s}</small></div><button class="sw ${S.nset[k] ? "on" : ""}" data-a="nsw" data-v="${k}" aria-label="${n}"></button></div>`).join("")}`);
+}
+function newCollSheet() {
+  openSheet(`<h3>Новая подборка</h3><input id="cn" class="inp1" placeholder="Например: подарок маме" autocomplete="off">
+    <div class="tg"><div><b>Совместная</b><br><span class="muted">Позовёте близких по ссылке, сможете голосовать и обсуждать</span></div><button class="sw on" data-a="cshared" aria-label="Совместная"></button></div>
+    <button class="btn black" style="width:100%;margin-top:14px" data-a="collCreate">Создать</button>`);
+}
+function creditsHTML() {
+  return page("Фото", `<div class="desc" style="font-size:13px;line-height:1.5">Фотографии товаров взяты с Wikimedia Commons по свободным лицензиям:<br><br>${CREDITS.map(c => `${esc(c.title.replace("File:", ""))} · ${esc(c.artist || "автор не указан")} · ${esc(c.lic)}`).join("<br>")}</div>`);
+}
+const OWNER_REPLY = { "Бег": "На широкую стопу садятся свободно, брала в свой размер. Через месяц разнашиваются ещё чуть-чуть.", "Авто": "Расход по городу около 8,5 литра, зимой заводится без проблем. Проверьте, когда меняли ремень ГРМ.", "Фото": "Работает без нареканий, главное - не хранить в сырости.", other: "Пользуюсь полгода, всё устраивает. Проверьте комплектность при получении." };
+
+/* ===== показ на ноутбуке ===== */
+function demo(n) {
+  if (n === "1") { S.sigTab = "you"; setTab("sig"); }
+  if (n === "2") { S.sigTab = "you"; setTab("sig"); openNewReq("deck"); }
+  if (n === "3") { S.sigTab = "disc"; setTab("sig"); push(discHTML, "d1"); }
+  if (n === "4") { setTab("home"); scrollToBox(openItem("a1")); }
+  if (n === "5") { setTab("home"); scrollToBox(openItem("a25")); }
+  if (n === "6") { S.favTab = "colls"; setTab("fav"); push(collHTML, "c2"); }
+  if (n === "7") setTab("prof");
+}
+
+/* ===== обработчик кликов ===== */
+document.addEventListener("click", e => {
+  const t = e.target.closest("[data-a]"); if (!t) return;
+  const a = t.dataset.a, v = t.dataset.v;
+  if (t.tagName === "A") e.preventDefault();
+  e.stopPropagation();
+  switch (a) {
+    case "tab": setTab(v); break;
+    case "back": back(); break;
+    case "item": openItem(v, t.dataset.via); break;
+    case "disc": push(discHTML, v); break;
+    case "coll": push(collHTML, v); break;
+    case "chat": openChat(CHATS.find(x => x.id === v)); break;
+    case "notifs": S.notifs.forEach(n => n.n = false); push(notifsHTML); renderNav(); renderTab(); break;
+    case "nt": go(S.notifs[+v].go); break;
+    case "banner": $("#banner").classList.remove("in"); if (v) { S.notifs.forEach(n => { if (n.go === v) n.n = false; }); go(v); renderNav(); } break;
+    case "sigtab": S.sigTab = v; renderTab(); $("#t-sig").scrollTop = 0; break;
+    case "sigto": S.sigTab = v; setTab("sig"); break;
+    case "dcat": S.dcat = v; renderTab(); break;
+    case "favtab": S.favTab = v; renderTab(); $("#t-fav").scrollTop = 0; break;
+    case "feedtab": S.feedTab = v; renderTab(); break;
+    case "like": S.fav.has(v) ? S.fav.delete(v) : S.fav.add(v); toast(S.fav.has(v) ? "Добавили в Избранное" : "Убрали из Избранного", 1400); rerender(); break;
+    case "cat": { const q = CATS[+v][2]; if (q) { S.q = q; renderTab(); $("#t-home").scrollTop = 0; } else toast("В прототипе Сигнал показан на товарах и авто. " + NA); break; }
+    case "search": S.q = v; setTab("home"); $("#t-home").scrollTop = 0; break;
+    case "clearq": S.q = ""; renderTab(); break;
+    case "swipe": decide(v); break;
+    case "askDeck": closeSheet(); if (S.deck[S.di] === "ASK") S.di++; renderTab(); openNewReq("deck"); break;
+    case "deckReset": S.di = 0; S.deck = DECK0.slice(); S.likes = []; S.nopes = []; S.sent = []; S.adapted = false; renderTab(); break;
+    case "compare": openSheet(compareHTML()); break;
+    case "newreq": openNewReq(v); break;
+    case "opt":
+      if (t.dataset.g) {
+        REQ.text = $("#rq") ? $("#rq").value : REQ.text; REQ[t.dataset.g] = v;
+        const top = S.stack[S.stack.length - 1]; const y = top.el.querySelector(".pc").scrollTop;
+        top.el.innerHTML = newReqHTML(); top.el.querySelector(".pc").scrollTop = y;
+      }
+      break;
+    case "toggleAi": REQ.ai = !REQ.ai; t.classList.toggle("on", REQ.ai); break;
+    case "reqSubmit": submitReq(); break;
+    case "helped": {
+      const [did, i] = v.split(":"); const d = D.find(x => x.id === did); const ans = d.ans[+i];
+      ans.helped = !ans.helped;
+      if (ans.helped) { d.status = "done"; toast(`${ans.by} узнает, что совет помог. Уровень знатока растёт только от таких отметок`); }
+      else if (!d.ans.some(x => x.helped)) d.status = d.ans.length ? "hot" : "new";
+      rerender(); break;
+    }
+    case "helper": helperSheet(v); break;
+    case "answer": answerSheet(v); break;
+    case "pickAns": t.parentElement.querySelectorAll(".li").forEach(o => o.classList.toggle("on", o === t && !o.classList.contains("on"))); break;
+    case "sendAns": {
+      const d = D.find(x => x.id === v); const sel = $("#sheet .li.on"); const txt = ($("#at") && $("#at").value.trim()) || "Посмотрите этот вариант, по цене нормально";
+      const it = sel ? sel.dataset.v : null, own = it && L[it].s === ME, expert = d.tags[0] === MY_CAT;
+      d.ans.push({ by: "Вы", b: own ? ["sel"] : expert ? ["own", "exp"] : [], own: !own && expert ? "Зенит-Е · 3 года" : "", t: txt, it });
+      d.cnt = Math.max(d.cnt, d.ans.length); S.myAns++;
+      closeSheet(); rerender();
+      toast(own ? "Ответ отправлен с пометкой «реклама»: вы советуете своё объявление" : `Ответ отправлен. Когда ${d.who} отметит «помогло», это увидят в вашем профиле`); break;
+    }
+    case "askOwners": openSheet(`<h3>Спросить владельцев</h3><div class="sub">Вопрос увидят те, кто покупал «${esc(short(v))}» на Авито</div><div class="form" style="padding:0"><textarea id="oq">${L[v].c === "Авто" ? "Какой реальный расход и что менять в первую очередь?" : RUN.has(L[v].c) ? "Как садятся на широкую стопу? Берёте в свой размер?" : "Как вам после нескольких месяцев? Что проверить при покупке?"}</textarea></div><button class="btn sig" style="width:100%;margin-top:12px" data-a="sendOwners" data-v="${v}">Отправить вопрос</button>`); break;
+    case "sendOwners": {
+      closeSheet(); toast("Вопрос ушёл владельцам этой модели. Ответ придёт в уведомления");
+      const cat = RUN.has(L[v].c) ? "Бег" : L[v].c;
+      setTimeout(() => { (OWN[v] = OWN[v] || []).push({ who: "Света", m: "ответила на ваш вопрос", t: OWNER_REPLY[cat] || OWNER_REPLY.other }); notify("💬", `Владелец ответил на ваш вопрос про ${short(v)}`, "item:" + v, "Ответ владельца"); }, 5000);
+      break;
+    }
+    case "toColl": openSheet(`<h3>В подборку</h3>${COLLS.map(c => `<button class="li" data-a="pickColl" data-v="${c.id}:${v}"><span class="pv" style="width:48px;height:48px;border-radius:10px;overflow:hidden;display:grid;grid-template-columns:1fr 1fr;gap:1px;background:var(--soft);flex:none">${c.items.slice(0, 4).map(i => `<img src="${IMG(L[i].img)}" alt="" style="width:100%;height:100%;border-radius:0">`).join("")}</span><span class="tx">${esc(c.name)}<small>${c.shared ? "совместная" + (c.members.length > 1 ? " с " + c.members.filter(m => m !== "Вы").join(", ") : "") : "личная"}</small></span></button>`).join("")}<button class="btn black" style="width:100%;margin-top:12px" data-a="newColl">Новая подборка</button>`); break;
+    case "pickColl": { const [cid, iid] = v.split(":"); const c = COLLS.find(x => x.id === cid); if (!c.items.includes(iid)) c.items.unshift(iid); closeSheet(); const o = c.members.filter(m => m !== "Вы"); toast(`Добавили в «${esc(c.name)}»${o.length ? ". " + o.join(", ") + " увидит" : ""}`); rerender(); break; }
+    case "toFriend": openCircleSheet(v); break;
+    case "pickCircle": closeSheet(); toast(`Отправили: ${v}. Ответ придёт в Сигнал`); if (sheetCb) { const cb = sheetCb; sheetCb = null; cb(); } break;
+    case "invite": closeSheet(); toast("Ссылка-приглашение скопирована. Контакты из телефона не загружаем"); break;
+    case "newColl": newCollSheet(); break;
+    case "cshared": t.classList.toggle("on"); break;
+    case "collCreate": {
+      const name = ($("#cn") && $("#cn").value.trim()) || "Новая подборка", shared = $("#sheet .sw").classList.contains("on");
+      COLLS.push({ id: "c" + (COLLS.length + 1), name, shared, members: ["Вы"], items: [], com: [], votes: {} });
+      closeSheet(); toast(shared ? "Подборка создана, ссылка-приглашение скопирована" : "Подборка создана"); rerender(); break;
+    }
+    case "vote": { const [cid, iid, k] = v.split(":"); const c = COLLS.find(x => x.id === cid); c.votes[iid] = c.votes[iid] === k ? null : k; rerender(); break; }
+    case "write": openChat(chatFor(v)); break;
+    case "quickq": { const [id, q] = v.split("|"); const c = chatFor(id); openChat(c); sendMsg(c, q); break; }
+    case "call": toast("Звонок через Авито. " + NA); break;
+    case "buy": {
+      const x = L[v], via = S.via && S.via.item === v ? S.via : null;
+      openSheet(`<h3>Оформление</h3><div class="mini" style="margin-top:6px"><img src="${IMG(x.img)}" alt=""><div><b>${rub(x.p)}</b><span>${x.t}</span></div></div>
+      <div class="sum"><div><span>Пункт выдачи</span><span>ул. Русаковская, 31</span></div><div><span>Товар</span><span>${rub(x.p)}</span></div><div><span>Доставка</span><span>249 ₽</span></div><div class="tot"><span>Итого</span><span>${rub(x.p + 249)}</span></div></div>
+      <div class="note" style="margin:0 0 12px">${via ? `Покупка по совету: ${via.by} получит отметку «купили по совету». Через неделю спросим, подошла ли вещь.` : "Через неделю спросим, подошла ли вещь. Ответ появится в блоке «Опыт владельцев»."}</div><button class="btn blue" style="width:100%" data-a="pay" data-v="${v}">Оплатить ${rub(x.p + 249)}</button>`); break;
+    }
+    case "pay": {
+      closeSheet();
+      const via = S.via && S.via.item === v ? S.via : null;
+      if (via) { D.find(d => d.id === via.did).ans[via.idx].bought = true; rerender(); }
+      toast(via ? `Заказ оформлен (демо). ${via.by} получит отметку «купили по совету»` : "Заказ оформлен (демо). Через неделю спросим, подошла ли вещь", 3600); break;
+    }
+    case "rateOpt": t.parentElement.querySelectorAll(".opt").forEach(o => o.classList.toggle("on", o === t)); break;
+    case "rateSend": {
+      const opt = ($("#sheet .opt.on") || { textContent: "Подошла" }).textContent;
+      const txt = ($("#rtx") && $("#rtx").value.trim()) || { "Подошла": "Всё подошло, как в описании.", "Есть нюансы": "В целом нормально, но есть нюансы.", "Не подошла": "Не подошла, пришлось вернуть." }[opt];
+      (OWN[v] = OWN[v] || []).unshift({ who: "Вы", m: "купили на Авито · " + opt.toLowerCase(), t: txt });
+      S.notifs.forEach(n => { if (n.go === "rate:" + v) n.n = false; });
+      closeSheet(); toast("Спасибо! Отзыв появился в карточке, в блоке «Опыт владельцев»"); rerender(); break;
+    }
+    case "levels": levelSheet(); break;
+    case "nset": nsetSheet(); break;
+    case "nsw": S.nset[v] = !S.nset[v]; t.classList.toggle("on", S.nset[v]); break;
+    case "na": toast(NA, 2000); break;
+    case "credits": push(creditsHTML); break;
+    case "demo": demo(v); break;
+    case "intro": $("#intro").classList.add("off"); break;
+    case "reset": location.reload(); break;
+    case "sheetClose": closeSheet(); sheetCb = null; break;
+  }
+});
+document.addEventListener("submit", e => {
+  e.preventDefault();
+  const f = e.target;
+  if (f.dataset.f === "search") { S.q = f.q.value; renderTab(); $("#t-home").scrollTop = 0; if (document.activeElement) document.activeElement.blur(); }
+  if (f.dataset.f === "msg") { const c = CHATS.find(x => x.id === f.dataset.v); const v = f.querySelector("input").value.trim(); if (v) { sendMsg(c, v); const inp = S.stack[S.stack.length - 1].el.querySelector("#mi"); if (inp) inp.focus(); } }
+  if (f.dataset.f === "cmt") { const c = COLLS.find(x => x.id === f.dataset.v); const v = f.querySelector("input").value.trim(); if (v) { c.com.push({ who: "Вы", on: c.items[0], t: v }); rerender(); } }
+});
+document.addEventListener("keydown", e => {
+  const tag = document.activeElement && document.activeElement.tagName;
+  if (tag === "INPUT" || tag === "TEXTAREA") { if (e.key === "Escape") document.activeElement.blur(); return; }
+  if (e.key === "Escape") { if (!$("#intro").classList.contains("off")) $("#intro").classList.add("off"); else if (sheetOpen()) { closeSheet(); sheetCb = null; } else back(); return; }
+  if (S.tab === "sig" && S.sigTab === "you" && !S.stack.length && !sheetOpen()) {
+    if (e.key === "ArrowRight") { e.preventDefault(); decide("like"); }
+    if (e.key === "ArrowLeft") { e.preventDefault(); decide("nope"); }
+    if (e.key === "ArrowUp") { e.preventDefault(); decide("friend"); }
+  }
+});
+/* на ноутбуке сцена (телефон и панель) целиком влезает в окно */
+function fit() {
+  const st = $(".stage");
+  st.style.zoom = "";
+  if (innerWidth > 500) {
+    const s = Math.min(1, (innerHeight - 24) / st.offsetHeight, (innerWidth - 16) / st.offsetWidth);
+    if (s < 1) st.style.zoom = String(s);
+  }
+  if (S.tab === "sig" && S.sigTab === "you") sizeDeck();
+}
+addEventListener("resize", fit);
+const CREDITS = [{"title": "File:Running shoes.jpg", "artist": "Tiia Monto", "lic": "CC BY-SA 4.0"}, {"title": "File:Campus Women's Perry (L) Running Shoes.jpg", "artist": "dfgfdd", "lic": "CC BY-SA 4.0"}, {"title": "File:Asics Gel-Cumulus 22.jpg", "artist": "Petar Milošević", "lic": "CC BY-SA 4.0"}, {"title": "File:Trail Running Shoes Asics Gel Trail Lahar 5 GTX.jpg", "artist": "Rogainer", "lic": "CC BY-SA 4.0"}, {"title": "File:Nike Zoom Pegasus 38 running shoe.jpg", "artist": "Ssu", "lic": "CC BY-SA 4.0"}, {"title": "File:Trail Shoe (54104717822).png", "artist": "38142119@N00", "lic": "CC BY 2.0"}, {"title": "File:New Balance 2002R.jpg", "artist": "LeDroider", "lic": "CC0"}, {"title": "File:New Balance 480.jpg", "artist": "LeDroider", "lic": "CC0"}, {"title": "File:New Balance 1906R.jpg", "artist": "LeDroider", "lic": "CC0"}, {"title": "File:Adidas Adizero Boston 12 Taipei Marathon Collaboration Edition.jpeg", "artist": "SUNSmania41", "lic": "CC BY-SA 4.0"}, {"title": "File:Adidas Ultra Boost 4 running shoes.jpeg", "artist": "Dough4872", "lic": "CC BY-SA 4.0"}, {"title": "File:2023 Słuchawki Sony WI-XB400 (3).jpg", "artist": "Jacek Halicki", "lic": "CC BY-SA 4.0"}, {"title": "File:PS4-Console-wDS4.jpg", "artist": "Evan-Amos", "lic": "Public domain"}, {"title": "File:Ibanez Artist noBG.png", "artist": "NSX-Racer", "lic": "CC BY-SA 3.0"}, {"title": "File:Wzmacniacz akustyczny Lunchbox Acoustic mini firmy ZT.jpg", "artist": "http://muzyczny.pl", "lic": "CC BY-SA 4.0"}, {"title": "File:2024 Zenit-E (2).jpg", "artist": "Jacek Halicki", "lic": "CC BY-SA 4.0"}, {"title": "File:Garmin Forerunner 965 with Garmin Run Taipei Watch Face installed.jpeg", "artist": "SUNSmania41", "lic": "CC BY-SA 4.0"}, {"title": "File:Garmin - Forerunner 35.jpg", "artist": "Tiia Monto", "lic": "CC BY-SA 4.0"}, {"title": "File:Krups Vivo F880 home espresso maker.jpg", "artist": "User Mike1024 on en.wikipedia", "lic": "Public domain"}, {"title": "File:Tennis Racket and Balls.jpg", "artist": "Vladsinger at English Wikipedia", "lic": "CC BY-SA 3.0"}, {"title": "File:Cozy living room setup with a warm sofa, coffee cup, and an open book in a softly lit environment.jpg", "artist": "Shixart1985", "lic": "CC BY 2.0"}, {"title": "File:Pioneer PL-200 turntable with an aftermarket dustbug (7).jpg", "artist": "Miroslav Vajdic", "lic": "CC BY-SA 2.0"}, {"title": "File:Nash Vintage 60's Wooden Deck Shark Skateboard.jpg", "artist": "H. Michael Karshis", "lic": "CC BY 2.0"}, {"title": "File:Footbalance Insole.jpg", "artist": "Cogitato", "lic": "CC BY-SA 4.0"}, {"title": "File:2019 Lada Vesta Exclusive white front.jpg", "artist": "Throwawayacc222", "lic": "CC0"}, {"title": "File:Moscow Mozhayskoye Highway 4 k1 2023-07 1690032955.jpg", "artist": "Artyom Svetlov", "lic": "CC BY-SA 4.0"}, {"title": "File:Laptop on a neat desk (Unsplash).jpg", "artist": "Norbert Levajsics levajsics", "lic": "CC0"}, {"title": "File:Minnesota State Capitol Woodworkers Toolbox Historical Society.jpg", "artist": "Minnesota Historical Society", "lic": "CC BY-SA 2.0"}];
+
+/* ?shot - режим для скриншотов: со статус-баром и без заставки */
+if (/[?&]shot\b/.test(location.search)) { document.body.classList.add("shot"); $("#intro").classList.add("off"); }
+fit();
+setTab("home");
+</script>
+</body>
+</html>
