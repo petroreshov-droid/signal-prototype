@@ -15,22 +15,24 @@
 :root{--blue:#00a2ff;--blue-t:#0089d6;--blue-s:#e6f5ff;--green:#00c45a;--green-t:#0b8a4a;--green-s:#e6f8ee;--ink:#000;--ink2:#2b2b2b;--muted:#8b8b8b;--line:#ededed;--chip:#f2f1f0;--soft:#f7f7f7;--sig:#7a4cff;--sig-s:#f2edff;--red:#ff4053;--hot:#ff6a00;--hot-s:#fff4ec}
 *{box-sizing:border-box;margin:0;padding:0;-webkit-tap-highlight-color:transparent}
 html,body{height:100%}
-body{background:#e8e8ed;font-family:-apple-system,BlinkMacSystemFont,"SF Pro Text","Inter","Segoe UI",Roboto,Arial,sans-serif;color:var(--ink);display:flex;align-items:center;justify-content:center;min-height:100vh;-webkit-font-smoothing:antialiased}
+html{-webkit-text-size-adjust:100%;overscroll-behavior:none}
+body{background:#e8e8ed;font-family:-apple-system,BlinkMacSystemFont,"SF Pro Text","Inter","Segoe UI",Roboto,Arial,sans-serif;color:var(--ink);display:flex;align-items:center;justify-content:center;min-height:100vh;-webkit-font-smoothing:antialiased;overscroll-behavior:none}
 button,input,textarea,select{font-family:inherit;color:inherit}
 button{cursor:pointer}
 svg{display:block}
 .stage{display:flex;align-items:center;justify-content:center;gap:56px;padding:20px}
-.phone{width:390px;height:844px;background:#fff;border-radius:50px;box-shadow:0 0 0 11px #121212,0 30px 80px rgba(0,0,0,.35);position:relative;overflow:hidden;display:flex;flex-direction:column;flex:none}
+.phone{width:390px;height:844px;background:#fff;border-radius:50px;box-shadow:0 0 0 11px #121212,0 30px 80px rgba(0,0,0,.35);position:relative;overflow:hidden;overflow:clip;display:flex;flex-direction:column;flex:none}
 .island{position:absolute;top:11px;left:50%;transform:translateX(-50%);width:120px;height:34px;border-radius:20px;background:#000;z-index:80;pointer-events:none}
 .hbar{position:absolute;bottom:8px;left:50%;transform:translateX(-50%);width:134px;height:5px;border-radius:3px;background:#111;z-index:80;pointer-events:none}
 .status{height:47px;flex:none;display:flex;align-items:flex-end;justify-content:space-between;padding:0 30px 7px 38px;font-weight:600;font-size:16px;background:#fff;position:relative;z-index:30}
 .status .ic{display:flex;gap:6px;align-items:center}
 .body{position:relative;flex:1;display:flex;flex-direction:column;min-height:0}
-.vp{position:relative;flex:1;overflow:hidden}
+.vp{position:relative;flex:1;overflow:hidden;overflow:clip}
 .tab{position:absolute;inset:0;overflow-y:auto;display:none;background:#fff;scrollbar-width:none}
-.tab::-webkit-scrollbar,.pc::-webkit-scrollbar,.cats::-webkit-scrollbar,.hs::-webkit-scrollbar,.seg::-webkit-scrollbar,.utabs::-webkit-scrollbar,.pills::-webkit-scrollbar,.fil::-webkit-scrollbar,.taste::-webkit-scrollbar,.circ::-webkit-scrollbar,.qq .row::-webkit-scrollbar{display:none}
+.tab::-webkit-scrollbar,.pc::-webkit-scrollbar,.cats::-webkit-scrollbar,.hs::-webkit-scrollbar,.seg::-webkit-scrollbar,.utabs::-webkit-scrollbar,.pills::-webkit-scrollbar,.fil::-webkit-scrollbar,.taste::-webkit-scrollbar,.circ::-webkit-scrollbar,.qq .row::-webkit-scrollbar,.onb::-webkit-scrollbar{display:none}
 .tab.on{display:block}
-/* панель для показа */
+.tab,.pc,.sheet{overscroll-behavior:contain}
+/* панель для показа на ноутбуке */
 .guide{width:320px;color:#1d1d1f}
 .guide .k{font-size:12px;font-weight:700;color:var(--sig);text-transform:uppercase;letter-spacing:.6px}
 .guide h1{font-size:28px;line-height:1.1;margin:6px 0 4px;letter-spacing:-.4px}
@@ -51,21 +53,30 @@ svg{display:block}
   body:not(.shot) .status{display:none}
   body:not(.shot) .nav{padding-bottom:max(10px,env(safe-area-inset-bottom))}
   input,textarea{font-size:16px!important}}
-html{-webkit-text-size-adjust:100%;overscroll-behavior:none}
-body{overscroll-behavior:none}
-.tab,.pc,.sheet{overscroll-behavior:contain}
-/* заставка на телефоне: что это и что попробовать */
-.intro{position:absolute;inset:0;z-index:75;background:linear-gradient(180deg,#f3eeff,#fff 45%);display:none;flex-direction:column;justify-content:center;padding:28px 26px 34px;overflow-y:auto}
-@media (max-width:1099px){.intro{display:flex}}
-.intro.off{display:none!important}
-.intro .mk{width:60px;height:60px;border-radius:18px;background:linear-gradient(135deg,#6f3cff,#b18cff);display:flex;align-items:center;justify-content:center;color:#fff;margin-bottom:20px;flex:none}
-.intro .mk svg{width:34px;height:34px}
-.intro .k{font-size:12px;font-weight:700;color:var(--sig);text-transform:uppercase;letter-spacing:.6px}
-.intro h1{font-size:32px;line-height:1.1;margin:8px 0;letter-spacing:-.4px}
-.intro p{font-size:14.5px;color:#6e6e73;line-height:1.4}
-.intro ol{margin:22px 0 24px;padding-left:20px;display:flex;flex-direction:column;gap:10px;font-size:15.5px;line-height:1.35}
-.intro .btn{flex:none;width:100%}
-.intro small{display:block;margin-top:14px;font-size:12px;color:#8e8e93;line-height:1.4;text-align:center}
+/* регистрация */
+.onb{position:absolute;inset:0;z-index:75;background:linear-gradient(180deg,#f3eeff,#fff 45%);display:flex;flex-direction:column;justify-content:center;padding:26px 22px 28px;overflow-y:auto}
+.onb.off{display:none}
+.onb .mk{width:60px;height:60px;border-radius:18px;background:linear-gradient(135deg,#6f3cff,#b18cff);display:flex;align-items:center;justify-content:center;color:#fff;margin-bottom:20px;flex:none}
+.onb .mk svg{width:34px;height:34px}
+.onb .k{font-size:12px;font-weight:700;color:var(--sig);text-transform:uppercase;letter-spacing:.6px}
+.onb h1{font-size:32px;line-height:1.1;margin:8px 0;letter-spacing:-.4px}
+.onb h2{font-size:26px;line-height:1.15;margin:6px 0;letter-spacing:-.3px}
+.onb p{font-size:14.5px;color:#6e6e73;line-height:1.4}
+.onb .obs{font-size:12.5px;font-weight:700;color:var(--sig)}
+.onb .obb{display:flex;flex-direction:column;gap:10px;margin-top:26px}
+.onb .btn{flex:none;width:100%}
+.onb .btn[disabled]{opacity:.45;cursor:default}
+.onb .inp1{margin:18px 0 16px}
+.onb small{display:block;margin-top:14px;font-size:12px;color:#8e8e93;line-height:1.4;text-align:center}
+.onb .opts{margin:16px 0 20px}
+.obback{border:0;background:none;color:var(--muted);font-size:14.5px;margin-bottom:10px;align-self:flex-start;padding:4px 0;display:flex;align-items:center;gap:2px}
+.obg{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin:16px 0 18px}
+.obt{position:relative;border:2px solid transparent;border-radius:14px;background:#fff;padding:0;overflow:hidden;box-shadow:0 1px 4px rgba(0,0,0,.08);display:flex;flex-direction:column;align-items:stretch}
+.obt img{width:100%;aspect-ratio:1.25/1;object-fit:cover;display:block}
+.obt span{font-size:13px;font-weight:700;padding:6px 4px 7px;text-align:center}
+.obt i{position:absolute;top:6px;right:6px;width:22px;height:22px;border-radius:50%;background:rgba(255,255,255,.9);display:flex;align-items:center;justify-content:center;color:transparent;border:1.5px solid #d0d0d0}
+.obt.on{border-color:var(--sig)}
+.obt.on i{background:var(--sig);border-color:var(--sig);color:#fff}
 /* навигация */
 .nav{flex:none;display:flex;border-top:1px solid var(--line);background:#fff;padding:7px 0 26px}
 .nav button{flex:1;border:0;background:none;display:flex;flex-direction:column;align-items:center;gap:3px;font-size:10px;color:#9b9b9b;position:relative;font-weight:500;min-width:0}
@@ -123,6 +134,7 @@ body{overscroll-behavior:none}
 .suggest{margin:0 16px 14px;border-radius:14px;background:var(--sig-s);padding:12px 14px;display:flex;gap:10px;align-items:center;font-size:14px;line-height:1.35;cursor:pointer}
 .suggest b{color:var(--sig)}
 .aihint{margin:0 16px 12px;font-size:12.5px;color:var(--sig);font-weight:600;display:flex;gap:6px;align-items:center}
+.saveq{border:0;background:none;color:var(--sig);font-weight:700;font-size:13.5px;padding:0 16px 10px;display:block}
 /* сигнал */
 .sh{padding:2px 16px 0;position:sticky;top:0;background:#fff;z-index:5}
 .sh-top{display:flex;align-items:center;justify-content:space-between;height:46px}
@@ -268,7 +280,7 @@ body{overscroll-behavior:none}
 /* формы */
 .form{padding:4px 16px 20px}
 .form label{display:block;font-size:13px;color:var(--muted);margin:16px 0 7px;font-weight:600}
-.form textarea,.inp1{width:100%;border:1.5px solid var(--line);border-radius:14px;padding:12px;font-size:15.5px;line-height:1.4;resize:none;outline:0}
+.form textarea,.inp1{width:100%;border:1.5px solid var(--line);border-radius:14px;padding:12px;font-size:15.5px;line-height:1.4;resize:none;outline:0;background:#fff}
 .form textarea{min-height:104px}
 .form textarea:focus,.inp1:focus{border-color:var(--sig)}
 .opts{display:flex;gap:7px;flex-wrap:wrap}
@@ -301,6 +313,7 @@ body{overscroll-behavior:none}
 .li small{display:block;font-size:12.5px;color:var(--muted);margin-top:2px}
 .li img{width:48px;height:48px;border-radius:9px;object-fit:cover}
 .li.on{background:var(--sig-s);border-radius:12px;padding-left:8px;padding-right:8px}
+.li.danger .tx{color:var(--red)}
 .ck{width:24px;height:24px;border-radius:50%;border:2px solid #cfcfcf;flex:none;display:flex;align-items:center;justify-content:center;color:transparent}
 .li.on .ck{background:var(--sig);border-color:var(--sig);color:#fff}
 .cmpt{display:grid;gap:8px;margin-top:6px}
@@ -363,12 +376,12 @@ body{overscroll-behavior:none}
 /* профиль, списки */
 .prof{display:flex;align-items:center;gap:14px;padding:12px 16px 16px}
 .prof h2{font-size:22px}
-.prof .r{font-size:13.5px;color:var(--muted);margin-top:3px}
+.prof .r{font-size:13.5px;color:var(--muted);margin-top:3px;line-height:1.35}
 .lvl{margin:0 16px 12px;border-radius:18px;background:linear-gradient(135deg,#6f3cff,#a57bff);color:#fff;padding:16px;cursor:pointer}
 .lvl .k{font-size:12.5px;opacity:.9;font-weight:600}
 .lvl .n{font-size:21px;font-weight:800;margin:3px 0 10px}
 .bar{height:8px;border-radius:4px;background:rgba(255,255,255,.3);overflow:hidden}
-.bar i{display:block;height:100%;background:#fff;border-radius:4px}
+.bar i{display:block;height:100%;background:#fff;border-radius:4px;min-width:4px}
 .lvl .s{font-size:12.5px;margin-top:8px;opacity:.95;display:flex;justify-content:space-between;gap:8px}
 .lvl .s u{text-decoration:none;font-weight:700;flex:none}
 .stats3{display:grid;grid-template-columns:1fr 1fr 1fr;gap:8px;margin:0 16px 12px}
@@ -433,20 +446,7 @@ body{overscroll-behavior:none}
     <div class="banner" id="banner"></div>
     <div class="toast" id="toast"></div>
   </div>
-  <div class="intro" id="intro">
-    <span class="mk"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round"><circle cx="12" cy="12" r="2.2" fill="currentColor"/><path d="M8.2 8.2a5.4 5.4 0 0 0 0 7.6M15.8 8.2a5.4 5.4 0 0 1 0 7.6M5.4 5.4a9.3 9.3 0 0 0 0 13.2M18.6 5.4a9.3 9.3 0 0 1 0 13.2"/></svg></span>
-    <div class="k">Кликабельный концепт</div>
-    <h1>Авито + Сигнал</h1>
-    <p>Команда «ООО «Коммерсы»» · Changellenge Cup Moscow 2026</p>
-    <ol>
-      <li>Вкладка <b>«Сигнал»</b>: свайпните пару кроссовок вправо</li>
-      <li><b>Спросите знатоков</b>: ответы придут через несколько секунд</li>
-      <li>Откройте объявление: блок <b>«Опыт владельцев»</b></li>
-      <li><b>Профиль</b>: уровень знатока растёт только от «помогло»</li>
-    </ol>
-    <button class="btn sig" data-a="intro">Начать</button>
-    <small>Не является продуктом Авито. Данные вымышлены, оплата не настоящая.</small>
-  </div>
+  <div class="onb off" id="onb"></div>
   <div class="hbar"></div>
 </div>
 <aside class="guide">
@@ -454,7 +454,7 @@ body{overscroll-behavior:none}
   <h1>Авито + Сигнал</h1>
   <div class="sub">Команда «ООО «Коммерсы»» · Changellenge Cup Moscow 2026</div>
   <ol>
-    <li><button data-a="demo" data-v="1"><span class="n">1</span><span><b>Свайпы подстраивают подборку</b><small>Вкладка «Сигнал»: два раза вправо по кроссовкам</small></span></button></li>
+    <li><button data-a="demo" data-v="1"><span class="n">1</span><span><b>Свайпы подстраивают подборку</b><small>Вкладка «Сигнал»: два раза вправо по похожим вещам</small></span></button></li>
     <li><button data-a="demo" data-v="2"><span class="n">2</span><span><b>Спросить знатоков</b><small>Ави даёт варианты сразу, люди отвечают следом</small></span></button></li>
     <li><button data-a="demo" data-v="3"><span class="n">3</span><span><b>Иерархия ответов</b><small>помогло автору, владелец, знаток, продавец ниже с пометкой «реклама»</small></span></button></li>
     <li><button data-a="demo" data-v="4"><span class="n">4</span><span><b>Опыт владельцев в карточке</b><small>покупка и чат остаются как были</small></span></button></li>
@@ -464,42 +464,45 @@ body{overscroll-behavior:none}
   </ol>
   <div class="goal"><b>Цель:</b> больше активных дней между сделками. Сейчас на Авито заходят около 9,5 дня из 30 (Mediascope, апрель 2026). Поиск, контакты и сделки остаются как были.</div>
   <div class="keys"><kbd>←</kbd> <kbd>→</kbd> <kbd>↑</kbd> свайпы во вкладке «Для вас»<br><kbd>Esc</kbd> назад или закрыть окно</div>
-  <button class="reset" data-a="reset">Начать заново</button>
+  <button class="reset" data-a="logoutAsk">Начать заново</button>
   <div class="ft">Данные в прототипе вымышлены. Не является продуктом Авито. Фото товаров: Wikimedia Commons.</div>
 </aside>
 </div>
 
 <script>
-/* ===== данные ===== */
+/* ===== справочники ===== */
 const IMG = n => `img/${n}.jpg`;
 const rub = n => n.toLocaleString("ru-RU") + " ₽";
 const esc = s => String(s).replace(/[&<>"]/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]));
-const RUN = new Set(["Бег", "Кроссовки"]);
 const ME = "Алексей";
-const MY_CAT = "Фото";
 const plIdx = n => n % 10 === 1 && n % 100 !== 11 ? 0 : n % 10 >= 2 && n % 10 <= 4 && (n % 100 < 10 || n % 100 >= 20) ? 1 : 2;
 const plw = (n, f) => f[plIdx(n)];
 const pl = (n, f) => `${n} ${plw(n, f)}`;
 const ANS = ["ответ", "ответа", "ответов"], ADV = ["совет", "совета", "советов"], REQS = ["запрос", "запроса", "запросов"], MARKS = ["отметка", "отметки", "отметок"], ADS = ["объявление", "объявления", "объявлений"];
-const PLACES = ["м. Сокольники", "м. Таганская", "м. Белорусская", "м. Динамо", "Химки", "м. Курская", "м. Парк культуры", "Мытищи", "м. Бауманская"];
-const AGOS = ["1 час назад", "3 часа назад", "вчера", "5 часов назад", "сегодня, 08:40", "2 дня назад"];
+const FEM = new Set(["Марина", "Катя", "Света", "Полина", "Вика", "Ирина", "Оксана", "Аня", "Мама", "Нина", "Елена", "Лера", "Маша", "Ольга", "Кира", "Мария", "Дарья", "Лиза", "Алина", "Майя", "Ксения", "Вера", "Дина", "Анна", "Лана", "Зоя", "Ева", "Регина", "Таисия", "Эльвира", "Светлана", "Татьяна", "Ульяна", "Маргарита", "Олеся", "Ирина"]);
+const fa = n => FEM.has(n) ? "а" : "";
+const PLACES = ["м. Сокольники", "м. Таганская", "м. Белорусская", "м. Динамо", "Химки", "м. Курская", "м. Парк культуры", "Мытищи", "м. Бауманская", "м. Чистые пруды", "Люберцы", "м. Тульская"];
+const AGOS = ["1 час назад", "3 часа назад", "вчера", "5 часов назад", "сегодня, 08:40", "2 дня назад", "30 минут назад"];
+const LVN = ["Новичок", "Советчик", "Знаток", "Эксперт"], LVG = ["Новичка", "Советчика", "Знатока", "Эксперта"], LVT = [5, 10, 20];
+const level = h => h >= 20 ? 3 : h >= 10 ? 2 : h >= 5 ? 1 : 0;
 
+/* объявления; k - слова для поиска */
 const L = {
   a25: { img: "vesta", t: "LADA Vesta 1.6 MT, 2019, 68 000 км", p: 1050000, c: "Авто", cond: "Не битая, 1 владелец", pl: "Мытищи", ago: "40 минут назад", s: "Евгений", sr: "5,0", sn: 9, d: "Один владелец, ТО у дилера до 60 000 км, сервисная книжка. Зимняя резина в комплекте. Можно осмотреть на любом сервисе." },
-  a1: { img: "run2_0", t: "Asics Gel-Cumulus 22, 42, полнота 2E", p: 7900, c: "Бег", sz: 42, cond: "Б/у, отличное", pl: "м. Сокольники", ago: "2 часа назад", s: "Дмитрий", sr: "4,9", sn: 37, d: "Брал под полумарафон, пробег около 150 км. Перешёл на трейл, поэтому продаю. Подошва без износа, коробка и чек есть." },
-  a2: { img: "run3_0", t: "Nike Pegasus 38, 42,5", p: 6500, c: "Бег", sz: 42, cond: "Б/у, хорошее", s: "Павел", sr: "5,0", sn: 12, d: "Лёгкие и отзывчивые, пробег около 300 км. Узковаты в носке." },
-  a3: { img: "run6_1", t: "Adidas Adizero Boston 12, 42", p: 11200, c: "Бег", sz: 42, cond: "Новые, последний размер", s: "Runlab", shop: true, sr: "4,8", sn: 214, d: "Новые, в коробке, скидка 30% на последний размер. Примерка при получении." },
-  a4: { img: "run6_2", t: "Adidas Ultraboost 4.0, 43", p: 6800, c: "Бег", sz: 43, s: "Артём", d: "Мягкие, больше для ходьбы и лёгких пробежек." },
-  a5: { img: "run4_2", t: "New Balance 1906R, новые, 43", p: 12900, c: "Кроссовки", sz: 43, cond: "Новые", s: "Sneakerhead", shop: true, sr: "4,9", sn: 530, d: "Оригинал, проверка на месте, чек." },
-  a6: { img: "run2_2", t: "Asics Gel-Trail Lahar 5 GTX, 42", p: 5200, c: "Бег", sz: 42, s: "Роман", d: "Непромокаемые, бегал по лесу один сезон, протектор живой." },
-  a7: { img: "run1_1", t: "Asics Gel женские, 39", p: 3900, c: "Бег", sz: 39 },
+  a1: { img: "run2_0", t: "Asics Gel-Cumulus 22, 42, полнота 2E", p: 7900, c: "Бег", sz: 42, cond: "Б/у, отличное", pl: "м. Сокольники", ago: "2 часа назад", s: "Дмитрий", sr: "4,9", sn: 37, k: "кроссовки", d: "Брал под полумарафон, пробег около 150 км. Перешёл на трейл, поэтому продаю. Подошва без износа, коробка и чек есть." },
+  a2: { img: "run3_0", t: "Nike Pegasus 38, 42,5", p: 6500, c: "Бег", sz: 42, cond: "Б/у, хорошее", s: "Павел", sr: "5,0", sn: 12, k: "кроссовки", d: "Лёгкие и отзывчивые, пробег около 300 км. Узковаты в носке." },
+  a3: { img: "run6_1", t: "Adidas Adizero Boston 12, 42", p: 11200, c: "Бег", sz: 42, cond: "Новые, последний размер", s: "Runlab", shop: true, sr: "4,8", sn: 214, k: "кроссовки", d: "Новые, в коробке, скидка 30% на последний размер. Примерка при получении." },
+  a4: { img: "run6_2", t: "Adidas Ultraboost 4.0, 43", p: 6800, c: "Бег", sz: 43, s: "Артём", k: "кроссовки", d: "Мягкие, больше для ходьбы и лёгких пробежек." },
+  a5: { img: "run4_2", t: "New Balance 1906R, новые, 43", p: 12900, c: "Одежда", sz: 43, cond: "Новые", s: "Sneakerhead", shop: true, sr: "4,9", sn: 530, k: "кроссовки обувь", d: "Оригинал, проверка на месте, чек." },
+  a6: { img: "run2_2", t: "Asics Gel-Trail Lahar 5 GTX, 42", p: 5200, c: "Бег", sz: 42, s: "Роман", k: "кроссовки", d: "Непромокаемые, бегал по лесу один сезон, протектор живой." },
+  a7: { img: "run1_1", t: "Asics Gel женские, 39", p: 3900, c: "Бег", sz: 39, k: "кроссовки" },
   a8: { img: "run3_2", t: "Трейловые кроссовки, 44", p: 5900, c: "Бег", sz: 44 },
   a9: { img: "watch_2", t: "Часы Garmin Forerunner 965", p: 42000, c: "Бег", cond: "Б/у, как новые", s: "Максим", sr: "5,0", sn: 16, d: "Полный комплект, ремешок новый, на экране плёнка с первого дня." },
-  a10: { img: "watch_0", t: "Garmin Forerunner 35, GPS и пульс", p: 7500, c: "Бег" },
+  a10: { img: "watch_0", t: "Garmin Forerunner 35, GPS и пульс", p: 7500, c: "Бег", k: "часы" },
   a11: { img: "phones_0", t: "Наушники Sony WI-XB400", p: 2900, c: "Электроника", cond: "Новые" },
   a12: { img: "insole_blue", t: "Стельки FootBalance, 42", p: 1900, c: "Бег", sz: 42, cond: "Новые" },
-  a13: { img: "console_0", t: "PlayStation 4, 500 ГБ, геймпад", p: 13500, c: "Электроника", s: "Станислав" },
-  a14: { img: "zenit_1", t: "Зенит-Е с Гелиос-44, проверен", p: 3200, c: "Фото", s: "Виктор", d: "Затвор и экспонометр работают, плёнку прогонял в сентябре." },
+  a13: { img: "console_0", t: "PlayStation 4, 500 ГБ, геймпад", p: 13500, c: "Электроника", s: "Станислав", k: "приставка" },
+  a14: { img: "zenit_1", t: "Зенит-Е с Гелиос-44, проверен", p: 3200, c: "Фото", s: "Виктор", k: "фотоаппарат", d: "Затвор и экспонометр работают, плёнку прогонял в сентябре." },
   a15: { img: "guitar_2", t: "Электрогитара Ibanez Artist", p: 38000, c: "Хобби" },
   a16: { img: "guitar_0", t: "Комбоусилитель ZT Lunchbox Acoustic", p: 19900, c: "Хобби", s: ME },
   a17: { img: "coffee_0", t: "Рожковая кофеварка Krups", p: 4500, c: "Для дома", s: "Мария" },
@@ -507,9 +510,63 @@ const L = {
   a19: { img: "sofa_1", t: "Диван трёхместный, рыжий", p: 18000, c: "Для дома" },
   a20: { img: "vinyl_1", t: "Проигрыватель Pioneer PL-200", p: 11000, c: "Хобби" },
   a21: { img: "skate_1", t: "Скейтборд Nash, винтаж", p: 4800, c: "Спорт", s: ME },
-  a22: { img: "run4_0", t: "New Balance 2002R, 42", p: 8900, c: "Кроссовки", sz: 42 },
-  a23: { img: "run4_1", t: "New Balance 480, 41", p: 4900, c: "Кроссовки", sz: 41 },
+  a22: { img: "run4_0", t: "New Balance 2002R, 42", p: 8900, c: "Одежда", sz: 42, k: "кроссовки обувь" },
+  a23: { img: "run4_1", t: "New Balance 480, 41", p: 4900, c: "Одежда", sz: 41, k: "кроссовки обувь" },
   a24: { img: "run1_2", t: "Беговые кроссовки, новые, 41", p: 4990, c: "Бег", sz: 41, cond: "Новые", s: "Магазин «Бегун»", shop: true, sr: "4,7", sn: 389 },
+  n01: { img: "iphone12", t: "iPhone 12, 128 ГБ, красный", p: 27900, c: "Электроника", cond: "Б/у, отличное", s: "Кирилл", k: "телефон смартфон айфон", d: "Аккумулятор 87%, без ремонтов, коробка и чек. Проверка при получении через Доставку." },
+  n02: { img: "macbook", t: "MacBook Air 13, 8/256 ГБ", p: 48000, c: "Электроника", s: "Вадим", k: "ноутбук макбук", d: "Батарея 89%, без царапин на экране, зарядка в комплекте." },
+  n03: { img: "switch", t: "Nintendo Switch, два Joy-Con", p: 21500, c: "Электроника", s: "Арсений", k: "приставка", d: "Полный комплект, док-станция, чехол в подарок." },
+  n04: { img: "kindle", t: "Kindle Paperwhite 2023", p: 11900, c: "Электроника", cond: "Б/у, как новый", s: "Таисия", k: "электронная книга читалка", d: "Подсветка без пятен, обложка в комплекте." },
+  n05: { img: "airpods_pro", t: "AirPods Pro 2", p: 14500, c: "Электроника", cond: "Б/у, отличное", s: "Марат", k: "наушники", d: "Оригинал, серийный номер проверяется, шумоподавление работает." },
+  n06: { img: "airpods_max", t: "AirPods Max, серебристые", p: 39000, c: "Электроника", s: "Эльвира", k: "наушники", d: "Носила полгода, амбушюры чистые, чехол в комплекте." },
+  n07: { img: "keyboard", t: "Механическая клавиатура с подсветкой", p: 5900, c: "Электроника", s: "Лёша", d: "Красные свитчи, все клавиши работают." },
+  n08: { img: "ipad", t: "iPad Air, 64 ГБ", p: 18500, c: "Электроника", s: "Светлана", k: "планшет", d: "Экран без царапин, отвязан от iCloud, зарядка в комплекте." },
+  n09: { img: "jbl", t: "Колонка JBL Flip 4", p: 4200, c: "Электроника", s: "Тимофей", d: "Держит заряд 10 часов, защита от воды." },
+  n10: { img: "ps5", t: "PlayStation 5 с дисководом", p: 46000, c: "Электроника", cond: "Б/у, отличное", s: "Руслан", k: "приставка", d: "Куплена в 2024, геймпад DualSense, гарантия магазина до конца года." },
+  n11: { img: "gopro", t: "Экшн-камера GoPro Max 360", p: 24000, c: "Электроника", s: "Ян", d: "Две батареи, крепления, карта 64 ГБ." },
+  n12: { img: "denim", t: "Джинсовая куртка, M", p: 2900, c: "Одежда", s: "Алина", k: "джинсовка", d: "Почти не носила, плотный деним." },
+  n13: { img: "leather", t: "Кожаная куртка, натуральная кожа, 48", p: 9500, c: "Одежда", s: "Влад", d: "Мягкая кожа, подклад целый, молнии работают." },
+  n14: { img: "hoodie_red", t: "Худи Sonoma Raceway, L", p: 2400, c: "Одежда", s: "Майя", k: "толстовка", d: "Привезли из США, тёплое, с начёсом." },
+  n15: { img: "hoodie_black", t: "Худи оверсайз, чёрное", p: 1900, c: "Одежда", s: "Ксения", k: "толстовка", d: "Хлопок, без катышков." },
+  n16: { img: "puffer", t: "Пуховик мужской, 50", p: 8900, c: "Одежда", s: "Игнат", k: "куртка зимняя", d: "Носил один сезон, тёплый, капюшон съёмный." },
+  n17: { img: "puffer_rl", t: "Пуховик Polo Ralph Lauren, винтаж", p: 12900, c: "Одежда", s: "Second Floor", shop: true, sr: "4,9", sn: 128, k: "куртка зимняя", d: "Оригинал, проверка подлинности при получении." },
+  n18: { img: "converse", t: "Кеды Converse Chuck Taylor, 42", p: 3500, c: "Одежда", sz: 42, s: "Лиза", k: "кроссовки кеды обувь", d: "Надевала пару раз, оригинал." },
+  n19: { img: "martens", t: "Ботинки Dr. Martens 1460, 41", p: 9900, c: "Одежда", sz: 41, s: "Мирон", k: "обувь мартинсы", d: "Разношены, кожа в хорошем состоянии." },
+  n20: { img: "canon_ae1", t: "Canon AE-1 Program, 50 мм", p: 14500, c: "Фото", s: "Фотолавка", shop: true, sr: "4,8", sn: 342, k: "фотоаппарат плёночный", d: "Проверен, затвор и экспонометр точные, новые батарейки." },
+  n21: { img: "polaroid", t: "Polaroid SX-70, рабочий", p: 18000, c: "Фото", s: "Вера", k: "фотоаппарат полароид", d: "Проверен кассетой, мех без дырок." },
+  n22: { img: "nikon_f3", t: "Nikon F3 с Nikkor 50 мм", p: 21000, c: "Фото", s: "Лев", k: "фотоаппарат плёночный", d: "Плёночная классика, видоискатель чистый." },
+  n23: { img: "x100", t: "Fujifilm X100", p: 32000, c: "Фото", s: "Дина", k: "фотоаппарат", d: "Пробег 12 тыс. кадров, две батареи." },
+  n24: { img: "eos600d", t: "Canon EOS 600D, без объектива", p: 12500, c: "Фото", s: "Марк", k: "фотоаппарат зеркалка", d: "Пробег 18 тыс. кадров, всё работает." },
+  n25: { img: "helios", t: "Объектив Гелиос-44-2, 58 мм", p: 2800, c: "Фото", s: "Виктор", k: "объектив", d: "Без грибка и царапин, переходник на Canon EF." },
+  n26: { img: "zenit_ttl", t: "Зенит TTL, серия «Олимпиада-80»", p: 2500, c: "Фото", s: "Николай", k: "фотоаппарат плёночный", d: "Юбилейная серия, механика рабочая." },
+  n27: { img: "armchair", t: "Кресло в старинном стиле", p: 24000, c: "Для дома", s: "Старый дом", shop: true, sr: "4,9", sn: 87, k: "мебель", d: "Отреставрировано, кожаная обивка." },
+  n28: { img: "lamp_floor", t: "Торшер с двумя плафонами", p: 2300, c: "Для дома", s: "Анна", k: "лампа свет", d: "Высота 180 см, гибкая ножка для чтения." },
+  n29: { img: "lamp_tiffany", t: "Торшер в стиле Тиффани", p: 16500, c: "Для дома", s: "Старый дом", shop: true, sr: "4,9", sn: 87, k: "лампа свет", d: "Витражный абажур, проводка заменена." },
+  n30: { img: "plant", t: "Искусственное растение в кашпо", p: 1500, c: "Для дома", s: "Лана", d: "Как живое, поливать не нужно." },
+  n31: { img: "bookcase", t: "Книжный шкаф, массив", p: 15000, c: "Для дома", s: "Борис", k: "мебель", d: "Полки регулируются, самовывоз или Доставка до двери." },
+  n32: { img: "kettle_white", t: "Электрический чайник, белый", p: 1200, c: "Для дома", s: "Зоя", d: "1,7 литра, автоотключение." },
+  n33: { img: "kettle_glass", t: "Стеклянный чайник Bosch", p: 2900, c: "Для дома", s: "Зоя", d: "С подсветкой, почти новый." },
+  n34: { img: "grinder", t: "Ручная кофемолка Zassenhaus", p: 3400, c: "Для дома", s: "Фёдор", d: "Жернова стальные, помол настраивается." },
+  n35: { img: "guitar_yamaha", t: "Акустическая гитара Yamaha FG", p: 13500, c: "Хобби", s: "Платон", k: "гитара", d: "Строй держит, струны новые, чехол в подарок." },
+  n36: { img: "ukulele", t: "Укулеле сопрано", p: 2600, c: "Хобби", s: "Ева", k: "гитара", d: "Для начинающих, с самоучителем." },
+  n37: { img: "catan", t: "Настольная игра «Колонизаторы»", p: 3200, c: "Хобби", s: "Семён", k: "настолка игра", d: "Все фишки на месте, играли пару раз." },
+  n38: { img: "lego", t: "LEGO Technic, трактор John Deere", p: 9800, c: "Хобби", s: "Антон", k: "лего конструктор", d: "Собран один раз, инструкция и коробка есть." },
+  n39: { img: "korg", t: "Синтезатор Korg Wavestation", p: 54000, c: "Хобби", s: "Октава", shop: true, sr: "4,8", sn: 156, d: "Легендарный цифровой синтезатор, проверен." },
+  n40: { img: "chess", t: "Шахматы деревянные, Стаунтон", p: 4500, c: "Хобби", s: "Михаил", d: "Утяжелённые фигуры, доска 50 см." },
+  n41: { img: "record", t: "Пластинка, 10 дюймов, 1950-е", p: 900, c: "Хобби", s: "Вениамин", k: "винил", d: "Без царапин, конверт целый." },
+  n42: { img: "bike_wood", t: "Городской велосипед с деревянной рамой", p: 38000, c: "Спорт", s: "Эмиль", k: "велосипед", d: "Рама из дерева, 8 скоростей, редкая модель." },
+  n43: { img: "snowboard", t: "Сноуборд Arbor, 156 см", p: 14000, c: "Спорт", s: "Тихон", d: "Катался два сезона, кант без зазубрин." },
+  n44: { img: "dumbbells", t: "Гантели неопреновые, набор", p: 3500, c: "Спорт", s: "Регина", d: "От 1 до 5 кг, 10 штук." },
+  n45: { img: "yoga", t: "Коврик для йоги, 6 мм", p: 990, c: "Спорт", cond: "Новый", s: "Асана", shop: true, sr: "4,9", sn: 211, d: "Нескользящий, несколько цветов." },
+  n46: { img: "gloves", t: "Боксёрские перчатки Everlast, 12 oz", p: 2900, c: "Спорт", s: "Рустам", d: "Тренировался полгода, внутри сухо и чисто." },
+  n47: { img: "kettlebell", t: "Гиря 16 кг", p: 2200, c: "Спорт", s: "Захар", d: "Литая, ручка без сколов." },
+  n48: { img: "solaris", t: "Hyundai Solaris 1.6 AT, 2016, 112 000 км", p: 980000, c: "Авто", cond: "Не битый, 2 владельца", s: "Геннадий", pl: "Химки", k: "машина", d: "Обслуживание по регламенту, зимняя резина в комплекте." },
+  n49: { img: "octavia", t: "Skoda Octavia Combi, 2024, 18 000 км", p: 3450000, c: "Авто", cond: "Как новый", s: "Автосалон «Север»", shop: true, sr: "4,7", sn: 640, k: "машина универсал", d: "Гарантия производителя, один владелец, проверка по VIN." },
+  n50: { img: "camry", t: "Toyota Camry 2.5, 2021, 54 000 км", p: 3150000, c: "Авто", cond: "Не битая, 1 владелец", s: "Олеся", k: "машина", d: "Обслуживание у дилера, полный комплект ключей." },
+  n51: { img: "balance_bike", t: "Беговел детский", p: 2500, c: "Детям", s: "Татьяна", d: "Для 2-4 лет, регулируемое седло." },
+  n52: { img: "teddy", t: "Плюшевый мишка в свитере", p: 900, c: "Детям", cond: "Новый", s: "Ульяна", k: "игрушка", d: "Высота 35 см, гипоаллергенный." },
+  n53: { img: "carseat", t: "Автокресло Inglesina, 0-18 кг", p: 6500, c: "Детям", s: "Маргарита", k: "автокресло", d: "Без ДТП, чехол стирали, ремни целые." },
+  n54: { img: "toy_train", t: "Деревянная железная дорога", p: 3300, c: "Детям", s: "Лука", k: "игрушка", d: "40 деталей, совместима с IKEA." },
 };
 Object.entries(L).forEach(([id, x], i) => {
   x.id = id;
@@ -519,11 +576,51 @@ Object.entries(L).forEach(([id, x], i) => {
   x.s = x.s || ["Дарья", "Антон", "Елена", "Никита", "Ольга"][i % 5];
   x.sr = x.sr || ["4,9", "5,0", "4,8"][i % 3];
   x.sn = x.sn || 5 + ((i * 7) % 40);
+  x.k = x.k || "";
   x.d = x.d || "В хорошем состоянии, всё работает. Отправлю Авито Доставкой или встреча у метро.";
 });
 
-/* мнения владельцев в карточке */
-const OWN = {
+/* категории Сигнала: картинка, подсказка, что спросить */
+const CATM = {
+  "Бег": { img: "run6_1", ask: "беговые кроссовки", pitch: "Знатоки беговой обуви подскажут, какая модель подойдёт под вашу стопу и пробег.", req: "Выбираю беговые кроссовки", sec: "Брал похожие в прошлом году: обязательно примерьте при получении, размерная сетка у моделей разная." },
+  "Одежда": { img: "martens", ask: "одежду и обувь", pitch: "Знатоки подскажут по размеру, посадке и качеству вещи.", req: "Выбираю одежду", sec: "Попросите у продавца замеры по спинке и рукаву: размеры у брендов сильно отличаются." },
+  "Электроника": { img: "switch", ask: "технику", pitch: "Знатоки подскажут, что проверить и как не переплатить.", req: "Выбираю технику", sec: "Проверьте серийный номер и аккумулятор, берите через Доставку с проверкой при получении." },
+  "Фото": { img: "canon_ae1", ask: "фототехнику", pitch: "Знатоки фото подскажут, как проверить аппарат и какой объектив взять.", req: "Выбираю фототехнику", sec: "Попросите снимки, сделанные этим аппаратом: по ним сразу видно, всё ли в порядке." },
+  "Для дома": { img: "lamp_floor", ask: "вещи для дома", pitch: "Знатоки подскажут, что подойдёт по размеру и прослужит долго.", req: "Выбираю вещь для дома", sec: "Уточните габариты и как будете везти: крупное лучше сразу с доставкой до двери." },
+  "Хобби": { img: "guitar_yamaha", ask: "что-то для хобби", pitch: "Знатоки подскажут, с чего начать и на чём не стоит экономить.", req: "Выбираю вещь для хобби", sec: "Для старта не берите самое дорогое: сначала поймите, затянет ли." },
+  "Спорт": { img: "bike_wood", ask: "спортивный инвентарь", pitch: "Знатоки подскажут, что подойдёт под ваш уровень и цели.", req: "Выбираю спортивный инвентарь", sec: "У б/у инвентаря смотрите на износ: состояние важнее бренда." },
+  "Авто": { img: "vesta", ask: "машину", pitch: "Владельцы этих моделей расскажут о слабых местах и реальных расходах.", req: "Выбираю машину", sec: "Проверьте машину по VIN и съездите на диагностику до сделки." },
+  "Детям": { img: "teddy", ask: "вещи для ребёнка", pitch: "Родители, которые уже пользовались, подскажут, что удобно на деле.", req: "Выбираю вещь для ребёнка", sec: "Детские вещи часто продают почти новыми: смотрите дату выпуска и комплектность." },
+};
+const CATS9 = Object.keys(CATM);
+/* боты-знатоки: кто первым отвечает на запрос в категории */
+const EXP = {
+  "Бег": { by: "Илья", tag: ", знаток беговой обуви,", b: ["own", "exp"], own: "Asics Gel-Cumulus 22 2E · куплены на Авито", def: "a1", t: n => `Из ваших вариантов я бы взял ${n}. Главное - примерьте при получении: у беговых моделей разные колодки и полнота.` },
+  "Одежда": { by: "Лера", tag: ", знаток одежды,", b: ["own", "exp"], own: "Dr. Martens 1460 · 3 года", def: "n19", t: n => `Из ваших вариантов я бы взяла ${n}. Попросите у продавца замеры и фото бирки: так сразу видно размер и оригинальность.` },
+  "Электроника": { by: "Игорь", tag: ", знаток техники,", b: ["own", "exp"], own: "6 покупок техники на Авито", def: "a13", t: n => `Я бы взял ${n}. Проверьте аккумулятор и серийный номер, берите через Доставку с проверкой при получении.` },
+  "Фото": { by: "Нина", tag: ", знаток фототехники,", b: ["own", "exp"], own: "Зенит-Е · 5 лет", def: "a14", t: n => `${n} - хороший выбор. Проверьте затвор на всех выдержках и попросите снимки, сделанные этим аппаратом.` },
+  "Для дома": { by: "Елена", tag: "", b: ["own"], own: "обставила квартиру вещами с Авито", def: "a17", t: n => `Мне нравится ${n}. Уточните габариты и состояние по видео, крупное везите с доставкой до двери.` },
+  "Хобби": { by: "Гоша", tag: ", знаток инструментов,", b: ["own", "exp"], own: "Yamaha FG · 8 лет", def: "n35", t: n => `Для старта ${n} - нормальный вариант. Не переплачивайте: сначала поймите, затянет ли, потом обновитесь.` },
+  "Спорт": { by: "Стас", tag: ", знаток спортивного инвентаря,", b: ["own", "exp"], own: "сноуборд Arbor · 5 сезонов", def: "n43", t: n => `${n} подойдёт. У б/у инвентаря смотрите на износ и попросите фото крупным планом.` },
+  "Авто": { by: "Андрей", tag: ", владелец Vesta,", b: ["own", "exp"], own: "LADA Vesta · 3 года", def: "a25", t: n => `Из ваших вариантов смотрел бы ${n}. До сделки проверка по VIN и диагностика на независимом сервисе.` },
+  "Детям": { by: "Маша", tag: "", b: ["own"], own: "двое детей, всё покупали на Авито", def: "n53", t: n => `${n} - хороший вариант. У детских вещей смотрите дату выпуска и комплектность, автокресла только без ДТП.` },
+};
+const HELP = {
+  "Илья": { lvl: "Знаток беговой обуви", helped: 48, ans: 112, since: 2016, proofs: ["Asics Gel-Cumulus 22 2E · куплены на Авито, 2025", "Asics Gel-Trail Lahar 5 · куплены на Авито, 2024", "Garmin Forerunner 255 · куплены на Авито, 2024"] },
+  "Света": { lvl: "Знаток беговой обуви", helped: 31, ans: 64, since: 2018, proofs: ["Asics Gel-Trail Lahar 5 GTX · куплены на Авито, 2025", "Sony WI-XB400 · куплены на Авито, 2025"] },
+  "Катя": { lvl: "Советчик · Бег", helped: 9, ans: 23, since: 2019, proofs: ["Nike Pegasus 38 · куплены на Авито, 2025"] },
+  "Игорь": { lvl: "Знаток · Электроника", helped: 14, ans: 37, since: 2015, proofs: ["PlayStation 4 · куплена на Авито, 2022", "iPhone 12 · куплен на Авито, 2024"] },
+  "Нина": { lvl: "Знаток · Фото", helped: 22, ans: 41, since: 2017, proofs: ["Зенит-Е · куплен на Авито, 2021", "Киев-60 · куплен на Авито, 2023"] },
+  "Елена": { lvl: "Советчик · Для дома", helped: 6, ans: 11, since: 2020, proofs: ["Кофеварка Krups · куплена на Авито, 2024"] },
+  "Лера": { lvl: "Знаток · Одежда", helped: 27, ans: 58, since: 2018, proofs: ["Dr. Martens 1460 · куплены на Авито, 2023", "Пуховик · куплен на Авито, 2024"] },
+  "Гоша": { lvl: "Знаток · Хобби", helped: 19, ans: 44, since: 2016, proofs: ["Yamaha FG · куплена на Авито, 2018", "Укулеле · куплено на Авито, 2024"] },
+  "Стас": { lvl: "Знаток · Спорт", helped: 16, ans: 30, since: 2019, proofs: ["Сноуборд Arbor · куплен на Авито, 2021"] },
+  "Андрей": { lvl: "Знаток · Авто", helped: 33, ans: 71, since: 2014, proofs: ["LADA Vesta · куплена на Авито, 2022"] },
+  "Ольга": { lvl: "Советчик · Авто", helped: 8, ans: 19, since: 2017, proofs: ["Hyundai Solaris · куплен на Авито, 2021"] },
+  "Маша": { lvl: "Советчик · Детям", helped: 12, ans: 25, since: 2019, proofs: ["Автокресло · куплено на Авито, 2023", "Беговел · куплен на Авито, 2024"] },
+  "Кирилл": { lvl: "Советчик", helped: 7, ans: 29, since: 2020, proofs: ["14 покупок на Авито за 3 года, все с отзывами"] },
+};
+const OWN0 = {
   a1: [
     { who: "Илья", m: "бегает в таких же · 900 км", t: "Амортизация не просела. Полнота 2E - то, что нужно для широкой стопы: в обычной давит в носке." },
     { who: "Света", m: "носила сезон", t: "Тяжеловаты для темповых, но на длинные спокойные - лучшие из того, что пробовала." },
@@ -531,81 +628,158 @@ const OWN = {
   a2: [{ who: "Катя", m: "бегает в таких год", t: "Лёгкие, но узкие в носке. На широкую стопу только с примеркой." }],
   a9: [{ who: "Кирилл", m: "владеет 2 года", t: "Батареи хватает на неделю тренировок. Для старта переплата, под марафон - лучшие." }],
   a13: [{ who: "Игорь", m: "владеет 4 года", t: "Для игр с друзьями хватает. Проверьте, не шумит ли вентилятор, и берите с проверкой при получении." }],
-  a14: [
-    { who: "Вы", m: "снимаете на такой 3 года", t: "Гелиос-44 даёт мягкий фон, для портретов то, что надо. Проверьте затвор на всех выдержках и что стрелка экспонометра шевелится на свету." },
-    { who: "Нина", m: "владеет 5 лет", t: "Тяжёлый, но почти неубиваемый. Плёнку заряжать проще, чем кажется." },
-  ],
+  a14: [{ who: "Нина", m: "владеет 5 лет", t: "Тяжёлый, но почти неубиваемый. Плёнку заряжать проще, чем кажется." }],
   a25: [
     { who: "Андрей", m: "владеет 3 года · 70 000 км", t: "За 3 года только плановое ТО. Из слабых мест - шумоизоляция и лючок бака зимой. Обязательно проверьте пороги и арки." },
     { who: "Ольга", m: "владеет 2 года", t: "Для города удобная, клиренс выручает зимой. Механика лучше робота: в пробках не дёргается." },
-    { who: "Тимур", m: "продал в 2025", t: "Спросите, менялось ли сцепление: к 70 000 км его часто уже пора менять." },
+    { who: "Егор", m: "продал в 2025", t: "Спросите, менялось ли сцепление: к 70 000 км его часто уже пора менять." },
   ],
-};
-/* кто отвечает: подтверждения для профиля советчика */
-const HELP = {
-  "Илья": { lvl: "Знаток беговой обуви", helped: 48, ans: 112, since: 2016, proofs: ["Asics Gel-Cumulus 22 2E · куплены на Авито, 2025", "Asics Gel-Trail Lahar 5 · куплены на Авито, 2024", "Garmin Forerunner 255 · куплены на Авито, 2024"] },
-  "Света": { lvl: "Знаток беговой обуви", helped: 31, ans: 64, since: 2018, proofs: ["Asics Gel-Trail Lahar 5 GTX · куплены на Авито, 2025", "Sony WI-XB400 · куплены на Авито, 2025"] },
-  "Катя": { lvl: "Советчик · Бег", helped: 9, ans: 23, since: 2019, proofs: ["Nike Pegasus 38 · куплены на Авито, 2025"] },
-  "Игорь": { lvl: "Советчик · Электроника", helped: 7, ans: 15, since: 2015, proofs: ["PlayStation 4 · куплена на Авито, 2022"] },
-  "Нина": { lvl: "Знаток · Фото", helped: 22, ans: 41, since: 2017, proofs: ["Зенит-Е · куплен на Авито, 2021", "Киев-60 · куплен на Авито, 2023"] },
-  "Елена": { lvl: "Советчик · Для дома", helped: 6, ans: 11, since: 2020, proofs: ["Кофеварка Krups · куплена на Авито, 2024"] },
-  "Runlab": { shop: true }, "Магазин «Бегун»": { shop: true }, "Фотолавка": { shop: true },
+  n01: [{ who: "Игорь", m: "пользуется 2 года", t: "Батарея к третьему году садится до 80%, заложите замену в цену. Камера всё ещё отличная." }],
+  n19: [{ who: "Лера", m: "носит 3 года", t: "Первые две недели натирают, потом как тапочки. Берите свой размер или на полразмера меньше." }],
+  n35: [{ who: "Гоша", m: "играет 8 лет", t: "Для своих денег звучит отлично, гриф не ведёт. Поменяйте струны и будет как новая." }],
+  n43: [{ who: "Стас", m: "катается 5 сезонов", t: "Мягкий, прощает ошибки, для подготовленных склонов идеален." }],
+  n48: [{ who: "Ольга", m: "владеет 4 года", t: "Неприхотливый, запчасти дешёвые. Шумноват на трассе, смотрите на состояние подвески." }],
+  n53: [{ who: "Маша", m: "двое детей", t: "Крепление удобное, ребёнок не потеет. Проверьте дату выпуска на наклейке снизу." }],
+  n20: [{ who: "Нина", m: "снимала 2 года", t: "Отличный первый плёночный аппарат: автомат по выдержке выручает. Проверьте, не пищит ли затвор." }],
 };
 
-/* обсуждения */
-const D = [
-  { id: "d6", who: "Олег", ago: "1 ч", title: "Кроссовки на зиму: шипы или протектор?", text: "Бегаю в парке по утрам, местами лёд. Кто что носит и не скользит?", tags: ["Бег", "зима"], cnt: 23, heat: 9, status: "hot",
-    ans: [{ by: "Света", b: ["own", "exp"], own: "Asics Gel-Trail Lahar 5 GTX", t: "Для парка хватает трейлового протектора и мембраны: ноги сухие, держит на снегу. Шипы нужны только на чистый лёд.", it: "a6" }] },
-  { id: "d1", who: "Марина", ago: "25 мин", title: "Кроссовки для первого полумарафона", text: "Бегаю два года, 30-40 км в неделю. Стопа широкая, размер 41-42. Нужна амортизация, но не тяжёлые. Бюджет до 10 000.", tags: ["Бег", "до 10 000 ₽", "41-42"], cnt: 14, heat: 6, status: "hot",
-    ans: [
-      { by: "Runlab", b: ["sel"], t: "Есть новые Adizero Boston 12 в 42 размере со скидкой, примерка при получении.", it: "a3" },
-      { by: "Катя", b: ["own"], own: "Nike Pegasus 38", t: "Pegasus лёгкие, но узкие в носке. С широкой стопой обязательно примерка при получении.", it: "a2" },
-      { by: "Илья", b: ["own", "exp"], own: "Asics Gel-Cumulus 22 2E · куплены на Авито", t: "С широкой стопой смотрите Cumulus в полноте 2E. Бегаю в таких 8 месяцев, 900 км, амортизация не просела. Сейчас на Авито есть пара 42 размера за 7 900.", it: "a1", helped: true },
-    ] },
-  { id: "d2", who: "Денис", ago: "35 мин", title: "Наушники для бега, чтобы не выпадали", text: "Обычные вкладыши вылетают на третьем километре. Бюджет до 4 000.", tags: ["Электроника", "до 4 000 ₽"], cnt: 9, heat: 4, status: "hot",
-    ans: [{ by: "Света", b: ["own"], own: "Sony WI-XB400 · год", t: "Берите с шейным шнурком: даже если вкладыш выпадет, наушники не потеряются. Бегаю с такими год.", it: "a11" }] },
-  { id: "d3", who: "Аня", circle: "Семья", ago: "12 мин", title: "Плёночный фотоаппарат папе в подарок", text: "Папа снимал на Зенит в молодости. Хочу похожий и рабочий, до 5 000. Как проверить, что он живой?", tags: ["Фото", "до 5 000 ₽", "подарок"], cnt: 0, heat: 0, status: "new", ans: [] },
-  { id: "d7", who: "Кирилл", ago: "50 мин", title: "Первый скейт, чтобы ездить до учёбы", text: "3 км по ровному асфальту. Скейт, круизер или лонгборд? Бюджет до 6 000.", tags: ["Спорт", "до 6 000 ₽"], cnt: 0, heat: 0, status: "new", ans: [] },
-  { id: "d4", who: "Сергей", ago: "40 мин", title: "PS4 сейчас или копить на PS5?", text: "Сыну 10 лет, играть с друзьями. Сколько реально стоит живая PS4 и что проверить при покупке?", tags: ["Электроника", "до 20 000 ₽"], cnt: 1, heat: 1, status: "new",
-    ans: [{ by: "Игорь", b: ["own"], own: "PlayStation 4 · 4 года", t: "Для игр с друзьями хватит. Проверьте, не шумит ли вентилятор, и берите через Доставку с проверкой при получении.", it: "a13" }] },
-  { id: "d5", who: "Олег", ago: "вчера", title: "Первый плёночный фотоаппарат до 5 000", text: "Хочу попробовать плёнку. С чего начать, чтобы не разочароваться?", tags: ["Фото", "до 5 000 ₽"], cnt: 4, heat: 0, status: "done",
-    ans: [{ by: "Вы", b: ["own", "exp"], own: "Зенит-Е · 3 года", t: "Для старта берите Зенит-Е с Гелиосом: недорого, надёжно, объектив отличный. Перед покупкой проверьте затвор на всех выдержках.", helped: true, bought: true }] },
-];
-
-const COLLS = [
-  { id: "c1", name: "К полумарафону", shared: false, members: ["Вы"], items: ["a1", "a12", "a10"], com: [], votes: {} },
-  { id: "c2", name: "Гостиная", shared: true, members: ["Вы", "Мама"], items: ["a19", "a17"], com: [{ who: "Мама", on: "a19", t: "Этот берём? Цвет как у кресла" }, { who: "Вы", on: "a19", t: "Да, съезжу посмотреть в субботу" }], votes: {} },
-  { id: "c3", name: "Подарок папе", shared: true, members: ["Вы", "Аня"], items: ["a14", "a20"], com: [{ who: "Аня", on: "a14", t: "Зенит, как у него был!" }], votes: {} },
-];
-const CIRCLES = [
-  { id: "fam", name: "Семья", people: ["Мама", "Папа", "Аня"] },
-  { id: "run", name: "Пробежки", people: ["Даня", "Кира", "Тимур"] },
-  { id: "fr", name: "Друзья", people: ["Никита", "Полина", "Ваня"] },
-];
-const CHATS = [
-  { id: "ch1", who: "Дмитрий", it: "a1", tm: "12:40", un: 1, msgs: [{ me: true, t: "Здравствуйте! Ещё продаёте?" }, { t: "Да, актуально. Могу отправить Авито Доставкой" }] },
-  { id: "ch2", who: "Runlab", it: "a3", tm: "11:02", un: 1, msgs: [{ t: "Примерка при получении доступна, размерная сетка в описании" }] },
-  { id: "ch3", who: "Мария", it: "a17", tm: "вчера", un: 1, msgs: [{ me: true, t: "Кофеварка рабочая?" }, { t: "Да, всё работает, могу показать видео" }] },
-];
+/* стартовые данные: демо-аккаунт или новый аккаунт */
+function botD(demo) {
+  return [
+    { id: "d6", who: "Олег", ago: "1 ч", title: "Кроссовки на зиму: шипы или протектор?", text: "Бегаю в парке по утрам, местами лёд. Кто что носит и не скользит?", tags: ["Бег", "зима"], cnt: 23, heat: 9, status: "hot",
+      ans: [{ by: "Света", b: ["own", "exp"], own: "Asics Gel-Trail Lahar 5 GTX", t: "Для парка хватает трейлового протектора и мембраны: ноги сухие, держит на снегу. Шипы нужны только на чистый лёд.", it: "a6" }] },
+    { id: "d1", who: "Марина", ago: "25 мин", title: "Кроссовки для первого полумарафона", text: "Бегаю два года, 30-40 км в неделю. Стопа широкая, размер 41-42. Нужна амортизация, но не тяжёлые. Бюджет до 10 000.", tags: ["Бег", "до 10 000 ₽", "41-42"], cnt: 14, heat: 6, status: "hot",
+      ans: [
+        { by: "Runlab", b: ["sel"], t: "Есть новые Adizero Boston 12 в 42 размере со скидкой, примерка при получении.", it: "a3" },
+        { by: "Катя", b: ["own"], own: "Nike Pegasus 38", t: "Pegasus лёгкие, но узкие в носке. С широкой стопой обязательно примерка при получении.", it: "a2" },
+        { by: "Илья", b: ["own", "exp"], own: "Asics Gel-Cumulus 22 2E · куплены на Авито", t: "С широкой стопой смотрите Cumulus в полноте 2E. Бегаю в таких 8 месяцев, 900 км, амортизация не просела. Сейчас на Авито есть пара 42 размера за 7 900.", it: "a1", helped: true },
+      ] },
+    { id: "d11", who: "Артём", ago: "1 ч", title: "Первая машина до 1,1 млн: Vesta или Solaris?", text: "Езжу по городу, иногда по трассе. Хочу без сюрпризов в обслуживании.", tags: ["Авто", "до 1 100 000 ₽"], cnt: 18, heat: 5, status: "hot",
+      ans: [
+        { by: "Андрей", b: ["own", "exp"], own: "LADA Vesta · 3 года", t: "Vesta проще и дешевле в ремонте, клиренс выше. Смотрите на историю обслуживания, а не на марку.", it: "a25" },
+        { by: "Ольга", b: ["own"], own: "Hyundai Solaris · 4 года", t: "Solaris тише и держит цену. Запчасти дешёвые, главное - проверить подвеску.", it: "n48" },
+      ] },
+    { id: "d2", who: "Денис", ago: "35 мин", title: "Наушники для бега, чтобы не выпадали", text: "Обычные вкладыши вылетают на третьем километре. Бюджет до 4 000.", tags: ["Электроника", "до 4 000 ₽"], cnt: 9, heat: 4, status: "hot",
+      ans: [{ by: "Света", b: ["own"], own: "Sony WI-XB400 · год", t: "Берите с шейным шнурком: даже если вкладыш выпадет, наушники не потеряются. Бегаю с такими год.", it: "a11" }] },
+    { id: "d13", who: "Лиза", ago: "2 ч", title: "Dr. Martens: брать свой размер или меньше?", text: "Ношу 41, нога узкая. Боюсь, что будут болтаться.", tags: ["Одежда", "до 10 000 ₽"], cnt: 7, heat: 3, status: "hot",
+      ans: [{ by: "Лера", b: ["own", "exp"], own: "Dr. Martens 1460 · 3 года", t: "С узкой ногой берите на полразмера меньше и толстый носок на первые недели.", it: "n19" }] },
+    { id: "d3", who: demo ? "Аня" : "Полина", circle: demo ? "Семья" : "Друзья (демо)", ago: "12 мин", title: "Плёночный фотоаппарат папе в подарок", text: "Папа снимал на Зенит в молодости. Хочу похожий и рабочий, до 5 000. Как проверить, что он живой?", tags: ["Фото", "до 5 000 ₽", "подарок"], cnt: 0, heat: 0, status: "new", ans: [] },
+    { id: "d8", who: "Вика", ago: "20 мин", title: "Тёплая куртка на зиму до 10 000", text: "Хожу пешком по 40 минут, нужна такая, чтобы не продувало. Размер 46.", tags: ["Одежда", "до 10 000 ₽"], cnt: 0, heat: 0, status: "new", ans: [] },
+    { id: "d9", who: "Ирина", ago: "45 мин", title: "Торшер для чтения в маленькую комнату", text: "Комната 10 метров, читаю вечером в кресле. Хочу, чтобы свет был направленный.", tags: ["Для дома", "до 5 000 ₽"], cnt: 0, heat: 0, status: "new", ans: [] },
+    { id: "d10", who: "Глеб", ago: "1 ч", title: "Первая гитара для сына 10 лет", text: "Хочет учиться сам по роликам. Акустика или классика и сколько тратить?", tags: ["Хобби", "до 15 000 ₽"], cnt: 0, heat: 0, status: "new", ans: [] },
+    { id: "d12", who: "Оксана", ago: "30 мин", title: "Автокресло б/у: брать или только новое?", text: "Ребёнку год, нужно кресло 0-18 кг. Новые дорогие, на Авито много б/у.", tags: ["Детям", "до 8 000 ₽"], cnt: 0, heat: 0, status: "new", ans: [] },
+    { id: "d7", who: "Кирилл", ago: "50 мин", title: "Первый скейт, чтобы ездить до учёбы", text: "3 км по ровному асфальту. Скейт, круизер или лонгборд? Бюджет до 6 000.", tags: ["Спорт", "до 6 000 ₽"], cnt: 0, heat: 0, status: "new", ans: [] },
+    { id: "d14", who: "Дима", ago: "15 мин", title: "Стельки для бега: нужны ли вообще?", text: "Начал бегать, после 5 км болят своды стопы. Помогут стельки или менять кроссовки?", tags: ["Бег", "до 3 000 ₽"], cnt: 0, heat: 0, status: "new", ans: [] },
+    { id: "d15", who: "Арслан", ago: "1 ч", title: "Что проверить у б/у Camry перед покупкой?", text: "Смотрю Camry 2021 года за 3,1 млн. На что обратить внимание?", tags: ["Авто", "до 3 200 000 ₽"], cnt: 0, heat: 0, status: "new", ans: [] },
+    { id: "d4", who: "Сергей", ago: "40 мин", title: "PS4 сейчас или копить на PS5?", text: "Сыну 10 лет, играть с друзьями. Сколько реально стоит живая PS4 и что проверить при покупке?", tags: ["Электроника", "до 20 000 ₽"], cnt: 1, heat: 1, status: "new",
+      ans: [{ by: "Игорь", b: ["own"], own: "PlayStation 4 · 4 года", t: "Для игр с друзьями хватит. Проверьте, не шумит ли вентилятор, и берите через Доставку с проверкой при получении.", it: "a13" }] },
+    { id: "d5", who: "Олег", ago: "вчера", title: "Первый плёночный фотоаппарат до 5 000", text: "Хочу попробовать плёнку. С чего начать, чтобы не разочароваться?", tags: ["Фото", "до 5 000 ₽"], cnt: 4, heat: 0, status: "done",
+      ans: [demo
+        ? { by: "Вы", b: ["own", "exp"], own: "Зенит-Е · 3 года", t: "Для старта берите Зенит-Е с Гелиосом: недорого, надёжно, объектив отличный. Перед покупкой проверьте затвор на всех выдержках.", helped: true, bought: true }
+        : { by: "Нина", b: ["own", "exp"], own: "Зенит-Е · 5 лет", t: "Для старта берите Зенит-Е с Гелиосом: недорого, надёжно, объектив отличный. Перед покупкой проверьте затвор на всех выдержках.", it: "a14", helped: true, bought: true }] },
+  ];
+}
+const DECK0 = ["a3", "a2", "a22", "a13", "a9", "a4", "a14", "a6", "a11", "a23", "a12", "a8"];
+const HOME0 = ["a25", "a1", "a13", "a9", "HOT", "a14", "a5", "a17", "a19", "a3", "a15", "a20", "a11", "a22", "a10", "a24"];
+const FR = ["огонь, бери!", "мне нравится, но посмотри ещё варианты", "дороговато, может поторговаться?", "беру себе такой же 😄", "а размер точно твой?"];
+const COLLCOM = ["Мне нравится, берём?", "Хороший вариант, но дороговато", "Этот лучше, чем прошлый!", "А доставка есть?"];
 const REPLIES = ["Здравствуйте! Да, актуально", "Можно, оформляйте через Авито Доставку, проверка при получении", "Хорошо, жду заказ", "Да, пишите, если будут вопросы"];
 const REPLIES_CAR = ["Здравствуйте! Да, актуально", "Да, можно на любой сервис, по выходным удобнее", "Небольшой торг у капота", "Пишите, договоримся о времени"];
-const SAVED = [{ q: "кроссовки беговые 42", n: 3 }, { q: "зенит гелиос", n: 1 }];
-const DECK0 = ["a3", "a2", "a22", "a13", "a9", "a4", "a14", "a6", "a11", "a23", "a12", "a8"];
 
-const S = {
-  tab: "home", stack: [], q: "", fav: new Set(["a19", "a14"]), favTab: "items", feedTab: "you", sigTab: "you", dcat: "Все",
-  viewed: ["a5", "a13"], deck: DECK0.slice(), di: 0, likes: [], nopes: [], sent: [], adapted: false, busy: false, via: null,
-  notifs: [
-    { e: "🙌", t: "Олег отметил ваш совет «помогло» и купил Зенит-Е", ago: "1 ч", go: "disc:d5", n: true },
-    { e: "🙋", t: "Аня из круга «Семья» просит помочь: плёночный фотоаппарат папе", ago: "12 мин", go: "disc:d3", n: true },
-    { e: "🔥", t: "В категории «Бег» горит обсуждение: 9 ответов за час", ago: "20 мин", go: "disc:d6" },
-    { e: "📦", t: "Подошла ли теннисная ракетка? Ответ увидят те, кто выбирает такую же", ago: "вчера", go: "rate:a18" },
-  ],
-  nset: { mine: true, circle: true, hot: true, after: true, expert: false },
-  seq: 0, firstLike: true, myAns: 0,
-};
-const unread = () => S.notifs.filter(n => n.n).length;
-const unreadMsgs = () => CHATS.reduce((s, c) => s + c.un, 0);
+/* ===== состояние ===== */
+let ACC = null, D = [], OWN = {}, COLLS = [], CIRCLES = [], CHATS = [], FEED = [], PENDING = [];
+const S = { tab: "home", stack: [], busy: false, via: null };
+const SHOT = /[?&]shot\b/.test(location.search);
+const KEY = "signal-proto-v2";
+const PERSIST = ["tab", "q", "fav", "favTab", "feedTab", "sigTab", "dcat", "viewed", "deck", "di", "likes", "nopes", "sent", "adapted", "askCat", "notifs", "nset", "seq", "firstLike", "myAns", "helped", "bought", "saved", "fr", "shareWhat"];
+const hash = s => { let x = 7; for (const ch of s) x = (x * 31 + ch.charCodeAt(0)) % 100003; return x; };
+const isMine = id => ACC && ACC.demo && L[id].s === ME;
+
+function buildDeck(ints) {
+  const by = {}; ints.forEach(c => by[c] = Object.keys(L).filter(id => L[id].c === c && !isMine(id)).sort((a, b) => hash(a + ACC.name) - hash(b + ACC.name)));
+  const others = Object.keys(L).filter(id => !ints.includes(L[id].c) && L[id].c !== "Авто" && !isMine(id)).sort((a, b) => hash(b + ACC.name) - hash(a + ACC.name));
+  const out = []; let k = 0;
+  while (out.length < 22 && ints.some(c => by[c].length)) {
+    for (const c of ints) if (by[c].length && out.length < 22) out.push(by[c].shift());
+    if (++k % 2 === 0 && others.length) out.push(others.shift());
+  }
+  while (out.length < 14 && others.length) out.push(others.shift());
+  return out;
+}
+function seed(demo) {
+  D = botD(demo);
+  OWN = JSON.parse(JSON.stringify(OWN0));
+  Object.assign(S, { q: "", favTab: "items", feedTab: "you", sigTab: "you", dcat: "Все", di: 0, likes: [], nopes: [], sent: [], adapted: false, askCat: null, seq: 0, firstLike: true, myAns: 0, bought: [], fr: 0, shareWhat: null,
+    nset: { mine: true, circle: true, hot: true, after: true, expert: false } });
+  PENDING = [];
+  if (demo) {
+    OWN.a14.unshift({ who: "Вы", m: "снимаете на такой 3 года", t: "Гелиос-44 даёт мягкий фон, для портретов то, что надо. Проверьте затвор на всех выдержках и что стрелка экспонометра шевелится на свету." });
+    COLLS = [
+      { id: "c1", name: "К полумарафону", shared: false, members: ["Вы"], items: ["a1", "a12", "a10"], com: [], votes: {} },
+      { id: "c2", name: "Гостиная", shared: true, members: ["Вы", "Мама"], items: ["a19", "a17"], com: [{ who: "Мама", on: "a19", t: "Этот берём? Цвет как у кресла" }, { who: "Вы", on: "a19", t: "Да, съезжу посмотреть в субботу" }], votes: {} },
+      { id: "c3", name: "Подарок папе", shared: true, members: ["Вы", "Аня"], items: ["a14", "a20"], com: [{ who: "Аня", on: "a14", t: "Зенит, как у него был!" }], votes: {} },
+    ];
+    CIRCLES = [{ id: "fam", name: "Семья", people: ["Мама", "Папа", "Аня"] }, { id: "run", name: "Пробежки", people: ["Даня", "Кира", "Тимур"] }, { id: "fr", name: "Друзья", people: ["Никита", "Полина", "Ваня"] }];
+    CHATS = [
+      { id: "ch1", who: "Дмитрий", it: "a1", tm: "12:40", un: 1, msgs: [{ me: true, t: "Здравствуйте! Ещё продаёте?" }, { t: "Да, актуально. Могу отправить Авито Доставкой" }] },
+      { id: "ch2", who: "Runlab", it: "a3", tm: "11:02", un: 1, msgs: [{ t: "Примерка при получении доступна, размерная сетка в описании" }] },
+      { id: "ch3", who: "Мария", it: "a17", tm: "вчера", un: 1, msgs: [{ me: true, t: "Кофеварка рабочая?" }, { t: "Да, всё работает, могу показать видео" }] },
+    ];
+    FEED = [
+      { who: "Аня", circle: "Семья", text: "просит помочь: плёночный фотоаппарат папе, до 5 000 ₽", go: "disc:d3", btn: "Помочь", ago: "12 мин" },
+      { who: "Мама", circle: "Семья", text: "прокомментировала диван в подборке «Гостиная»: «Этот берём?»", go: "coll:c2", img: "sofa_1", ago: "40 мин" },
+      { who: "Даня", circle: "Пробежки", text: "переслал: «тебе для полумарафона?»", go: "item:a9", img: "watch_2", ago: "1 ч" },
+    ];
+    Object.assign(S, { fav: new Set(["a19", "a14"]), viewed: ["a5", "a13"], deck: DECK0.slice(), helped: 12, saved: [{ q: "кроссовки беговые 42", n: 3 }, { q: "зенит гелиос", n: 1 }],
+      notifs: [
+        { e: "🙌", t: "Олег отметил ваш совет «помогло» и купил Зенит-Е", ago: "1 ч", go: "disc:d5", n: true },
+        { e: "🙋", t: "Аня из круга «Семья» просит помочь: плёночный фотоаппарат папе", ago: "12 мин", go: "disc:d3", n: true },
+        { e: "🔥", t: "В категории «Бег» горит обсуждение: 9 ответов за час", ago: "20 мин", go: "disc:d6" },
+        { e: "📦", t: "Подошла ли теннисная ракетка? Ответ увидят те, кто выбирает такую же", ago: "вчера", go: "rate:a18" },
+      ] });
+  } else {
+    COLLS = [
+      { id: "c1", name: "Мои находки", shared: false, members: ["Вы"], items: [], com: [], votes: {} },
+      { id: "c2", name: "Выбираем вместе", shared: true, members: ["Вы", "Полина"], items: [], com: [], votes: {} },
+    ];
+    CIRCLES = [{ id: "fr", name: "Друзья (демо)", people: ["Даня", "Полина", "Никита"] }];
+    CHATS = [];
+    FEED = [{ who: "Полина", circle: "Друзья (демо)", text: "просит помочь: плёночный фотоаппарат папе, до 5 000 ₽", go: "disc:d3", btn: "Помочь", ago: "12 мин" }];
+    const hot = D.find(d => d.status === "hot" && ACC.ints.includes(d.tags[0]));
+    Object.assign(S, { fav: new Set(), viewed: [], deck: buildDeck(ACC.ints), helped: 0, saved: [],
+      notifs: [{ e: "👋", t: `${ACC.name}, добро пожаловать в Сигнал! Свайпайте подборку, а если сомневаетесь, спросите знатоков`, ago: "сейчас", go: "tab:sig", n: true }]
+        .concat(hot ? [{ e: "🔥", t: `В категории «${hot.tags[0]}» горит обсуждение: ${pl(hot.heat, ANS)} за час`, ago: "5 мин", go: "disc:" + hot.id, n: true }] : []) });
+  }
+}
+function save() {
+  if (SHOT || !ACC) return;
+  const s = {}; PERSIST.forEach(k => s[k] = k === "fav" ? [...S.fav] : S[k]);
+  try { localStorage.setItem(KEY, JSON.stringify({ v: 2, ACC, D, OWN, COLLS, CIRCLES, CHATS, FEED, PENDING, S: s })); } catch (e) { /* приватный режим: работаем без сохранения */ }
+}
+function load() {
+  let x = null;
+  try { x = JSON.parse(localStorage.getItem(KEY) || "null"); } catch (e) { return false; }
+  if (!x || x.v !== 2 || !x.ACC || !x.ACC.name) return false;
+  ({ ACC, D, OWN, COLLS, CIRCLES, CHATS } = x); FEED = x.FEED || []; PENDING = x.PENDING || [];
+  Object.assign(S, x.S);
+  const ok = id => !!L[id];
+  S.fav = new Set((x.S.fav || []).filter(ok));
+  S.deck = (S.deck || []).filter(id => id === "ASK" || ok(id));
+  S.viewed = (S.viewed || []).filter(ok); S.likes = (S.likes || []).filter(ok);
+  COLLS.forEach(c => c.items = c.items.filter(ok));
+  CHATS = CHATS.filter(c => ok(c.it));
+  return true;
+}
+/* отложенные события ботов переживают перезагрузку страницы */
+function schedule(ms, kind, args) { PENDING.push({ at: Date.now() + ms, kind, args }); save(); }
+setInterval(() => {
+  if (!PENDING.length) return;
+  const now = Date.now(), due = PENDING.filter(p => p.at <= now);
+  if (!due.length) return;
+  PENDING = PENDING.filter(p => p.at > now);
+  due.forEach(p => { try { (EV[p.kind] || (() => {}))(p.args); } catch (e) { /* битое событие пропускаем */ } });
+  save();
+}, 500);
 
 /* ===== иконки ===== */
 const I = {
@@ -631,20 +805,24 @@ const I = {
 const $ = s => document.querySelector(s);
 const COLORS = ["#ff6b6b", "#f59f00", "#37b24d", "#1c7ed6", "#7048e8", "#e64980", "#0ca678", "#4263eb"];
 function col(n) { let x = 0; for (const ch of n) x = (x * 31 + ch.charCodeAt(0)) % 997; return COLORS[x % COLORS.length]; }
-const ava = (n, sz = 34) => `<span class="ava" style="width:${sz}px;height:${sz}px;background:${n === "Вы" ? "#111" : col(n)};font-size:${Math.round(sz * 0.42)}px">${n === "Вы" ? ME[0] : n.replace(/[«"]/g, "")[0]}</span>`;
+const meName = () => (ACC && ACC.name) || "Вы";
+const ava = (n, sz = 34) => `<span class="ava" style="width:${sz}px;height:${sz}px;background:${n === "Вы" ? "#111" : col(n)};font-size:${Math.round(sz * 0.42)}px">${esc((n === "Вы" ? meName() : n.replace(/[«"]/g, ""))[0].toUpperCase())}</span>`;
 const ownCount = id => (OWN[id] || []).length;
 const short = id => L[id].t.split(",")[0];
 const sheetOpen = () => $("#sheet").classList.contains("in");
+const unread = () => S.notifs.filter(n => n.n).length;
+const unreadMsgs = () => CHATS.reduce((s, c) => s + c.un, 0);
+const myCat = () => ACC && ACC.exp;
 let toastT;
 function toast(t, ms = 2800) { const el = $("#toast"); el.innerHTML = t; el.classList.add("in"); clearTimeout(toastT); toastT = setTimeout(() => el.classList.remove("in"), ms); }
 let banT;
 function banner(title, text, go) {
   const el = $("#banner");
-  el.innerHTML = `<span class="mark">${I.sig}</span><div class="tx"><b>${title}</b>${text}</div>`;
+  el.innerHTML = `<span class="mark">${I.sig}</span><div class="tx"><b>${title}</b>${esc(text)}</div>`;
   el.dataset.a = "banner"; el.dataset.v = go || "";
   el.classList.add("in"); clearTimeout(banT); banT = setTimeout(() => el.classList.remove("in"), 4200);
 }
-function notify(e, t, go, title) { S.notifs.unshift({ e, t, ago: "сейчас", go, n: true }); banner(title || "Сигнал", t, go); rerender(); }
+function notify(e, t, go, title) { S.notifs.unshift({ e, t, ago: "сейчас", go, n: true }); banner(title || "Сигнал", t, go); rerender(); save(); }
 const NA = "Этот раздел Авито в прототипе не меняется";
 
 /* ===== навигация ===== */
@@ -665,6 +843,7 @@ function setTab(k) {
   renderTab(); renderNav();
 }
 function renderTab() {
+  if (!ACC) return;
   const fn = { home: homeHTML, fav: favHTML, sig: sigHTML, ads: adsHTML, msg: msgHTML, prof: profHTML }[S.tab];
   const el = $("#t-" + S.tab); const y = el.scrollTop;
   el.innerHTML = fn(); el.scrollTop = y;
@@ -693,6 +872,7 @@ function back() {
 }
 function closeAll() { S.stack.forEach(p => p.el.remove()); S.stack = []; closeSheet(); }
 function rerender() {
+  if (!ACC) return;
   S.stack.forEach(p => {
     if (p.keep) return;
     const pc = p.el.querySelector(".pc"); const y = pc ? pc.scrollTop : 0;
@@ -721,17 +901,18 @@ function scrollToBox(p) {
 }
 function go(target) {
   const [k, id] = target.split(":");
-  if (k === "item") openItem(id);
-  else if (k === "disc") push(discHTML, id);
-  else if (k === "coll") push(collHTML, id);
-  else if (k === "rate") openRate(id);
+  if (k === "item" && L[id]) openItem(id);
+  else if (k === "disc" && D.some(d => d.id === id)) push(discHTML, id);
+  else if (k === "coll" && COLLS.some(c => c.id === id)) push(collHTML, id);
+  else if (k === "rate" && L[id]) openRate(id);
+  else if (k === "tab") setTab(id);
+  else if (k === "sig") { S.sigTab = id; setTab("sig"); }
 }
 
 /* ===== главная ===== */
-const CATS = [["Авто", "vesta", "авто"], ["Недвижимость", "flat", null], ["Работа", "work", null], ["Услуги", "tools", null], ["Электроника", "console_0", "электроника"], ["Хобби", "guitar_2", "хобби"], ["Для дома", "sofa_1", "для дома"], ["Спорт и бег", "run6_1", "кроссовки"], ["Фото", "zenit_1", "фото"]];
-const HOME0 = ["a25", "a1", "a13", "a9", "HOT", "a14", "a5", "a17", "a19", "a3", "a15", "a20", "a11", "a22", "a10", "a24"];
+const CATS = [["Авто", "vesta", "авто"], ["Недвижимость", "flat", null], ["Работа", "work", null], ["Услуги", "tools", null], ["Электроника", "switch", "электроника"], ["Одежда", "martens", "одежда"], ["Для дома", "sofa_1", "для дома"], ["Хобби", "guitar_2", "хобби"], ["Спорт", "bike_wood", "спорт"], ["Бег", "run6_1", "бег"], ["Фото", "zenit_1", "фото"], ["Детям", "teddy", "детям"]];
 function tasteTop() {
-  const cnt = {}; S.likes.forEach(id => { const c = RUN.has(L[id].c) ? "Бег" : L[id].c; cnt[c] = (cnt[c] || 0) + 1; });
+  const cnt = {}; S.likes.forEach(id => cnt[L[id].c] = (cnt[L[id].c] || 0) + 1);
   return Object.entries(cnt).sort((a, b) => b[1] - a[1])[0][0];
 }
 function tasteSize() {
@@ -743,61 +924,72 @@ function tasteSize() {
 const tasteCap = () => Math.ceil(Math.max(...S.likes.map(id => L[id].p)) / 1000) * 1000;
 function tasteScore(id) {
   if (!S.likes.length) return 0;
-  const x = L[id], sz = tasteSize(), runLiked = S.likes.some(l => RUN.has(L[l].c));
-  return (runLiked && RUN.has(x.c) ? 2 : 0) + (sz && x.sz === sz ? 1 : 0) + (x.p <= tasteCap() ? 1 : 0) - (S.nopes.includes(id) ? 3 : 0);
+  const x = L[id], sz = tasteSize(), cats = new Set(S.likes.map(l => L[l].c));
+  return (cats.has(x.c) ? 2 : 0) + (sz && x.sz === sz ? 1 : 0) + (x.p <= tasteCap() ? 1 : 0) - (S.nopes.includes(id) ? 3 : 0);
 }
 function match(id, q) {
-  const x = L[id], hay = (x.t + " " + x.c).toLowerCase();
+  const x = L[id], hay = (x.t + " " + x.c + " " + x.k).toLowerCase();
   if (hay.includes(q)) return true;
-  if (/кросс|бег/.test(q) && RUN.has(x.c)) return true;
   const words = q.split(/\s+/).filter(w => w.length > 2);
   return words.length > 0 && words.every(w => hay.includes(w.slice(0, 5)));
 }
 function homeOrder() {
-  if (!S.adapted) return HOME0;
-  const ids = HOME0.filter(i => i !== "HOT");
-  const all = [...ids.filter(i => RUN.has(L[i].c)), ...ids.filter(i => !RUN.has(L[i].c))];
-  all.splice(4, 0, "HOT");
-  return all;
+  let ids;
+  if (ACC.demo) {
+    const rest = Object.keys(L).filter(id => !HOME0.includes(id) && !isMine(id)).sort((a, b) => hash(a) - hash(b));
+    ids = HOME0.filter(i => i !== "HOT").concat(rest);
+  } else {
+    const mine = Object.keys(L).filter(id => ACC.ints.includes(L[id].c)).sort((a, b) => hash(a + ACC.name) - hash(b + ACC.name));
+    const rest = Object.keys(L).filter(id => !ACC.ints.includes(L[id].c)).sort((a, b) => hash(a + "r") - hash(b + "r"));
+    ids = mine.concat(rest);
+  }
+  if (S.adapted && S.askCat) ids = [...ids.filter(i => L[i].c === S.askCat), ...ids.filter(i => L[i].c !== S.askCat)];
+  ids.splice(4, 0, "HOT");
+  return ids;
 }
 function tile(id) {
   const x = L[id]; const f = S.fav.has(id);
   return `<div class="tile" data-a="item" data-v="${id}"><div class="pi"><img src="${IMG(x.img)}" alt="" loading="lazy"><button class="heart ${f ? "on" : ""}" data-a="like" data-v="${id}" aria-label="В избранное">${f ? I.heartF : I.heart}</button></div>
   <div class="pr">${rub(x.p)}</div><div class="tt">${x.t}</div><div class="mt">${x.pl} · ${x.ago}</div>${ownCount(id) ? `<span class="own">${I.spark} ${pl(ownCount(id), ADV)} владельцев</span>` : ""}</div>`;
 }
+const hotDisc = () => (ACC.demo ? D.find(x => x.id === "d1") : D.find(d => d.status === "hot" && ACC.ints.includes(d.tags[0]))) || D.find(x => x.id === "d1");
 function hotCard() {
-  const d = D.find(x => x.id === "d1");
-  return `<div class="hotc" data-a="disc" data-v="d1"><div class="k">🔥 Сигнал · обсуждают сейчас</div><div class="h">${d.title}</div><div class="s">${pl(Math.max(d.cnt, d.ans.length), ANS)}, ${d.heat} за последний час. Помогите, если бегаете</div>
-  <div class="row2"><div class="avs">${["Илья", "Катя", "Света", "Олег"].map(n => ava(n, 28)).join("")}</div><button class="btn sm sig" data-a="disc" data-v="d1">Открыть</button></div></div>`;
+  const d = hotDisc();
+  const people = [...new Set(d.ans.map(a => a.by).filter(n => n !== "Вы"))].concat(["Света", "Олег"]).slice(0, 4);
+  return `<div class="hotc" data-a="disc" data-v="${d.id}"><div class="k">🔥 Сигнал · обсуждают сейчас</div><div class="h">${esc(d.title)}</div><div class="s">${pl(Math.max(d.cnt, d.ans.length), ANS)}, ${d.heat} за последний час. Помогите, если разбираетесь</div>
+  <div class="row2"><div class="avs">${people.map(n => ava(n, 28)).join("")}</div><button class="btn sm sig" data-a="disc" data-v="${d.id}">Открыть</button></div></div>`;
 }
 function homeHTML() {
   const q = S.q.trim().toLowerCase();
   const head = `<div class="hd"><form class="sbar" data-f="search">${I.search}<input id="q" name="q" placeholder="Поиск по объявлениям" value="${esc(S.q)}" autocomplete="off" enterkeyhint="search">${q ? '<button type="button" class="x" data-a="clearq" aria-label="Очистить">✕</button>' : ""}</form><div class="loc">${I.pin} Москва и область</div></div>`;
   if (q) {
     const ids = Object.keys(L).filter(id => match(id, q)).sort((a, b) => tasteScore(b) - tasteScore(a));
+    const saved = S.saved.some(s => s.q === S.q.trim());
     return head + `<div class="sec" style="font-size:16px;padding-top:2px">Найдено ${pl(ids.length, ADS)} по запросу «${esc(S.q)}»</div>
+      ${saved ? "" : `<button class="saveq" data-a="saveq">☆ Сохранить поиск</button>`}
       ${S.likes.length && ids.length ? `<div class="aihint">${I.spark} Ави учёл ваши свайпы: выше то, что похоже на понравившееся</div>` : ""}
       <div class="suggest" data-a="newreq" data-v="search"><span class="mark" style="width:36px;height:36px">${I.sig}</span><div>Не знаете, что выбрать? <b>Спросите тех, кто уже купил</b>: знатоки ответят по опыту</div></div>
       <div class="grid">${ids.map(tile).join("") || '<div class="empty" style="grid-column:1/-1">Ничего не нашли. Спросите людей в Сигнале: вдруг кто-то продаёт или подскажет, где искать</div>'}</div>`;
   }
+  const sub = S.adapted ? "Обновили по вашим свайпам в Сигнале" : ACC.demo ? "" : "По вашим интересам: " + ACC.ints.join(", ");
   return head + `<div class="cats">${CATS.map(([n, im], i) => `<div class="cat" data-a="cat" data-v="${i}">${n}<img src="${IMG(im)}" alt=""></div>`).join("")}</div>
   <div class="sigb" data-a="tab" data-v="sig"><div><b>Новое: Сигнал</b><span>Листайте подборки, спрашивайте совета у тех, кто уже купил, выбирайте вместе с близкими</span></div><button class="go" data-a="tab" data-v="sig">Открыть</button></div>
-  <div class="sec">Рекомендации для вас${S.adapted ? `<small>Обновили по вашим свайпам в Сигнале</small>` : ""}</div>
+  <div class="sec">Рекомендации для вас${sub ? `<small>${esc(sub)}</small>` : ""}</div>
   <div class="grid">${homeOrder().map(i => i === "HOT" ? hotCard() : tile(i)).join("")}</div>`;
 }
 
 /* ===== карточка объявления ===== */
 function itemHTML(id) {
-  const x = L[id], f = S.fav.has(id), ops = OWN[id] || [], car = x.c === "Авто", mine = x.s === ME;
-  const qs = car ? ["Ещё продаёте?", "Можно на диагностику?", "Торг уместен?"] : RUN.has(x.c) ? ["Ещё продаёте?", "Можно с примеркой?", "Торг уместен?"] : ["Ещё продаёте?", "Торг уместен?", "Отправите Доставкой?"];
+  const x = L[id], f = S.fav.has(id), ops = OWN[id] || [], car = x.c === "Авто", mine = isMine(id);
+  const qs = car ? ["Ещё продаёте?", "Можно на диагностику?", "Торг уместен?"] : x.sz ? ["Ещё продаёте?", "Можно с примеркой?", "Торг уместен?"] : ["Ещё продаёте?", "Торг уместен?", "Отправите Доставкой?"];
   const body = `<img class="hero" src="${IMG(x.img)}" alt="">
   <div class="blk"><div class="price">${rub(x.p)}</div><div class="ttl2">${x.t}</div>
     <div class="chips"><span class="chip">${x.cond}</span>${car ? '<span class="chip">Проверка по VIN</span>' : '<span class="chip dl">Авито Доставка</span>'}${x.sz ? `<span class="chip">${x.sz} размер</span>` : ""}</div>
     <div class="mt" style="margin-top:10px;font-size:13.5px">${x.pl} · ${x.ago}</div></div>
   ${mine ? "" : `<div class="qq"><div class="t">Спросите у продавца</div><div class="row">${qs.map(q => `<button data-a="quickq" data-v="${id}|${q}">${q}</button>`).join("")}</div></div>`}
-  <div class="sel">${ava(mine ? "Вы" : x.s, 46)}<div style="flex:1"><b>${mine ? ME + " (вы)" : x.s}</b><div class="r">★ ${mine ? "4,9" : x.sr} · ${pl(mine ? 23 : x.sn, ["отзыв", "отзыва", "отзывов"])} · ${x.shop ? "компания" : "частное лицо"}</div><div class="ok">Документы и телефон подтверждены</div></div></div>
+  <div class="sel">${ava(mine ? "Вы" : x.s, 46)}<div style="flex:1"><b>${mine ? esc(meName()) + " (вы)" : x.s}</b><div class="r">★ ${mine ? "4,9" : x.sr} · ${pl(mine ? 23 : x.sn, ["отзыв", "отзыва", "отзывов"])} · ${x.shop ? "компания" : "частное лицо"}</div><div class="ok">Документы и телефон подтверждены</div></div></div>
   <div class="sbox"><div class="st"><span class="mark" style="width:26px;height:26px">${I.sig}</span>${car ? "Опыт владельцев модели" : "Опыт владельцев"} <small>Сигнал</small></div>
-    ${ops.length ? ops.map(o => `<div class="op"><div class="w">${ava(o.who, 26)}<b>${o.who}</b><i>${o.m}</i></div><p>${esc(o.t)}</p></div>`).join("")
+    ${ops.length ? ops.map(o => `<div class="op"><div class="w">${ava(o.who, 26)}<b>${o.who === "Вы" ? "Вы" : o.who}</b><i>${esc(o.m)}</i></div><p>${esc(o.t)}</p></div>`).join("")
       : `<div class="op"><p class="muted" style="margin-top:0">Отзывов владельцев этой модели пока нет. Спросите: вопрос увидят те, кто её покупал</p></div>`}
     <div class="row3"><button class="btn sig" data-a="askOwners" data-v="${id}">Спросить владельцев</button><button class="btn ghost" data-a="toColl" data-v="${id}" style="flex:none;width:44px;padding:0" aria-label="В подборку">${I.folder}</button><button class="btn ghost" data-a="toFriend" data-v="${id}" style="flex:none;width:44px;padding:0" aria-label="Показать кругу">${I.send}</button></div></div>
   <div class="desc"><h5>Описание</h5>${x.d}</div><div style="height:12px"></div>`;
@@ -823,22 +1015,24 @@ function taste() {
   return `<span class="tl">${I.spark}</span><span class="tchip">${tasteTop()}</span>${sz ? `<span class="tchip">${sz} размер</span>` : ""}<span class="tchip">до ${rub(tasteCap())}</span>${S.likes.length >= 2 ? `<button class="tchip cmp" data-a="compare">Сравнить ${S.likes.length}</button>` : ""}`;
 }
 function why(id) {
-  if (id === "a9") return `${I.spark} Даня переслал вам: «тебе для полумарафона?»`;
-  if (S.adapted && RUN.has(L[id].c)) return `${I.spark} Похоже на то, что вам понравилось`;
+  if (ACC.demo && id === "a9") return `${I.spark} Даня переслал вам: «тебе для полумарафона?»`;
+  if (S.adapted && L[id].c === S.askCat) return `${I.spark} Похоже на то, что вам понравилось`;
+  if (!ACC.demo && ACC.ints.includes(L[id].c)) return `${I.spark} Вы интересуетесь: ${L[id].c}`;
   if (ownCount(id)) return `${I.spark} ${pl(ownCount(id), ADV)} владельцев`;
   return `${I.spark} По вашим просмотрам`;
 }
 function cardHTML(id, depth) {
   const cls = ["top", "b1", "b2"][depth];
   if (id === "ASK") {
+    const c = S.askCat || "Бег", m = CATM[c], e = EXP[c];
     return `<div class="card ask ${cls}" data-id="ASK"><div class="stamp like">СПРОСИТЬ</div><div class="stamp nope">ПОЗЖЕ</div>
-      <div class="big">Похоже, вы выбираете беговые кроссовки</div><p>Знатоки беговой обуви подскажут, какая модель подойдёт под вашу стопу и пробег. Запрос увидят 14 знатоков категории, ответы придут в уведомления.</p>
-      <div class="pp avs">${["Илья", "Катя", "Света", "Олег", "Марина"].map(n => ava(n, 34)).join("")}</div>
+      <div class="big">Похоже, вы выбираете ${m.ask}</div><p>${m.pitch} Запрос увидят 14 знатоков категории, ответы придут в уведомления.</p>
+      <div class="pp avs">${[e.by, "Катя", "Света", "Олег", "Марина"].map(n => ava(n, 34)).join("")}</div>
       <div class="btns"><button class="btn w" data-a="askDeck">Спросить знатоков</button><button class="btn t" data-a="swipe" data-v="nope">Листать дальше</button></div></div>`;
   }
   const x = L[id];
   return `<div class="card ${cls}" data-id="${id}"><div class="stamp like">НРАВИТСЯ</div><div class="stamp nope">НЕ МОЁ</div><div class="stamp fr">ДРУГУ</div>
-    <img src="${IMG(x.img)}" alt=""><div class="ci"><div class="why">${why(id)}</div><div class="cp">${rub(x.p)}</div><div class="ct">${x.t}</div><div class="cm">${x.cond} · ${x.pl} · Доставка</div></div></div>`;
+    <img src="${IMG(x.img)}" alt=""><div class="ci"><div class="why">${why(id)}</div><div class="cp">${rub(x.p)}</div><div class="ct">${x.t}</div><div class="cm">${x.cond} · ${x.pl}${x.c === "Авто" ? "" : " · Доставка"}</div></div></div>`;
 }
 function youHTML() {
   let deck;
@@ -885,7 +1079,7 @@ function fly(kind, cb) {
   const t = kind === "like" ? "translate(560px,40px) rotate(28deg)" : kind === "nope" ? "translate(-560px,40px) rotate(-28deg)" : "translate(0,-760px)";
   const s = el.querySelector(".stamp." + (kind === "friend" ? "fr" : kind)); if (s) s.style.opacity = 1;
   el.style.transform = t; el.style.opacity = ".2";
-  setTimeout(() => { S.busy = false; cb(); }, 300);
+  setTimeout(() => { S.busy = false; cb(); save(); }, 300);
 }
 function decide(kind) {
   if (S.busy) return;
@@ -908,22 +1102,27 @@ function decide(kind) {
     S.di++; adapt(); renderTab(); renderNav();
   });
 }
+/* после двух лайков в одной категории подборка перестраивается и зовёт знатоков */
 function adapt() {
-  const runLikes = S.likes.filter(id => RUN.has(L[id].c)).length;
-  if (S.adapted || runLikes < 2) return;
-  S.adapted = true;
+  if (S.adapted) return;
+  const cnt = {}; S.likes.forEach(id => cnt[L[id].c] = (cnt[L[id].c] || 0) + 1);
+  const cat = Object.keys(cnt).find(c => cnt[c] >= 2);
+  if (!cat) return;
+  S.adapted = true; S.askCat = cat;
   const rest = S.deck.slice(S.di);
-  const run = rest.filter(id => RUN.has(L[id].c)), other = rest.filter(id => !RUN.has(L[id].c));
-  S.deck = S.deck.slice(0, S.di).concat(["ASK"], run, other);
-  toast("Подборка подстроилась: больше беговой обуви вашего размера. Поиск тоже это учтёт");
+  const more = Object.keys(L).filter(id => L[id].c === cat && !S.deck.includes(id) && !isMine(id));
+  const same = rest.filter(id => L[id].c === cat).concat(more), other = rest.filter(id => L[id].c !== cat);
+  S.deck = S.deck.slice(0, S.di).concat(["ASK"], same, other);
+  toast(`Подборка подстроилась: больше вещей из категории «${cat}». Поиск тоже это учтёт`);
 }
 
 /* обсуждения */
 const nAns = d => Math.max(d.cnt, d.ans.length);
+const expLabel = () => ACC.demo || level(S.helped) >= 2 ? "вы знаток" : "ваша тема";
 function discCard(d) {
   const st = d.status === "hot" ? `<span class="heat">🔥 +${d.heat} за час</span>` : d.status === "done" ? `<span class="done">✓ Помогло автору</span>` : `<span class="wait">${d.ans.length ? "Ждёт знатока" : "Ждёт первого ответа"}</span>`;
   return `<div class="dc ${d.status === "hot" ? "hot" : ""}" data-a="disc" data-v="${d.id}">
-    <div class="who">${ava(d.who, 24)}<b>${d.who}</b> · ${d.ago}${d.circle ? ` <span class="cir">круг «${d.circle}»</span>` : ""}${d.mine ? ` <span class="cir me">ваш запрос</span>` : ""}${!d.mine && d.tags[0] === MY_CAT && d.status === "new" ? ` <span class="cir me">вы знаток</span>` : ""}</div>
+    <div class="who">${ava(d.who, 24)}<b>${d.who === "Вы" ? "Вы" : d.who}</b> · ${d.ago}${d.circle ? ` <span class="cir">круг «${d.circle}»</span>` : ""}${d.mine ? ` <span class="cir me">ваш запрос</span>` : ""}${!d.mine && d.tags[0] === myCat() && d.status === "new" ? ` <span class="cir me">${expLabel()}</span>` : ""}</div>
     <div class="h">${esc(d.title)}</div><div class="tx">${esc(d.text)}</div>
     <div class="tags">${d.tags.map(t => `<span class="chip">${esc(t)}</span>`).join("")}</div>
     <div class="ft">${st}<span class="muted">${nAns(d) ? pl(nAns(d), ANS) : "Будьте первым"}</span></div></div>`;
@@ -932,11 +1131,12 @@ function discListHTML() {
   const f = d => S.dcat === "Все" || d.tags[0] === S.dcat;
   const mine = D.filter(d => d.mine);
   const hot = D.filter(d => d.status === "hot" && !d.mine && f(d)).sort((a, b) => b.heat - a.heat);
-  const wait = D.filter(d => d.status === "new" && !d.mine && f(d)).sort((a, b) => (b.tags[0] === MY_CAT) - (a.tags[0] === MY_CAT));
+  const wait = D.filter(d => d.status === "new" && !d.mine && f(d)).sort((a, b) => (b.tags[0] === myCat()) - (a.tags[0] === myCat()) || (ACC.ints.includes(b.tags[0])) - (ACC.ints.includes(a.tags[0])));
   const done = D.filter(d => d.status === "done" && !d.mine && f(d));
-  const fil = `<div class="fil">${["Все", "Бег", "Фото", "Электроника", "Спорт"].map(c => `<button class="${S.dcat === c ? "on" : ""}" data-a="dcat" data-v="${c}">${c}${c === MY_CAT ? " · вы знаток" : ""}</button>`).join("")}</div>`;
+  const chips = ["Все", ...new Set([...(myCat() ? [myCat()] : []), ...ACC.ints, "Бег", "Электроника"])].slice(0, 6);
+  const fil = `<div class="fil">${chips.map(c => `<button class="${S.dcat === c ? "on" : ""}" data-a="dcat" data-v="${c}">${c}${c === myCat() ? " · " + expLabel() : ""}</button>`).join("")}</div>`;
   const sec = (t, s, arr) => arr.length ? `<div class="dsec"><h4>${t}</h4><span>${s}</span></div>${arr.map(discCard).join("")}` : "";
-  const list = sec("Ваши запросы", "", mine) + sec("🔥 Горит", "больше всего ответов за час", hot) + sec("Ждут ответа", "в категории «Фото» вы знаток", wait) + sec("Решено", "автор отметил «помогло»", done);
+  const list = sec("Ваши запросы", "", mine) + sec("🔥 Горит", "больше всего ответов за час", hot) + sec("Ждут ответа", myCat() ? `в «${myCat()}» ждут вашего опыта` : "можно ответить первым", wait) + sec("Решено", "автор отметил «помогло»", done);
   return fil + (list || `<div class="empty">В этой категории пока тихо. Спросите первым</div>`) + `<div style="height:80px"></div>`;
 }
 function ansScore(a) { return (a.helped ? 100 : 0) + (a.bought ? 40 : 0) + (a.b.includes("own") ? 20 : 0) + (a.b.includes("exp") ? 10 : 0) - (a.b.includes("sel") ? 200 : 0); }
@@ -944,47 +1144,49 @@ function discHTML(id) {
   const d = D.find(x => x.id === id);
   const ans = [...d.ans].sort((a, b) => ansScore(b) - ansScore(a));
   const badges = a => [a.helped ? `<span class="bd best">✓ Помогло автору</span>` : "", a.bought ? `<span class="bd buy">Купили по совету</span>` : "", a.b.includes("own") ? `<span class="bd own">Владеет${a.own ? ": " + esc(a.own) : ""}</span>` : "", a.b.includes("exp") ? `<span class="bd exp">Знаток категории</span>` : "", a.b.includes("sel") ? `<span class="bd sel">Реклама · продавец</span>` : ""].join("");
-  const ai = d.ai && d.ai.length ? `<div class="aib"><div class="k"><span>ИИ</span>Ави подобрал по описанию, пока отвечают люди</div><div class="hs">${d.ai.map(i => `<div class="m" data-a="item" data-v="${i}"><img src="${IMG(L[i].img)}" alt=""><b>${rub(L[i].p)}</b><span>${L[i].t}</span></div>`).join("")}</div></div>` : "";
+  const ai = d.ai && d.ai.length ? `<div class="aib"><div class="k"><span>ИИ</span>Ави подобрал по описанию, пока отвечают люди</div><div class="hs">${d.ai.filter(i => L[i]).map(i => `<div class="m" data-a="item" data-v="${i}"><img src="${IMG(L[i].img)}" alt=""><b>${rub(L[i].p)}</b><span>${L[i].t}</span></div>`).join("")}</div></div>` : "";
   const list = ans.length ? `<div class="dsec"><h4>Ответы · ${ans.length}</h4></div><div class="legend">Сверху ответ, который помог автору, дальше владельцы вещи и знатоки. Ответы продавцов и советы своих объявлений помечены как реклама и стоят ниже.</div>` +
     ans.map(a => {
       const i = d.ans.indexOf(a);
       return `<div class="ans ${a.helped ? "best" : ""} ${a.b.includes("sel") ? "seller" : ""}"><div class="w" ${a.by === "Вы" ? "" : `data-a="helper" data-v="${a.by}"`}>${ava(a.by, 34)}<div><b>${a.by}</b><div class="bdg">${badges(a)}</div></div></div>
-      <p>${esc(a.t)}</p>${a.it ? `<div class="mini" data-a="item" data-v="${a.it}" data-via="${d.id}:${i}"><img src="${IMG(L[a.it].img)}" alt=""><div><b>${rub(L[a.it].p)}</b><span>${L[a.it].t}</span></div></div>` : ""}
+      <p>${esc(a.t)}</p>${a.it && L[a.it] ? `<div class="mini" data-a="item" data-v="${a.it}" data-via="${d.id}:${i}"><img src="${IMG(L[a.it].img)}" alt=""><div><b>${rub(L[a.it].p)}</b><span>${L[a.it].t}</span></div></div>` : ""}
       ${d.mine && !a.b.includes("sel") ? `<div class="af"><span>Помог совет? Отметка поднимет его выше</span><button class="hb ${a.helped ? "on" : ""}" data-a="helped" data-v="${d.id}:${i}">${I.check} Помогло</button></div>` : ""}</div>`;
     }).join("")
     : `<div class="wait-box">${d.mine ? "Запрос увидели 14 знатоков категории и ваш круг. Ответы придут в уведомления." : `Запрос увидели 14 знатоков категории, ответов пока нет. Ответьте первым: ${d.who} получит уведомление.`}</div>`;
   const body = `<div class="req"><div class="who">${ava(d.who, 30)}<b>${d.who}</b> · ${d.ago}${d.circle ? ` <span class="cir">круг «${d.circle}»</span>` : ""}</div><h2>${esc(d.title)}</h2><p>${esc(d.text)}</p>
     <div class="tags">${d.tags.map(t => `<span class="chip">${esc(t)}</span>`).join("")}</div>
-    <div class="stats">${d.status === "hot" ? `<span class="heat">🔥 +${d.heat} за час</span>` : ""}<span class="muted">${pl(nAns(d), ANS)}</span><span class="muted">${d.mine ? "видят знатоки и ваш круг" : d.tags[0] === MY_CAT ? "вы знаток этой категории" : "открытый запрос"}</span></div></div>${ai}${list}<div style="height:16px"></div>`;
+    <div class="stats">${d.status === "hot" ? `<span class="heat">🔥 +${d.heat} за час</span>` : ""}<span class="muted">${pl(nAns(d), ANS)}</span><span class="muted">${d.mine ? "видят знатоки и ваш круг" : d.tags[0] === myCat() ? (expLabel() === "вы знаток" ? "вы знаток этой категории" : "это ваша тема") : "открытый запрос"}</span></div></div>${ai}${list}<div style="height:16px"></div>`;
   const answered = d.ans.some(a => a.by === "Вы");
   const foot = d.mine ? `<button class="btn ghost" data-a="toFriend" data-v="disc:${d.id}">Позвать круг</button><button class="btn sig" data-a="tab" data-v="sig">Готово</button>`
     : `<button class="btn sig" data-a="answer" data-v="${d.id}">${answered ? "Ответить ещё" : d.ans.length ? "Ответить" : "Ответить первым"}</button>`;
   return page("Обсуждение", body, foot);
 }
 function circHTML() {
-  return `<div class="circ">${CIRCLES.map(c => `<div class="cc"><div class="avs">${c.people.map(n => ava(n, 28)).join("")}</div><b>${c.name}</b><span>${c.people.length} человека</span></div>`).join("")}
+  return `<div class="circ">${CIRCLES.map(c => `<div class="cc"><div class="avs">${c.people.map(n => ava(n, 28)).join("")}</div><b>${c.name}</b><span>${pl(c.people.length, ["человек", "человека", "человек"])}</span></div>`).join("")}
     <div class="cc add" data-a="invite">＋<span style="color:var(--sig);font-size:13px">Позвать по ссылке</span></div></div>
     <div class="dsec" style="padding-top:4px"><h4>Что нового в кругах</h4></div><div class="feed">
-    <div class="fi" data-a="disc" data-v="d3">${ava("Аня", 40)}<div class="tx"><b>Аня</b> просит помочь: плёночный фотоаппарат папе, до 5 000 ₽<small>Семья · 12 мин</small></div><button class="btn sm sig" data-a="disc" data-v="d3">Помочь</button></div>
-    <div class="fi" data-a="coll" data-v="c2">${ava("Мама", 40)}<div class="tx"><b>Мама</b> прокомментировала диван в подборке «Гостиная»: «Этот берём?»<small>Семья · 40 мин</small></div><img src="${IMG("sofa_1")}" alt=""></div>
-    <div class="fi" data-a="item" data-v="a9">${ava("Даня", 40)}<div class="tx"><b>Даня</b> переслал: «тебе для полумарафона?»<small>Пробежки · 1 ч</small></div><img src="${IMG("watch_2")}" alt=""></div>
-    </div><div class="rule" style="margin-top:14px">Круг - это люди, которых вы позвали сами по ссылке. Контакты из телефона не загружаем. Круг видит только то, чем вы поделились: просмотры и покупки скрыты.</div><div style="height:80px"></div>`;
+    ${FEED.map(f => `<div class="fi" data-a="go" data-v="${f.go || ""}">${ava(f.who, 40)}<div class="tx"><b>${f.who}</b> ${esc(f.text)}<small>${f.circle} · ${f.ago}</small></div>${f.btn ? `<button class="btn sm sig" data-a="go" data-v="${f.go}">${f.btn}</button>` : f.img ? `<img src="${IMG(f.img)}" alt="">` : ""}</div>`).join("")}
+    </div><div class="rule" style="margin-top:14px">Круг - это люди, которых вы позвали сами по ссылке. Контакты из телефона не загружаем. Круг видит только то, чем вы поделились: просмотры и покупки скрыты.${ACC.demo ? "" : " «Друзья (демо)» - боты, чтобы попробовать: пришлите им находку кнопкой «другу»."}</div><div style="height:80px"></div>`;
 }
 
 /* новый запрос */
 const REQ = { cat: "Бег", budget: "до 10 000 ₽", who: "Знатоки категории", ai: true, text: "" };
 function openNewReq(src) {
   if (src === "deck") {
-    const run = S.likes.filter(id => RUN.has(L[id].c)).map(short);
-    const sz = tasteSize() || 42;
-    REQ.text = run.length ? `Выбираю беговые кроссовки, ${sz} размер. Понравились: ${run.join(", ")}. Что лучше для полумарафона? Стопа широкая.` : "Выбираю беговые кроссовки для первого полумарафона, 42 размер, стопа широкая. Что посмотреть?";
-    REQ.cat = "Бег"; REQ.budget = "до 10 000 ₽";
+    const cat = S.askCat || ACC.ints[0] || "Бег";
+    const liked = S.likes.filter(id => L[id].c === cat).map(short);
+    const sz = S.likes.filter(id => L[id].c === cat).map(id => L[id].sz).find(Boolean);
+    REQ.cat = cat; REQ.budget = "до 10 000 ₽";
+    REQ.text = ACC.demo && cat === "Бег"
+      ? `Выбираю беговые кроссовки, ${sz || 42} размер. Понравились: ${liked.join(", ")}. Что лучше для полумарафона? Стопа широкая.`
+      : `${CATM[cat].req}${sz ? `, ${sz} размер` : ""}.${liked.length ? ` Понравились: ${liked.join(", ")}.` : ""} Что лучше взять и на что смотреть?`;
   } else if (src === "search") {
-    REQ.text = `Ищу ${S.q || "кроссовки для бега"}. Помогите выбрать: на что смотреть и сколько это стоит на Авито?`;
-    if (/кросс|бег/.test(S.q.toLowerCase())) REQ.cat = "Бег";
+    REQ.text = `Ищу ${S.q || "вещь"}. Помогите выбрать: на что смотреть и сколько это стоит на Авито?`;
+    const m = Object.keys(L).find(id => match(id, S.q.trim().toLowerCase()));
+    if (m) REQ.cat = L[m].c;
   } else if (src && L[src]) {
-    REQ.text = `Думаю взять ${L[src].t}. Стоит ли, или есть варианты лучше?`; REQ.cat = RUN.has(L[src].c) ? "Бег" : L[src].c;
-  } else REQ.text = "";
+    REQ.text = `Думаю взять ${L[src].t}. Стоит ли, или есть варианты лучше?`; REQ.cat = L[src].c;
+  } else { REQ.text = ""; REQ.cat = S.askCat || ACC.ints[0] || "Бег"; }
   push(newReqHTML, null, true);
 }
 function newReqHTML() {
@@ -994,7 +1196,7 @@ function newReqHTML() {
   const near = d => [...stems(d.title + " " + d.text)].filter(w => mineW.has(w)).length;
   const sim = D.filter(d => !d.mine && d.tags[0] === REQ.cat).sort((a, b) => near(b) - near(a)).slice(0, 2);
   const body = `<div class="form"><label>Что ищете и для чего</label><textarea id="rq" placeholder="Например: часы для бега, начинаю готовиться к полумарафону">${esc(REQ.text || "")}</textarea>
-    <label>Категория</label>${g("cat", ["Бег", "Фото", "Электроника", "Для дома", "Подарок"])}
+    <label>Категория</label>${g("cat", CATS9)}
     <label>Бюджет</label>${g("budget", ["до 5 000 ₽", "до 10 000 ₽", "до 20 000 ₽", "не важно"])}
     <label>Кого спросить</label>${g("who", ["Знатоки категории", "Мой круг", "Все"])}
     <div class="tg"><div><b>Ави сразу подберёт варианты</b><br><span class="muted">ИИ ищет по описанию, люди уточняют по опыту</span></div><button class="sw ${REQ.ai ? "on" : ""}" data-a="toggleAi" aria-label="Ави"></button></div>
@@ -1002,38 +1204,71 @@ function newReqHTML() {
     <div class="note">Отвечают люди с подтверждёнными покупками в категории. Продавцы тоже могут ответить, их ответы помечены как реклама. Обычный поиск и покупка остаются как были.</div></div>`;
   return page("Спросить совета", body, `<button class="btn sig" data-a="reqSubmit">Отправить запрос</button>`);
 }
-const FIRST = {
-  "Бег": { by: "Илья", g: "m", tag: ", знаток беговой обуви,", b: ["own", "exp"], own: "Asics Gel-Cumulus 22 2E · куплены на Авито", t: "С широкой стопой смотрите Cumulus в полноте 2E. Бегаю в таких 8 месяцев, 900 км, амортизация не просела. Сейчас на Авито есть пара 42 размера за 7 900.", it: "a1" },
-  "Фото": { by: "Нина", g: "f", tag: ", знаток фототехники,", b: ["own", "exp"], own: "Зенит-Е · 5 лет", t: "Зенит-Е с Гелиосом - лучший старт. Проверьте затвор на всех выдержках и попросите у продавца снимки, сделанные этим аппаратом.", it: "a14" },
-  "Электроника": { by: "Игорь", g: "m", tag: "", b: ["own"], own: "PlayStation 4 · 4 года", t: "Берите через Доставку с проверкой при получении, так спокойнее.", it: "a13" },
-  "Для дома": { by: "Елена", g: "f", tag: "", b: ["own"], own: "Krups · 2 года", t: "Для дома рожковой хватит. Спросите у продавца, когда меняли уплотнитель.", it: "a17" },
-  "Подарок": { by: "Нина", g: "f", tag: "", b: [], own: "", t: "Подарок лучше выбирать по увлечению: напишите, чем человек занимается, подскажем точнее.", it: null },
-};
 function submitReq() {
   const t = ($("#rq") && $("#rq").value.trim()) || "Помогите выбрать";
-  const id = "dn" + (++S.seq);
+  const id = "dn" + (++S.seq) + "_" + Date.now().toString(36);
   const title = t.split(/[.?!]/)[0].slice(0, 70);
   const cat = REQ.cat;
-  const pool = Object.keys(L).filter(i => L[i].c === cat && !S.likes.includes(i) && L[i].s !== ME);
+  const pool = Object.keys(L).filter(i => L[i].c === cat && !S.likes.includes(i) && !isMine(i));
   const d = { id, mine: true, who: "Вы", ago: "сейчас", title, text: t, tags: [cat, REQ.budget], cnt: 0, heat: 0, status: "new", ans: [], ai: REQ.ai && pool.length ? pool.slice(0, 4) : null };
   D.unshift(d);
   S.stack.pop().el.remove();
   S.sigTab = "disc";
   push(discHTML, id);
   toast(`Запрос ушёл: ${REQ.who === "Мой круг" ? "вашему кругу" : "14 знатокам категории и вашему кругу"}. Ответы придут в уведомления`);
-  const f = FIRST[cat];
-  setTimeout(() => {
-    d.ans.push({ by: f.by, b: f.b, own: f.own, t: f.t, it: f.it });
-    d.cnt = 1; d.status = "hot"; d.heat = 1;
-    notify("💬", `${f.by}${f.tag} ответил${f.g === "f" ? "а" : ""} на ваш запрос`, "disc:" + id, "Новый ответ");
-  }, 4500);
-  if (cat === "Бег") setTimeout(() => {
-    d.ans.push({ by: "Катя", b: ["own"], own: "Nike Pegasus 38", t: "Pegasus легче, но узкие в носке. Если стопа широкая, лучше Asics, как советуют выше.", it: "a2" });
-    d.ans.push({ by: "Runlab", b: ["sel"], t: "Есть новые Adizero Boston 12 в 42 размере, примерка при получении.", it: "a3" });
-    d.cnt = 3; d.heat = 3;
-    notify("💬", "Ещё 2 ответа на ваш запрос", "disc:" + id, "Новые ответы");
-  }, 10000);
+  const e = EXP[cat];
+  const liked = S.likes.find(i => L[i].c === cat && !isMine(i));
+  let first;
+  if (cat === "Бег" && (ACC.demo || !liked || liked === "a1")) first = { by: "Илья", b: e.b, own: e.own, t: "С широкой стопой смотрите Cumulus в полноте 2E. Бегаю в таких 8 месяцев, 900 км, амортизация не просела. Сейчас на Авито есть пара 42 размера за 7 900.", it: "a1" };
+  else { const it = liked || e.def; first = { by: e.by, b: e.b, own: e.own, t: e.t(`«${short(it)}»`), it }; }
+  schedule(4500, "ans", { did: id, list: [first], heat: 1, note: `${e.by}${e.tag} ответил${fa(e.by)} на ваш запрос`, title: "Новый ответ" });
+  const second = [];
+  if (cat === "Бег") second.push({ by: "Катя", b: ["own"], own: "Nike Pegasus 38", t: "Pegasus легче, но узкие в носке. Если стопа широкая, лучше Asics, как советуют выше.", it: "a2" });
+  else { const it2 = pool.find(i => i !== first.it && !L[i].shop); second.push({ by: "Кирилл", b: [], own: "", t: CATM[cat].sec, it: it2 || null }); }
+  const shop = Object.keys(L).find(i => L[i].c === cat && L[i].shop && i !== first.it);
+  if (shop) second.push({ by: L[shop].s, b: ["sel"], t: "Есть в наличии, проверка при получении через Доставку.", it: shop });
+  schedule(10000, "ans", { did: id, list: second, heat: 3, note: `Ещё ${pl(second.length, ANS)} на ваш запрос`, title: "Новые ответы" });
 }
+
+/* ===== события ботов ===== */
+const EV = {
+  ans({ did, list, heat, note, title }) {
+    const d = D.find(x => x.id === did); if (!d) return;
+    d.ans.push(...list); d.cnt = Math.max(d.cnt, d.ans.length); d.heat = heat;
+    if (d.status !== "done") d.status = "hot";
+    notify("💬", note, "disc:" + did, title);
+  },
+  helped({ did, idx }) {
+    const d = D.find(x => x.id === did); const a = d && d.ans[idx];
+    if (!a || a.helped || a.b.includes("sel")) return;
+    const before = level(S.helped);
+    a.helped = true; a.bought = !!a.it; d.status = "done"; S.helped++;
+    notify("🙌", `${d.who} отметил${fa(d.who)} ваш совет «помогло»${a.bought ? ` и купил${fa(d.who)} по вашей рекомендации` : ""}`, "disc:" + did, "Ваш совет помог");
+    if (level(S.helped) > before) setTimeout(() => notify("🎉", `Новый уровень: ${LVN[level(S.helped)]}${myCat() ? ` в категории «${myCat()}»` : ""}`, "tab:prof", "Сигнал"), 1600);
+  },
+  friend({ name, item }) {
+    const r = FR[(S.fr = (S.fr || 0) + 1) % FR.length];
+    const c = CIRCLES.find(x => x.people.includes(name));
+    FEED.unshift({ who: name, circle: c ? c.name : "Круг", text: `ответил${fa(name)} на вашу находку: «${r}»`, go: item ? "item:" + item : "", img: item ? L[item].img : null, ago: "сейчас" });
+    notify("💬", `${name}: «${r}»`, "sig:circ", "Ответ от близких");
+  },
+  collcom({ cid, item, bot }) {
+    const c = COLLS.find(x => x.id === cid); if (!c || !c.items.includes(item)) return;
+    const t = COLLCOM[c.com.length % COLLCOM.length];
+    c.com.push({ who: bot, on: item, t });
+    notify("💬", `${bot} в подборке «${c.name}»: «${t}»`, "coll:" + cid, "Совместная подборка");
+  },
+  owner({ item }) {
+    const cat = L[item].c;
+    (OWN[item] = OWN[item] || []).push({ who: "Света", m: "ответила на ваш вопрос", t: OWNER_REPLY[cat] || OWNER_REPLY.other });
+    notify("💬", `Владелец ответил на ваш вопрос про ${short(item)}`, "item:" + item, "Ответ владельца");
+  },
+  rate({ item }) {
+    S.notifs.unshift({ e: "📦", t: `Подошла ли «${short(item)}»? Ответ увидят те, кто выбирает такую же`, ago: "сейчас", go: "rate:" + item, n: true });
+    banner("Сигнал", `Подошла ли «${short(item)}»? Ответьте в два касания`, "rate:" + item); rerender();
+  },
+};
+const OWNER_REPLY = { "Бег": "На широкую стопу садятся свободно, брала в свой размер. Через месяц разнашиваются ещё чуть-чуть.", "Авто": "Расход по городу около 8,5 литра, зимой заводится без проблем. Проверьте, когда меняли ремень ГРМ.", "Фото": "Работает без нареканий, главное - не хранить в сырости.", "Одежда": "Размер в размер, после стирки не села. Ткань плотная, не просвечивает.", other: "Пользуюсь полгода, всё устраивает. Проверьте комплектность при получении." };
 
 /* ===== избранное ===== */
 const FAV_TABS = { items: "Объявления", feed: "Лента", seen: "Просмотры", colls: "Подборки", searches: "Поиски" };
@@ -1042,10 +1277,10 @@ function favHTML() {
     <div class="utabs" style="position:sticky;top:48px;z-index:5">${Object.entries(FAV_TABS).map(([k, n]) => `<button class="${S.favTab === k ? "on" : ""}" data-a="favtab" data-v="${k}">${n}${k === "feed" ? '<span class="dt"></span>' : ""}</button>`).join("")}</div>`;
   if (S.favTab === "items") {
     const ids = [...S.fav].reverse();
-    return head + (ids.length ? `<div class="grid" style="padding-top:14px">${ids.map(tile).join("")}</div>` : `<div class="empty">Здесь будет то, что вам понравилось</div>`);
+    return head + (ids.length ? `<div class="grid" style="padding-top:14px">${ids.map(tile).join("")}</div>` : `<div class="empty">Здесь будет то, что вам понравилось. Ставьте сердечко или свайпайте вправо в Сигнале</div>`);
   }
-  if (S.favTab === "seen") return head + `<div class="grid" style="padding-top:14px">${S.viewed.map(tile).join("")}</div>`;
-  if (S.favTab === "searches") return head + SAVED.map(s => `<div class="srch" data-a="search" data-v="${s.q}"><div class="tx"><b>${s.q}</b><small>Москва и область · уведомления включены</small></div><span class="nw">+${s.n}</span></div>`).join("");
+  if (S.favTab === "seen") return head + (S.viewed.length ? `<div class="grid" style="padding-top:14px">${S.viewed.map(tile).join("")}</div>` : `<div class="empty">Вы ещё ничего не смотрели</div>`);
+  if (S.favTab === "searches") return head + (S.saved.length ? S.saved.map(s => `<div class="srch" data-a="search" data-v="${esc(s.q)}"><div class="tx"><b>${esc(s.q)}</b><small>Москва и область · уведомления включены</small></div>${s.n ? `<span class="nw">+${s.n}</span>` : ""}</div>`).join("") : `<div class="empty">Сохранённых поисков пока нет. Найдите что-нибудь и нажмите «Сохранить поиск»</div>`);
   if (S.favTab === "colls") {
     return head + `<div class="rule" style="margin-top:14px">Подборки теперь можно вести вместе: позовите близких, голосуйте «берём / мимо» и обсуждайте вещи прямо в подборке.</div>` +
       COLLS.map(c => `<div class="coll" data-a="coll" data-v="${c.id}"><div class="pv">${c.items.slice(0, 4).map(i => `<img src="${IMG(L[i].img)}" alt="">`).join("")}</div><div class="tx"><b>${esc(c.name)}</b><div class="s">${pl(c.items.length, ADS)} · ${c.shared ? (c.members.length > 1 ? "совместная с " + c.members.filter(m => m !== "Вы").join(", ") : "совместная, ждёт приглашённых") : "личная"}</div>${c.com.length ? `<div class="s" style="color:var(--sig);font-weight:600">${pl(c.com.length, ["комментарий", "комментария", "комментариев"])}</div>` : ""}</div>${c.members.length > 1 ? `<div class="avs">${c.members.map(m => ava(m, 26)).join("")}</div>` : ""}</div>`).join("") +
@@ -1064,22 +1299,28 @@ function collHTML(id) {
   const items = c.items.length ? c.items.map(i => `<div class="ci2"><div class="top" data-a="item" data-v="${i}"><img src="${IMG(L[i].img)}" alt=""><div><b style="font-size:16px">${rub(L[i].p)}</b><div style="font-size:14px;margin-top:2px">${L[i].t}</div><div class="mt">${L[i].pl}</div></div></div>
     ${others.length ? `<div class="vote"><button class="${c.votes[i] === "up" ? "on" : ""}" data-a="vote" data-v="${id}:${i}:up">👍 Берём${c.votes[i] === "up" ? " · 2" : ""}</button><button class="${c.votes[i] === "dn" ? "on" : ""}" data-a="vote" data-v="${id}:${i}:dn">👎 Мимо</button></div>` : ""}
     ${c.com.filter(m => m.on === i).map(m => `<div class="cm2">${ava(m.who, 24)}<div><b>${m.who}</b> ${esc(m.t)}</div></div>`).join("")}</div>`).join("")
-    : `<div class="empty">Пока пусто. Добавляйте объявления кнопкой с папкой в карточке</div>`;
+    : `<div class="empty">Пока пусто. Добавляйте объявления кнопкой с папкой в карточке${others.length ? `: ${others.join(", ")} увидит и ответит` : ""}</div>`;
   const body = `<div class="blk" style="padding-bottom:6px"><div style="display:flex;align-items:center;gap:10px"><div class="avs">${c.members.map(m => ava(m, 32)).join("")}</div><div class="muted" style="font-size:13.5px">${others.length ? "Совместная подборка: вы, " + others.join(", ") : c.shared ? "Совместная: ждём приглашённых" : "Личная подборка"}</div></div></div>${items}
-  ${others.length ? `<form class="inp" style="padding-bottom:12px;border:0" data-f="cmt" data-v="${id}"><input id="cmt" placeholder="Написать комментарий в подборку" autocomplete="off"><button aria-label="Отправить">${I.send}</button></form>` : ""}`;
+  ${others.length && c.items.length ? `<form class="inp" style="padding-bottom:12px;border:0" data-f="cmt" data-v="${id}"><input id="cmt" placeholder="Написать комментарий в подборку" autocomplete="off"><button aria-label="Отправить">${I.send}</button></form>` : ""}`;
   return page(esc(c.name), body, others.length ? "" : `<button class="btn ghost" data-a="invite">Позвать в подборку</button>`);
 }
 
 /* ===== объявления, сообщения, профиль ===== */
 function adsHTML() {
-  return `<div class="sh"><div class="sh-top"><div class="logo" style="font-size:24px">Мои объявления</div></div></div>
-  ${["a21", "a16"].map((i, k) => `<div class="my" data-a="item" data-v="${i}"><img src="${IMG(L[i].img)}" alt=""><div><b>${rub(L[i].p)}</b><div style="font-size:14px;margin-top:2px">${L[i].t}</div><div class="s">👁 ${[142, 87][k]} · ♥ ${[3, 5][k]} · 💬 ${[2, 1][k]}</div></div></div>`).join("")}
+  const head = `<div class="sh"><div class="sh-top"><div class="logo" style="font-size:24px">Мои объявления</div></div></div>`;
+  if (!ACC.demo) {
+    const w = D.find(d => d.status === "new" && !d.mine && d.tags[0] === myCat()) || D.find(d => d.status === "new" && !d.mine && ACC.ints.includes(d.tags[0]));
+    return head + `<div class="empty">У вас пока нет объявлений</div><div style="padding:0 16px 16px"><button class="btn blue" style="width:100%" data-a="na">Разместить объявление</button></div>
+      ${w ? `<div class="suggest" data-a="disc" data-v="${w.id}"><span class="mark" style="width:36px;height:36px">${I.sig}</span><div>${w.who} спрашивает: «${esc(w.title)}». <b>Подскажите по опыту</b>, это растит ваш уровень</div></div>` : ""}`;
+  }
+  return head + `${["a21", "a16"].map((i, k) => `<div class="my" data-a="item" data-v="${i}"><img src="${IMG(L[i].img)}" alt=""><div><b>${rub(L[i].p)}</b><div style="font-size:14px;margin-top:2px">${L[i].t}</div><div class="s">👁 ${[142, 87][k]} · ♥ ${[3, 5][k]} · 💬 ${[2, 1][k]}</div></div></div>`).join("")}
   <div style="padding:16px"><button class="btn blue" style="width:100%" data-a="na">Разместить объявление</button></div>
   <div class="suggest" data-a="disc" data-v="d7"><span class="mark" style="width:36px;height:36px">${I.sig}</span><div>Кирилл выбирает первый скейт. <b>Подскажите по опыту.</b> Если посоветуете своё объявление, ответ пометим как рекламу</div></div>`;
 }
 function msgHTML() {
   return `<div class="sh"><div class="sh-top"><div class="logo" style="font-size:24px">Сообщения</div></div></div>` +
-    CHATS.map(c => `<div class="chat" data-a="chat" data-v="${c.id}"><img src="${IMG(L[c.it].img)}" alt=""><div class="tx"><div><b>${c.who}</b><div class="l it">${L[c.it].t}</div><div class="l">${c.msgs.length ? esc(c.msgs[c.msgs.length - 1].t) : "Новый чат"}</div></div><div class="rt"><span class="tm">${c.tm}</span>${c.un ? `<span class="un">${c.un}</span>` : ""}</div></div></div>`).join("");
+    (CHATS.length ? CHATS.map(c => `<div class="chat" data-a="chat" data-v="${c.id}"><img src="${IMG(L[c.it].img)}" alt=""><div class="tx"><div><b>${c.who}</b><div class="l it">${L[c.it].t}</div><div class="l">${c.msgs.length ? esc(c.msgs[c.msgs.length - 1].t) : "Новый чат"}</div></div><div class="rt"><span class="tm">${c.tm}</span>${c.un ? `<span class="un">${c.un}</span>` : ""}</div></div></div>`).join("")
+      : `<div class="empty">Здесь будут переписки с продавцами. Напишите из любого объявления: в прототипе продавцы отвечают сами</div>`);
 }
 function chatFor(id) { let c = CHATS.find(x => x.it === id); if (!c) { c = { id: "ch" + id, who: L[id].s, it: id, tm: "сейчас", un: 0, msgs: [] }; CHATS.unshift(c); } return c; }
 function chatHTML(id) {
@@ -1087,33 +1328,38 @@ function chatHTML(id) {
   const body = `<div class="ci-item" data-a="item" data-v="${c.it}"><img src="${IMG(L[c.it].img)}" alt=""><div><b>${rub(L[c.it].p)}</b><br>${L[c.it].t}</div></div><div class="msgs">${c.msgs.map(m => `<div class="msg ${m.me ? "me" : ""}">${esc(m.t)}</div>`).join("")}</div>`;
   return `<div class="ph"><button class="ib" data-a="back" aria-label="Назад">${I.back}</button><div class="ttl">${c.who}</div><span class="ib"></span></div><div class="pc">${body}</div><form class="inp" data-f="msg" data-v="${id}"><input id="mi" placeholder="Сообщение" autocomplete="off"><button aria-label="Отправить">${I.send}</button></form>`;
 }
-function openChat(c) { c.un = 0; const p = push(chatHTML, c.id, true); renderNav(); renderTab(); scrollChat(p); return p; }
+function openChat(c) { c.un = 0; const p = push(chatHTML, c.id, true); renderNav(); renderTab(); scrollChat(p); save(); return p; }
 function scrollChat(p) { const pc = p.el.querySelector(".pc"); if (pc) pc.scrollTop = pc.scrollHeight; }
 function sendMsg(c, text) {
   c.msgs.push({ me: true, t: text }); c.tm = "сейчас";
   const p = S.stack.find(x => x.fn === chatHTML && x.arg === c.id);
   if (p) { p.el.innerHTML = chatHTML(c.id); scrollChat(p); }
+  save();
   setTimeout(() => {
     const pool = L[c.it].c === "Авто" ? REPLIES_CAR : REPLIES;
     c.r = (c.r || 0) + 1;
     c.msgs.push({ t: pool[(c.r - 1) % pool.length] });
     const q = S.stack.find(x => x.fn === chatHTML && x.arg === c.id);
     if (q) { q.el.innerHTML = chatHTML(c.id); scrollChat(q); } else c.un++;
-    renderTab(); renderNav();
+    renderTab(); renderNav(); save();
   }, 1400);
 }
 function profHTML() {
-  const helped = 12, answered = 31 + S.myAns, reqs = 3 + D.filter(d => d.mine).length;
-  return `<div class="prof">${ava("Вы", 64)}<div><h2>${ME}</h2><div class="r">★ 4,9 · 23 отзыва · на Авито с 2019</div></div></div>
-  <div class="lvl" data-a="levels"><div class="k">Сигнал · ваш уровень в категории «Фото»</div><div class="n">Знаток фототехники</div><div class="bar"><i style="width:${helped / 20 * 100}%"></i></div><div class="s"><span>До «Эксперта» ещё ${pl(20 - helped, MARKS)} «помогло»</span><u>Как растёт →</u></div></div>
+  const helped = S.helped, lv = level(helped), answered = S.myAns + (ACC.demo ? 31 : 0), reqs = D.filter(d => d.mine).length + (ACC.demo ? 3 : 0);
+  const next = LVT[lv], prev = lv ? LVT[lv - 1] : 0;
+  const cat = myCat();
+  const card = `<div class="lvl" data-a="levels"><div class="k">Сигнал · ${cat ? `ваш уровень в категории «${cat}»` : "ваш уровень"}</div><div class="n">${LVN[lv]}${cat ? " · " + cat : ""}</div><div class="bar"><i style="width:${next ? Math.min(100, (helped - prev) / (next - prev) * 100) : 100}%"></i></div><div class="s"><span>${next ? `До «${LVG[lv + 1]}» ещё ${pl(next - helped, MARKS)} «помогло»` : "Максимальный уровень"}</span><u>Как растёт →</u></div></div>`;
+  return `<div class="prof">${ava("Вы", 64)}<div><h2>${esc(meName())}</h2><div class="r">${ACC.demo ? "★ 4,9 · 23 отзыва · на Авито с 2019" : `Новый аккаунт · интересы: ${ACC.ints.join(", ")}`}</div></div></div>
+  ${card}
   <div class="stats3"><div><b>${helped}</b><span>${plw(helped, MARKS)} «помогло»</span></div><div><b>${answered}</b><span>${plw(answered, ANS)} в Сигнале</span></div><div><b>${reqs}</b><span>${plw(reqs, REQS)} о помощи</span></div></div>
-  <div class="rule">Уровень растёт только от отметок «помогло» и покупок по вашему совету. За количество ответов ничего не начисляем. Бонус на Авито Доставку - только если по совету купили через Доставку.</div>
+  <div class="rule">Уровень растёт только от отметок «помогло» и покупок по вашему совету. За количество ответов ничего не начисляем. Бонус на Авито Доставку - только если по совету купили через Доставку.${ACC.demo ? "" : " Ответьте на чужой запрос в Сигнале: автор-бот отметит «помогло» через несколько секунд."}</div>
   <div class="menu">
     <button class="li" data-a="notifs"><span class="tx">Уведомления Сигнала</span>${unread() ? `<span class="badge" style="position:static;border:0">${unread()}</span>` : ""}</button>
     <button class="li" data-a="sigto" data-v="disc"><span class="tx">Мои запросы и ответы</span></button>
     <button class="li" data-a="sigto" data-v="circ"><span class="tx">Мои круги</span></button>
-    <button class="li" data-a="na"><span class="tx">Кошелёк</span></button><button class="li" data-a="na"><span class="tx">Заказы и Доставка</span></button><button class="li" data-a="na"><span class="tx">Отзывы</span></button><button class="li" data-a="na"><span class="tx">Настройки</span></button></div>
-  <div class="foot">Кликабельный концепт команды «ООО «Коммерсы»» для Changellenge Cup Moscow 2026. Не является продуктом Авито, все данные вымышлены. <a data-a="credits">Фото: Wikimedia Commons</a></div>`;
+    <button class="li" data-a="na"><span class="tx">Кошелёк</span></button><button class="li" data-a="na"><span class="tx">Заказы и Доставка</span></button><button class="li" data-a="na"><span class="tx">Настройки</span></button>
+    <button class="li danger" data-a="logoutAsk"><span class="tx">Выйти из аккаунта</span></button></div>
+  <div class="foot">Кликабельный концепт команды «ООО «Коммерсы»» для Changellenge Cup Moscow 2026. Не является продуктом Авито, все данные вымышлены. Аккаунт хранится только на этом устройстве. <a data-a="credits">Фото: Wikimedia Commons</a></div>`;
 }
 function notifsHTML() {
   const body = S.notifs.map((n, i) => `<div class="nt ${n.n ? "new" : ""}" data-a="nt" data-v="${i}"><span class="e">${n.e}</span><div class="tx">${esc(n.t)}<small>${n.ago}</small></div></div>`).join("");
@@ -1122,7 +1368,8 @@ function notifsHTML() {
 
 /* ===== листы ===== */
 function openCircleSheet(what, cb) {
-  const people = [["Мама", "Семья"], ["Аня", "Семья"], ["Даня", "Пробежки"], ["Никита", "Друзья"]];
+  S.shareWhat = what;
+  const people = CIRCLES.flatMap(c => c.people.map(p => [p, c.name])).slice(0, 6);
   openSheet(`<h3>Показать близким</h3><div class="sub">Увидят только те, кого выберете. Можно спросить мнение или проголосовать</div>
     ${people.map(([n, s]) => `<button class="li" data-a="pickCircle" data-v="${n}">${ava(n, 40)}<span class="tx">${n}<small>${s}</small></span></button>`).join("")}
     <button class="li" data-a="invite"><span class="ava" style="width:40px;height:40px;background:var(--sig-s);color:var(--sig)">＋</span><span class="tx">Скопировать ссылку<small>Для тех, кого ещё нет в круге</small></span></button>`, cb);
@@ -1137,12 +1384,13 @@ function compareHTML() {
 }
 function answerSheet(id) {
   const d = D.find(x => x.id === id), cat = d.tags[0];
-  const mine = Object.keys(L).filter(i => L[i].c === cat && L[i].s === ME);
-  const opts = mine.concat(Object.keys(L).filter(i => L[i].c === cat && L[i].s !== ME)).slice(0, 4);
-  const first = opts.find(i => L[i].s !== ME);
+  const own = Object.keys(L).filter(i => L[i].c === cat && isMine(i));
+  const liked = S.likes.filter(i => L[i].c === cat && !isMine(i));
+  const opts = [...new Set(own.concat(liked, Object.keys(L).filter(i => L[i].c === cat && !isMine(i))))].slice(0, 4);
+  const first = opts.find(i => !isMine(i));
   openSheet(`<h3>Ваш ответ</h3><div class="sub">${esc(d.title)}</div><div class="form" style="padding:0"><textarea id="at" placeholder="Что посоветуете и почему? Расскажите о своём опыте"></textarea></div>
     ${opts.length ? `<div class="h5">Прикрепить объявление</div>
-    <div>${opts.map(i => `<button class="li ${i === first ? "on" : ""}" data-a="pickAns" data-v="${i}"><img src="${IMG(L[i].img)}" alt=""><span class="tx">${rub(L[i].p)}<small>${L[i].s === ME ? "Ваше объявление: ответ будет с пометкой «реклама»" : L[i].t}</small></span><span class="ck">${I.check}</span></button>`).join("")}</div>` : ""}
+    <div>${opts.map(i => `<button class="li ${i === first ? "on" : ""}" data-a="pickAns" data-v="${i}"><img src="${IMG(L[i].img)}" alt=""><span class="tx">${rub(L[i].p)}<small>${isMine(i) ? "Ваше объявление: ответ будет с пометкой «реклама»" : L[i].t}</small></span><span class="ck">${I.check}</span></button>`).join("")}</div>` : ""}
     <button class="btn sig" style="width:100%;margin-top:14px" data-a="sendAns" data-v="${id}">Отправить ответ</button>`);
 }
 function openRate(id) {
@@ -1154,7 +1402,7 @@ function openRate(id) {
     <button class="btn sig" style="width:100%;margin-top:12px" data-a="rateSend" data-v="${id}">Отправить</button>`);
 }
 function helperSheet(name) {
-  const h = HELP[name] || { lvl: "Участник Сигнала", helped: 3, ans: 6, since: 2020, proofs: [] };
+  const h = HELP[name] || (Object.values(L).some(x => x.s === name && x.shop) ? { shop: true } : { lvl: "Участник Сигнала", helped: 3, ans: 6, since: 2020, proofs: [] });
   if (h.shop) return openSheet(`<div class="hp">${ava(name, 56)}<div><h3>${name}</h3><div class="sub" style="margin:0">Магазин на Авито</div></div></div><div class="rule" style="margin:0">Это продавец. Его ответы помечены как реклама и всегда стоят ниже ответов покупателей.</div>`);
   openSheet(`<div class="hp">${ava(name, 56)}<div><h3>${name}</h3><div class="sub" style="margin:0">${h.lvl}</div></div></div>
     <div class="stats3" style="margin:0 0 12px"><div><b>${h.helped}</b><span>${plw(h.helped, MARKS)} «помогло»</span></div><div><b>${h.ans}</b><span>${plw(h.ans, ANS)}</span></div><div><b>${h.since}</b><span>год регистрации</span></div></div>
@@ -1163,9 +1411,10 @@ function helperSheet(name) {
     <div class="note">Значок «Владеет» ставится только по покупке на Авито или по чеку. Уровень растёт от отметок «помогло», а не от числа ответов.</div>`);
 }
 function levelSheet() {
+  const lv = level(S.helped);
   const LV = [["Новичок", "первый ответ в категории"], ["Советчик", "5 отметок «помогло»"], ["Знаток", "10 отметок «помогло» и покупка в категории на Авито"], ["Эксперт", "20 отметок «помогло» и 3 покупки в категории"]];
-  openSheet(`<h3>Как растёт уровень</h3><div class="sub">Уровень свой в каждой категории. Сейчас вы знаток в категории «Фото»</div>
-    ${LV.map(([n, r], i) => `<div class="lv ${i === 2 ? "cur" : ""}"><span class="d">${i + 1}</span><div><b>${n}</b><small>${r}</small></div>${i === 2 ? '<span class="you">вы здесь</span>' : ""}</div>`).join("")}
+  openSheet(`<h3>Как растёт уровень</h3><div class="sub">Уровень свой в каждой категории.${myCat() ? ` Сейчас вы ${LVN[lv].toLowerCase()} в категории «${myCat()}»` : ""}</div>
+    ${LV.map(([n, r], i) => `<div class="lv ${i === lv ? "cur" : ""}"><span class="d">${i + 1}</span><div><b>${n}</b><small>${r}</small></div>${i === lv ? '<span class="you">вы здесь</span>' : ""}</div>`).join("")}
     <div class="h5" style="margin-top:16px">Что даёт уровень</div>
     <div class="proof"><i>↑</i><span>Ваши ответы выше в обсуждениях категории</span></div>
     <div class="proof"><i>✓</i><span>Значок рядом с именем в ответах и в карточке</span></div>
@@ -1184,16 +1433,43 @@ function newCollSheet() {
 function creditsHTML() {
   return page("Фото", `<div class="desc" style="font-size:13px;line-height:1.5">Фотографии товаров взяты с Wikimedia Commons по свободным лицензиям:<br><br>${CREDITS.map(c => `${esc(c.title.replace("File:", ""))} · ${esc(c.artist || "автор не указан")} · ${esc(c.lic)}`).join("<br>")}</div>`);
 }
-const OWNER_REPLY = { "Бег": "На широкую стопу садятся свободно, брала в свой размер. Через месяц разнашиваются ещё чуть-чуть.", "Авто": "Расход по городу около 8,5 литра, зимой заводится без проблем. Проверьте, когда меняли ремень ГРМ.", "Фото": "Работает без нареканий, главное - не хранить в сырости.", other: "Пользуюсь полгода, всё устраивает. Проверьте комплектность при получении." };
+
+/* ===== регистрация ===== */
+const OB = { step: 0, name: "", ints: [], exp: null };
+function obHTML() {
+  const backBtn = `<button class="obback" data-a="obback">${I.back.replace('width="26" height="26"', 'width="20" height="20"')}Назад</button>`;
+  if (OB.step === 0) return `<span class="mk">${I.sig}</span><div class="k">Кликабельный концепт</div><h1>Авито + Сигнал</h1><p>Команда «ООО «Коммерсы»» · Changellenge Cup Moscow 2026</p>
+    <div class="obb"><button class="btn sig" data-a="ob" data-v="new">Создать свой аккаунт</button><button class="btn ghost" data-a="ob" data-v="demo">Посмотреть демо-аккаунт</button></div>
+    <small>Не является продуктом Авито. Данные вымышлены, оплата не настоящая. Знатоки и друзья в прототипе - боты. Аккаунт хранится только на этом устройстве.</small>`;
+  if (OB.step === 1) return `${backBtn}<div class="obs">Шаг 1 из 3</div><h2>Как вас зовут?</h2><p>Только имя: без телефона и пароля</p>
+    <form data-f="obname"><input id="obn" class="inp1" maxlength="24" placeholder="Например, Маша" value="${esc(OB.name)}" autocomplete="off" enterkeyhint="next"><button class="btn sig" type="submit">Дальше</button></form>`;
+  if (OB.step === 2) return `${backBtn}<div class="obs">Шаг 2 из 3</div><h2>Что вы ищете на Авито?</h2><p>Выберите, что интересно: соберём подборку</p>
+    <div class="obg">${CATS9.map(c => `<button class="obt ${OB.ints.includes(c) ? "on" : ""}" data-a="obint" data-v="${c}"><img src="${IMG(CATM[c].img)}" alt=""><span>${c}</span><i>${I.check}</i></button>`).join("")}</div>
+    <button class="btn sig" data-a="ob" data-v="ints" ${OB.ints.length ? "" : "disabled"}>${OB.ints.length ? "Дальше · выбрано " + OB.ints.length : "Выберите хотя бы одно"}</button>`;
+  return `${backBtn}<div class="obs">Шаг 3 из 3</div><h2>В чём вы разбираетесь?</h2><p>Сможете отвечать на вопросы и расти до знатока. Можно пропустить</p>
+    <div class="opts">${CATS9.map(c => `<button class="opt ${OB.exp === c ? "on" : ""}" data-a="obexp" data-v="${c}">${c}</button>`).join("")}<button class="opt ${OB.exp === "" ? "on" : ""}" data-a="obexp" data-v="">Пока ни в чём</button></div>
+    <button class="btn sig" data-a="ob" data-v="done">Готово</button>`;
+}
+function renderOb() { const el = $("#onb"); el.innerHTML = obHTML(); el.classList.remove("off"); el.scrollTop = 0; }
+function createAccount(demo) {
+  ACC = demo ? { name: ME, ints: ["Бег", "Фото"], exp: "Фото", demo: true } : { name: OB.name, ints: OB.ints.slice(), exp: OB.exp || null, demo: false };
+  seed(demo);
+  $("#onb").classList.add("off");
+  if (demo) setTab("home");
+  else { S.sigTab = "you"; setTab("sig"); toast(`${esc(ACC.name)}, подборка собрана по вашим интересам. Свайп вправо - нравится, влево - не моё`, 4200); }
+  save();
+}
+function logout() { try { localStorage.removeItem(KEY); } catch (e) { /* нет хранилища */ } location.href = location.pathname; }
 
 /* ===== показ на ноутбуке ===== */
 function demo(n) {
+  if (!ACC) createAccount(true);
   if (n === "1") { S.sigTab = "you"; setTab("sig"); }
   if (n === "2") { S.sigTab = "you"; setTab("sig"); openNewReq("deck"); }
   if (n === "3") { S.sigTab = "disc"; setTab("sig"); push(discHTML, "d1"); }
   if (n === "4") { setTab("home"); scrollToBox(openItem("a1")); }
   if (n === "5") { setTab("home"); scrollToBox(openItem("a25")); }
-  if (n === "6") { S.favTab = "colls"; setTab("fav"); push(collHTML, "c2"); }
+  if (n === "6") { S.favTab = "colls"; setTab("fav"); push(collHTML, (COLLS.find(c => c.shared && c.items.length) || COLLS.find(c => c.shared) || COLLS[0]).id); }
   if (n === "7") setTab("prof");
 }
 
@@ -1204,14 +1480,31 @@ document.addEventListener("click", e => {
   if (t.tagName === "A") e.preventDefault();
   e.stopPropagation();
   switch (a) {
+    case "ob":
+      if (v === "new") { OB.step = 1; renderOb(); setTimeout(() => $("#obn") && $("#obn").focus(), 50); }
+      else if (v === "demo") createAccount(true);
+      else if (v === "ints" && OB.ints.length) { OB.step = 3; renderOb(); }
+      else if (v === "done") createAccount(false);
+      return;
+    case "obback": OB.step = Math.max(0, OB.step - 1); renderOb(); return;
+    case "obint": OB.ints = OB.ints.includes(v) ? OB.ints.filter(x => x !== v) : OB.ints.concat(v); renderOb(); return;
+    case "obexp": OB.exp = v; renderOb(); return;
+    case "demo": demo(v); break;
+    case "logoutAsk": if (!ACC) { OB.step = 0; renderOb(); return; } openSheet(`<h3>${ACC ? "Выйти из аккаунта?" : "Начать заново?"}</h3><div class="sub">История, подборки и запросы на этом устройстве удалятся. Потом можно создать новый аккаунт или открыть демо</div><button class="btn sig" style="width:100%" data-a="logout">Выйти и начать заново</button>`); return;
+    case "logout": logout(); return;
+    case "reset": logout(); return;
+  }
+  if (!ACC) return;
+  switch (a) {
     case "tab": setTab(v); break;
     case "back": back(); break;
+    case "go": if (v) go(v); break;
     case "item": openItem(v, t.dataset.via); break;
     case "disc": push(discHTML, v); break;
     case "coll": push(collHTML, v); break;
     case "chat": openChat(CHATS.find(x => x.id === v)); break;
     case "notifs": S.notifs.forEach(n => n.n = false); push(notifsHTML); renderNav(); renderTab(); break;
-    case "nt": go(S.notifs[+v].go); break;
+    case "nt": { const n = S.notifs[+v]; n.n = false; go(n.go); renderNav(); break; }
     case "banner": $("#banner").classList.remove("in"); if (v) { S.notifs.forEach(n => { if (n.go === v) n.n = false; }); go(v); renderNav(); } break;
     case "sigtab": S.sigTab = v; renderTab(); $("#t-sig").scrollTop = 0; break;
     case "sigto": S.sigTab = v; setTab("sig"); break;
@@ -1222,9 +1515,10 @@ document.addEventListener("click", e => {
     case "cat": { const q = CATS[+v][2]; if (q) { S.q = q; renderTab(); $("#t-home").scrollTop = 0; } else toast("В прототипе Сигнал показан на товарах и авто. " + NA); break; }
     case "search": S.q = v; setTab("home"); $("#t-home").scrollTop = 0; break;
     case "clearq": S.q = ""; renderTab(); break;
+    case "saveq": S.saved.unshift({ q: S.q.trim(), n: 0 }); toast("Поиск сохранён: он появится в Избранном, во вкладке «Поиски»"); renderTab(); break;
     case "swipe": decide(v); break;
     case "askDeck": closeSheet(); if (S.deck[S.di] === "ASK") S.di++; renderTab(); openNewReq("deck"); break;
-    case "deckReset": S.di = 0; S.deck = DECK0.slice(); S.likes = []; S.nopes = []; S.sent = []; S.adapted = false; renderTab(); break;
+    case "deckReset": S.di = 0; S.deck = ACC.demo ? DECK0.slice() : buildDeck(ACC.ints); S.likes = []; S.nopes = []; S.sent = []; S.adapted = false; S.askCat = null; renderTab(); break;
     case "compare": openSheet(compareHTML()); break;
     case "newreq": openNewReq(v); break;
     case "opt":
@@ -1248,29 +1542,38 @@ document.addEventListener("click", e => {
     case "pickAns": t.parentElement.querySelectorAll(".li").forEach(o => o.classList.toggle("on", o === t && !o.classList.contains("on"))); break;
     case "sendAns": {
       const d = D.find(x => x.id === v); const sel = $("#sheet .li.on"); const txt = ($("#at") && $("#at").value.trim()) || "Посмотрите этот вариант, по цене нормально";
-      const it = sel ? sel.dataset.v : null, own = it && L[it].s === ME, expert = d.tags[0] === MY_CAT;
-      d.ans.push({ by: "Вы", b: own ? ["sel"] : expert ? ["own", "exp"] : [], own: !own && expert ? "Зенит-Е · 3 года" : "", t: txt, it });
+      const it = sel ? sel.dataset.v : null, own = it && isMine(it), cat = d.tags[0];
+      const b = own ? ["sel"] : ACC.demo && cat === "Фото" ? ["own", "exp"] : cat === myCat() && level(S.helped) >= 2 ? ["exp"] : [];
+      d.ans.push({ by: "Вы", b, own: ACC.demo && cat === "Фото" && !own ? "Зенит-Е · 3 года" : "", t: txt, it });
       d.cnt = Math.max(d.cnt, d.ans.length); S.myAns++;
+      if (!own) schedule(6000, "helped", { did: d.id, idx: d.ans.length - 1 });
       closeSheet(); rerender();
       toast(own ? "Ответ отправлен с пометкой «реклама»: вы советуете своё объявление" : `Ответ отправлен. Когда ${d.who} отметит «помогло», это увидят в вашем профиле`); break;
     }
-    case "askOwners": openSheet(`<h3>Спросить владельцев</h3><div class="sub">Вопрос увидят те, кто покупал «${esc(short(v))}» на Авито</div><div class="form" style="padding:0"><textarea id="oq">${L[v].c === "Авто" ? "Какой реальный расход и что менять в первую очередь?" : RUN.has(L[v].c) ? "Как садятся на широкую стопу? Берёте в свой размер?" : "Как вам после нескольких месяцев? Что проверить при покупке?"}</textarea></div><button class="btn sig" style="width:100%;margin-top:12px" data-a="sendOwners" data-v="${v}">Отправить вопрос</button>`); break;
-    case "sendOwners": {
-      closeSheet(); toast("Вопрос ушёл владельцам этой модели. Ответ придёт в уведомления");
-      const cat = RUN.has(L[v].c) ? "Бег" : L[v].c;
-      setTimeout(() => { (OWN[v] = OWN[v] || []).push({ who: "Света", m: "ответила на ваш вопрос", t: OWNER_REPLY[cat] || OWNER_REPLY.other }); notify("💬", `Владелец ответил на ваш вопрос про ${short(v)}`, "item:" + v, "Ответ владельца"); }, 5000);
+    case "askOwners": openSheet(`<h3>Спросить владельцев</h3><div class="sub">Вопрос увидят те, кто покупал «${esc(short(v))}» на Авито</div><div class="form" style="padding:0"><textarea id="oq">${L[v].c === "Авто" ? "Какой реальный расход и что менять в первую очередь?" : L[v].sz ? "Как садятся по размеру? Берёте свой или на полразмера больше?" : "Как вам после нескольких месяцев? Что проверить при покупке?"}</textarea></div><button class="btn sig" style="width:100%;margin-top:12px" data-a="sendOwners" data-v="${v}">Отправить вопрос</button>`); break;
+    case "sendOwners": closeSheet(); toast("Вопрос ушёл владельцам этой модели. Ответ придёт в уведомления"); schedule(5000, "owner", { item: v }); break;
+    case "toColl": openSheet(`<h3>В подборку</h3>${COLLS.map(c => `<button class="li" data-a="pickColl" data-v="${c.id}:${v}"><span class="pv" style="width:48px;height:48px;border-radius:10px;overflow:hidden;display:grid;grid-template-columns:1fr 1fr;gap:1px;background:var(--soft);flex:none">${c.items.slice(0, 4).map(i => `<img src="${IMG(L[i].img)}" alt="" style="width:100%;height:100%;border-radius:0">`).join("")}</span><span class="tx">${esc(c.name)}<small>${c.shared ? "совместная" + (c.members.length > 1 ? " с " + c.members.filter(m => m !== "Вы").join(", ") : "") : "личная"}</small></span></button>`).join("")}<button class="btn black" style="width:100%;margin-top:12px" data-a="newColl">Новая подборка</button>`); break;
+    case "pickColl": {
+      const [cid, iid] = v.split(":"); const c = COLLS.find(x => x.id === cid); if (!c.items.includes(iid)) c.items.unshift(iid); closeSheet();
+      const o = c.members.filter(m => m !== "Вы");
+      toast(`Добавили в «${esc(c.name)}»${o.length ? ". " + o.join(", ") + " увидит" : ""}`);
+      if (o.length) schedule(4000, "collcom", { cid, item: iid, bot: o[0] });
+      rerender(); break;
+    }
+    case "toFriend": openCircleSheet(v); break;
+    case "pickCircle": {
+      closeSheet(); toast(`Отправили: ${v}. Ответ придёт в Сигнал`);
+      const w = S.shareWhat, item = w && L[w] ? w : null;
+      schedule(3500, "friend", { name: v, item });
+      if (sheetCb) { const cb = sheetCb; sheetCb = null; cb(); }
       break;
     }
-    case "toColl": openSheet(`<h3>В подборку</h3>${COLLS.map(c => `<button class="li" data-a="pickColl" data-v="${c.id}:${v}"><span class="pv" style="width:48px;height:48px;border-radius:10px;overflow:hidden;display:grid;grid-template-columns:1fr 1fr;gap:1px;background:var(--soft);flex:none">${c.items.slice(0, 4).map(i => `<img src="${IMG(L[i].img)}" alt="" style="width:100%;height:100%;border-radius:0">`).join("")}</span><span class="tx">${esc(c.name)}<small>${c.shared ? "совместная" + (c.members.length > 1 ? " с " + c.members.filter(m => m !== "Вы").join(", ") : "") : "личная"}</small></span></button>`).join("")}<button class="btn black" style="width:100%;margin-top:12px" data-a="newColl">Новая подборка</button>`); break;
-    case "pickColl": { const [cid, iid] = v.split(":"); const c = COLLS.find(x => x.id === cid); if (!c.items.includes(iid)) c.items.unshift(iid); closeSheet(); const o = c.members.filter(m => m !== "Вы"); toast(`Добавили в «${esc(c.name)}»${o.length ? ". " + o.join(", ") + " увидит" : ""}`); rerender(); break; }
-    case "toFriend": openCircleSheet(v); break;
-    case "pickCircle": closeSheet(); toast(`Отправили: ${v}. Ответ придёт в Сигнал`); if (sheetCb) { const cb = sheetCb; sheetCb = null; cb(); } break;
     case "invite": closeSheet(); toast("Ссылка-приглашение скопирована. Контакты из телефона не загружаем"); break;
     case "newColl": newCollSheet(); break;
     case "cshared": t.classList.toggle("on"); break;
     case "collCreate": {
       const name = ($("#cn") && $("#cn").value.trim()) || "Новая подборка", shared = $("#sheet .sw").classList.contains("on");
-      COLLS.push({ id: "c" + (COLLS.length + 1), name, shared, members: ["Вы"], items: [], com: [], votes: {} });
+      COLLS.push({ id: "c" + (COLLS.length + 1) + "_" + Date.now().toString(36), name, shared, members: ["Вы"], items: [], com: [], votes: {} });
       closeSheet(); toast(shared ? "Подборка создана, ссылка-приглашение скопирована" : "Подборка создана"); rerender(); break;
     }
     case "vote": { const [cid, iid, k] = v.split(":"); const c = COLLS.find(x => x.id === cid); c.votes[iid] = c.votes[iid] === k ? null : k; rerender(); break; }
@@ -1281,13 +1584,14 @@ document.addEventListener("click", e => {
       const x = L[v], via = S.via && S.via.item === v ? S.via : null;
       openSheet(`<h3>Оформление</h3><div class="mini" style="margin-top:6px"><img src="${IMG(x.img)}" alt=""><div><b>${rub(x.p)}</b><span>${x.t}</span></div></div>
       <div class="sum"><div><span>Пункт выдачи</span><span>ул. Русаковская, 31</span></div><div><span>Товар</span><span>${rub(x.p)}</span></div><div><span>Доставка</span><span>249 ₽</span></div><div class="tot"><span>Итого</span><span>${rub(x.p + 249)}</span></div></div>
-      <div class="note" style="margin:0 0 12px">${via ? `Покупка по совету: ${via.by} получит отметку «купили по совету». Через неделю спросим, подошла ли вещь.` : "Через неделю спросим, подошла ли вещь. Ответ появится в блоке «Опыт владельцев»."}</div><button class="btn blue" style="width:100%" data-a="pay" data-v="${v}">Оплатить ${rub(x.p + 249)}</button>`); break;
+      <div class="note" style="margin:0 0 12px">${via ? `Покупка по совету: ${via.by} получит отметку «купили по совету». ` : ""}Через неделю спросим, подошла ли вещь. В прототипе вопрос придёт через 20 секунд.</div><button class="btn blue" style="width:100%" data-a="pay" data-v="${v}">Оплатить ${rub(x.p + 249)}</button>`); break;
     }
     case "pay": {
       closeSheet();
       const via = S.via && S.via.item === v ? S.via : null;
-      if (via) { D.find(d => d.id === via.did).ans[via.idx].bought = true; rerender(); }
-      toast(via ? `Заказ оформлен (демо). ${via.by} получит отметку «купили по совету»` : "Заказ оформлен (демо). Через неделю спросим, подошла ли вещь", 3600); break;
+      if (via) { const d = D.find(x => x.id === via.did); if (d && d.ans[via.idx]) d.ans[via.idx].bought = true; rerender(); }
+      S.bought.push(v); schedule(20000, "rate", { item: v });
+      toast(via ? `Заказ оформлен (демо). ${via.by} получит отметку «купили по совету»` : "Заказ оформлен (демо). Скоро спросим, подошла ли вещь", 3600); break;
     }
     case "rateOpt": t.parentElement.querySelectorAll(".opt").forEach(o => o.classList.toggle("on", o === t)); break;
     case "rateSend": {
@@ -1302,23 +1606,29 @@ document.addEventListener("click", e => {
     case "nsw": S.nset[v] = !S.nset[v]; t.classList.toggle("on", S.nset[v]); break;
     case "na": toast(NA, 2000); break;
     case "credits": push(creditsHTML); break;
-    case "demo": demo(v); break;
-    case "intro": $("#intro").classList.add("off"); break;
-    case "reset": location.reload(); break;
     case "sheetClose": closeSheet(); sheetCb = null; break;
   }
+  save();
 });
 document.addEventListener("submit", e => {
   e.preventDefault();
   const f = e.target;
+  if (f.dataset.f === "obname") {
+    const v = $("#obn").value.trim().replace(/\s+/g, " ");
+    if (!v) { $("#obn").focus(); toast("Напишите имя, чтобы создать аккаунт", 1800); return; }
+    OB.name = v.slice(0, 24); OB.step = 2; renderOb(); return;
+  }
+  if (!ACC) return;
   if (f.dataset.f === "search") { S.q = f.q.value; renderTab(); $("#t-home").scrollTop = 0; if (document.activeElement) document.activeElement.blur(); }
   if (f.dataset.f === "msg") { const c = CHATS.find(x => x.id === f.dataset.v); const v = f.querySelector("input").value.trim(); if (v) { sendMsg(c, v); const inp = S.stack[S.stack.length - 1].el.querySelector("#mi"); if (inp) inp.focus(); } }
   if (f.dataset.f === "cmt") { const c = COLLS.find(x => x.id === f.dataset.v); const v = f.querySelector("input").value.trim(); if (v) { c.com.push({ who: "Вы", on: c.items[0], t: v }); rerender(); } }
+  save();
 });
 document.addEventListener("keydown", e => {
+  if (!ACC) return;
   const tag = document.activeElement && document.activeElement.tagName;
   if (tag === "INPUT" || tag === "TEXTAREA") { if (e.key === "Escape") document.activeElement.blur(); return; }
-  if (e.key === "Escape") { if (!$("#intro").classList.contains("off")) $("#intro").classList.add("off"); else if (sheetOpen()) { closeSheet(); sheetCb = null; } else back(); return; }
+  if (e.key === "Escape") { if (sheetOpen()) { closeSheet(); sheetCb = null; } else back(); return; }
   if (S.tab === "sig" && S.sigTab === "you" && !S.stack.length && !sheetOpen()) {
     if (e.key === "ArrowRight") { e.preventDefault(); decide("like"); }
     if (e.key === "ArrowLeft") { e.preventDefault(); decide("nope"); }
@@ -1333,15 +1643,18 @@ function fit() {
     const s = Math.min(1, (innerHeight - 24) / st.offsetHeight, (innerWidth - 16) / st.offsetWidth);
     if (s < 1) st.style.zoom = String(s);
   }
-  if (S.tab === "sig" && S.sigTab === "you") sizeDeck();
+  if (ACC && S.tab === "sig" && S.sigTab === "you") sizeDeck();
 }
 addEventListener("resize", fit);
-const CREDITS = [{"title": "File:Running shoes.jpg", "artist": "Tiia Monto", "lic": "CC BY-SA 4.0"}, {"title": "File:Campus Women's Perry (L) Running Shoes.jpg", "artist": "dfgfdd", "lic": "CC BY-SA 4.0"}, {"title": "File:Asics Gel-Cumulus 22.jpg", "artist": "Petar Milošević", "lic": "CC BY-SA 4.0"}, {"title": "File:Trail Running Shoes Asics Gel Trail Lahar 5 GTX.jpg", "artist": "Rogainer", "lic": "CC BY-SA 4.0"}, {"title": "File:Nike Zoom Pegasus 38 running shoe.jpg", "artist": "Ssu", "lic": "CC BY-SA 4.0"}, {"title": "File:Trail Shoe (54104717822).png", "artist": "38142119@N00", "lic": "CC BY 2.0"}, {"title": "File:New Balance 2002R.jpg", "artist": "LeDroider", "lic": "CC0"}, {"title": "File:New Balance 480.jpg", "artist": "LeDroider", "lic": "CC0"}, {"title": "File:New Balance 1906R.jpg", "artist": "LeDroider", "lic": "CC0"}, {"title": "File:Adidas Adizero Boston 12 Taipei Marathon Collaboration Edition.jpeg", "artist": "SUNSmania41", "lic": "CC BY-SA 4.0"}, {"title": "File:Adidas Ultra Boost 4 running shoes.jpeg", "artist": "Dough4872", "lic": "CC BY-SA 4.0"}, {"title": "File:2023 Słuchawki Sony WI-XB400 (3).jpg", "artist": "Jacek Halicki", "lic": "CC BY-SA 4.0"}, {"title": "File:PS4-Console-wDS4.jpg", "artist": "Evan-Amos", "lic": "Public domain"}, {"title": "File:Ibanez Artist noBG.png", "artist": "NSX-Racer", "lic": "CC BY-SA 3.0"}, {"title": "File:Wzmacniacz akustyczny Lunchbox Acoustic mini firmy ZT.jpg", "artist": "http://muzyczny.pl", "lic": "CC BY-SA 4.0"}, {"title": "File:2024 Zenit-E (2).jpg", "artist": "Jacek Halicki", "lic": "CC BY-SA 4.0"}, {"title": "File:Garmin Forerunner 965 with Garmin Run Taipei Watch Face installed.jpeg", "artist": "SUNSmania41", "lic": "CC BY-SA 4.0"}, {"title": "File:Garmin - Forerunner 35.jpg", "artist": "Tiia Monto", "lic": "CC BY-SA 4.0"}, {"title": "File:Krups Vivo F880 home espresso maker.jpg", "artist": "User Mike1024 on en.wikipedia", "lic": "Public domain"}, {"title": "File:Tennis Racket and Balls.jpg", "artist": "Vladsinger at English Wikipedia", "lic": "CC BY-SA 3.0"}, {"title": "File:Cozy living room setup with a warm sofa, coffee cup, and an open book in a softly lit environment.jpg", "artist": "Shixart1985", "lic": "CC BY 2.0"}, {"title": "File:Pioneer PL-200 turntable with an aftermarket dustbug (7).jpg", "artist": "Miroslav Vajdic", "lic": "CC BY-SA 2.0"}, {"title": "File:Nash Vintage 60's Wooden Deck Shark Skateboard.jpg", "artist": "H. Michael Karshis", "lic": "CC BY 2.0"}, {"title": "File:Footbalance Insole.jpg", "artist": "Cogitato", "lic": "CC BY-SA 4.0"}, {"title": "File:2019 Lada Vesta Exclusive white front.jpg", "artist": "Throwawayacc222", "lic": "CC0"}, {"title": "File:Moscow Mozhayskoye Highway 4 k1 2023-07 1690032955.jpg", "artist": "Artyom Svetlov", "lic": "CC BY-SA 4.0"}, {"title": "File:Laptop on a neat desk (Unsplash).jpg", "artist": "Norbert Levajsics levajsics", "lic": "CC0"}, {"title": "File:Minnesota State Capitol Woodworkers Toolbox Historical Society.jpg", "artist": "Minnesota Historical Society", "lic": "CC BY-SA 2.0"}];
+/* браузер может прокрутить «телефон» к полю ввода; возвращаем на место, иначе всё съезжает вверх */
+["#phone", ".vp", "#body"].forEach(sel => { const el = $(sel); el.addEventListener("scroll", () => { if (el.scrollTop || el.scrollLeft) { el.scrollTop = 0; el.scrollLeft = 0; } }, { passive: true }); });
+const CREDITS = [{"title": "File:Running shoes.jpg", "artist": "Tiia Monto", "lic": "CC BY-SA 4.0"}, {"title": "File:Campus Women's Perry (L) Running Shoes.jpg", "artist": "dfgfdd", "lic": "CC BY-SA 4.0"}, {"title": "File:Asics Gel-Cumulus 22.jpg", "artist": "Petar Milošević", "lic": "CC BY-SA 4.0"}, {"title": "File:Trail Running Shoes Asics Gel Trail Lahar 5 GTX.jpg", "artist": "Rogainer", "lic": "CC BY-SA 4.0"}, {"title": "File:Nike Zoom Pegasus 38 running shoe.jpg", "artist": "Ssu", "lic": "CC BY-SA 4.0"}, {"title": "File:Trail Shoe (54104717822).png", "artist": "38142119@N00", "lic": "CC BY 2.0"}, {"title": "File:New Balance 2002R.jpg", "artist": "LeDroider", "lic": "CC0"}, {"title": "File:New Balance 480.jpg", "artist": "LeDroider", "lic": "CC0"}, {"title": "File:New Balance 1906R.jpg", "artist": "LeDroider", "lic": "CC0"}, {"title": "File:Adidas Adizero Boston 12 Taipei Marathon Collaboration Edition.jpeg", "artist": "SUNSmania41", "lic": "CC BY-SA 4.0"}, {"title": "File:Adidas Ultra Boost 4 running shoes.jpeg", "artist": "Dough4872", "lic": "CC BY-SA 4.0"}, {"title": "File:2023 Słuchawki Sony WI-XB400 (3).jpg", "artist": "Jacek Halicki", "lic": "CC BY-SA 4.0"}, {"title": "File:PS4-Console-wDS4.jpg", "artist": "Evan-Amos", "lic": "Public domain"}, {"title": "File:Ibanez Artist noBG.png", "artist": "NSX-Racer", "lic": "CC BY-SA 3.0"}, {"title": "File:Wzmacniacz akustyczny Lunchbox Acoustic mini firmy ZT.jpg", "artist": "http://muzyczny.pl", "lic": "CC BY-SA 4.0"}, {"title": "File:2024 Zenit-E (2).jpg", "artist": "Jacek Halicki", "lic": "CC BY-SA 4.0"}, {"title": "File:Garmin Forerunner 965 with Garmin Run Taipei Watch Face installed.jpeg", "artist": "SUNSmania41", "lic": "CC BY-SA 4.0"}, {"title": "File:Garmin - Forerunner 35.jpg", "artist": "Tiia Monto", "lic": "CC BY-SA 4.0"}, {"title": "File:Krups Vivo F880 home espresso maker.jpg", "artist": "User Mike1024 on en.wikipedia", "lic": "Public domain"}, {"title": "File:Tennis Racket and Balls.jpg", "artist": "Vladsinger at English Wikipedia", "lic": "CC BY-SA 3.0"}, {"title": "File:Cozy living room setup with a warm sofa, coffee cup, and an open book in a softly lit environment.jpg", "artist": "Shixart1985", "lic": "CC BY 2.0"}, {"title": "File:Pioneer PL-200 turntable with an aftermarket dustbug (7).jpg", "artist": "Miroslav Vajdic", "lic": "CC BY-SA 2.0"}, {"title": "File:Nash Vintage 60's Wooden Deck Shark Skateboard.jpg", "artist": "H. Michael Karshis", "lic": "CC BY 2.0"}, {"title": "File:Footbalance Insole.jpg", "artist": "Cogitato", "lic": "CC BY-SA 4.0"}, {"title": "File:2019 Lada Vesta Exclusive white front.jpg", "artist": "Throwawayacc222", "lic": "CC0"}, {"title": "File:Moscow Mozhayskoye Highway 4 k1 2023-07 1690032955.jpg", "artist": "Artyom Svetlov", "lic": "CC BY-SA 4.0"}, {"title": "File:Laptop on a neat desk (Unsplash).jpg", "artist": "Norbert Levajsics levajsics", "lic": "CC0"}, {"title": "File:Minnesota State Capitol Woodworkers Toolbox Historical Society.jpg", "artist": "Minnesota Historical Society", "lic": "CC BY-SA 2.0"}, {"title": "File:Iphone-12-product--red.png", "artist": "Raphaël Poupon", "lic": "CC BY-SA 4.0"}, {"title": "File:MacBook Air keyboard 1.jpg", "artist": "TheumasNL", "lic": "CC BY-SA 4.0"}, {"title": "File:Nintendo-Switch-Console-Docked-wJoyConRB.jpg", "artist": "Evan-Amos", "lic": "Public domain"}, {"title": "File:2023 Amazon Kindle Paperwhite (2).jpg", "artist": "Jacek Halicki", "lic": "CC BY-SA 4.0"}, {"title": "File:AirPods Pro (2nd generation).jpg", "artist": "Hajoon0102", "lic": "CC BY-SA 4.0"}, {"title": "File:Apple AirPods Max.jpg", "artist": "SimonWaldherr", "lic": "CC BY-SA 4.0"}, {"title": "File:Mechanical keyboard example.jpg", "artist": "Thanasis Termitzoglou", "lic": "CC BY-SA 4.0"}, {"title": "File:IPad Air.png", "artist": "Zach Vega", "lic": "CC BY-SA 3.0"}, {"title": "File:JBL Flip 4.jpg", "artist": "Freekhou5", "lic": "CC BY-SA 4.0"}, {"title": "File:Black and white Playstation 5 base edition with controller.png", "artist": "Howardcorn33", "lic": "CC0"}, {"title": "File:GoPro Max front.jpg", "artist": "Rémi Simonnin", "lic": "CC BY-SA 4.0"}, {"title": "File:HK TKO 將軍澳 Tseung Kwan O PopCorn mall shop Uniqlo Clothing Store May 2022 Px3 29.jpg", "artist": "HSGTLAEHRE 3041", "lic": "CC BY-SA 4.0"}, {"title": "File:Black worn leather jacket detail 1.jpg", "artist": "W.carter", "lic": "CC0"}, {"title": "File:Sonoma Raceway hoodie - June 2023 - Sarah Stierch.jpg", "artist": "Missvain", "lic": "CC BY 4.0"}, {"title": "File:Hoodie m7agar.jpg", "artist": "YoussefTahoun", "lic": "CC0"}, {"title": "File:OutDoor 2018, Friedrichshafen (1X7A0285).jpg", "artist": "Matti Blume", "lic": "CC BY-SA 4.0"}, {"title": "File:Polo Ralph Lauren down jacket with Aztec style print.jpg", "artist": "Menswear Market", "lic": "CC BY 2.0"}, {"title": "File:Converse Chuck Taylor All-Stars (51091002425).jpg", "artist": "Nicolas Buffler from Guilherand Granges, France", "lic": "CC BY 2.0"}, {"title": "File:Dr Martens 10 Eyelet Boots.JPG", "artist": "Khaosaming", "lic": "CC BY-SA 3.0"}, {"title": "File:Canon AE-1 Program D Barthel.jpg", "artist": "Denis Barthel", "lic": "CC BY-SA 4.0"}, {"title": "File:Polaroid SX-70 (4462345243).jpg", "artist": "Thomas Backa from Turku, Finland", "lic": "CC0"}, {"title": "File:Nikon F3.jpg", "artist": "Photopath at flickr", "lic": "CC BY-SA 2.0"}, {"title": "File:Fujifilm X100 001.jpg", "artist": "Nienetwiler", "lic": "CC BY-SA 3.0"}, {"title": "File:Canon EOS 600D 1.jpg", "artist": "Lionel Allorge", "lic": "CC BY-SA 3.0"}, {"title": "File:Helios-44-2 58 mm F2 -- 2023 -- 0038-44.jpg", "artist": "", "lic": "CC BY-SA 4.0"}, {"title": "File:Camera Zenit TTL. Olympics - 80.jpg", "artist": "Dmitry Makeev", "lic": "CC BY-SA 4.0"}, {"title": "File:France, Regence Style, 18th Century - Chair - 1926.548 - Cleveland Museum of Art.tif", "artist": "", "lic": "CC0"}, {"title": "File:Floor lamp 1 2016-07-06.jpg", "artist": "FASTILY", "lic": "CC BY-SA 4.0"}, {"title": "File:Floor Lamp MET DT8293.jpg", "artist": "Louis Comfort Tiffany / Tiffany Studios", "lic": "CC0"}, {"title": "File:Modern faux plant in white pot on a kitchen countertop, enhancing decor.jpg", "artist": "Bhullargraphic", "lic": "CC BY-SA 4.0"}, {"title": "File:Bookcase-saam 1966.11.7.jpg", "artist": "AnonymousUnknown author", "lic": "CC0"}, {"title": "File:2023 Czajnik elektryczny N'OVEEN.jpg", "artist": "Jacek Halicki", "lic": "CC BY-SA 4.0"}, {"title": "File:2023 Czajnik elektryczny Bosch (1).jpg", "artist": "Jacek Halicki", "lic": "CC BY-SA 4.0"}, {"title": "File:Coffee Grinder Zassenhaus.jpg", "artist": "Benjamin Hell (User:Siebengang)", "lic": "CC BY-SA 3.0"}, {"title": "File:Yamaha Acoustic Guitar FG-331v2.jpg", "artist": "Veradrive", "lic": "CC0"}, {"title": "File:17 inch pocket ukulele branded \"ultnice\".jpg", "artist": "Zapyon", "lic": "CC BY-SA 4.0"}, {"title": "File:PXL 20230226 231727215 Catan Legend of the Conquerors board game.jpg", "artist": "WalkingRadiance", "lic": "CC BY-SA 4.0"}, {"title": "File:LEGO Technic John Deere 6130R.jpg", "artist": "Lasse Deleuran", "lic": "Public domain"}, {"title": "File:Korg Wavestation front.png", "artist": "Matt Perry", "lic": "CC BY-SA 3.0"}, {"title": "File:Chess game Staunton No. 6 perfil view 8.jpg", "artist": "Wilfredor", "lic": "CC0"}, {"title": "File:Vinyl record LP 10inch.JPG", "artist": "能無しさん", "lic": "CC BY-SA 3.0"}, {"title": "File:MyEsel, Cyclingworld Europe 2024, Meerbusch (P1170974-RR).jpg", "artist": "Matti Blume", "lic": "CC BY-SA 4.0"}, {"title": "File:Arbor A-Frame horiz.jpg", "artist": "Arbor", "lic": "CC BY-SA 2.5"}, {"title": "File:Colorful pile of dumbbells at the gym.jpg", "artist": "Ser Amantio di Nicolao", "lic": "CC BY-SA 4.0"}, {"title": "File:Yoga mats.png", "artist": "Sha89sha", "lic": "CC0"}, {"title": "File:Boxing gloves.jpg", "artist": "en:User:Andman8", "lic": "CC BY 2.5"}, {"title": "File:Kettlebell truebalance romeike.jpg", "artist": "Detlef Romeike", "lic": "CC BY-SA 2.5"}, {"title": "File:Hyundai Solaris - Efremov, Russia1.jpg", "artist": "Юрий Д.К.", "lic": "CC BY 4.0"}, {"title": "File:Škoda Octavia IV Combi Facelift IMG 9434.jpg", "artist": "Alexander-93", "lic": "CC BY-SA 4.0"}, {"title": "File:Toyota Camry (XV70) IMG 9081.jpg", "artist": "Alexander-93", "lic": "CC BY-SA 4.0"}, {"title": "File:Abgestelltes Kinder-Laufrad (nah).jpg", "artist": "August Geyler", "lic": "CC BY-SA 4.0"}, {"title": "File:2023 Pluszowy miś.jpg", "artist": "Jacek Halicki", "lic": "CC BY-SA 4.0"}, {"title": "File:Inglesina Marco Polo car seat.jpg", "artist": "Niklitov", "lic": "CC BY-SA 4.0"}, {"title": "File:Toy train 3.jpg", "artist": "ProjectManhattan", "lic": "CC BY-SA 3.0"}];
 
-/* ?shot - режим для скриншотов: со статус-баром и без заставки */
-if (/[?&]shot\b/.test(location.search)) { document.body.classList.add("shot"); $("#intro").classList.add("off"); }
+/* ?shot - режим для скриншотов: демо-аккаунт, статус-бар, без сохранения */
+if (SHOT) { document.body.classList.add("shot"); createAccount(true); }
+else if (load()) { $("#onb").classList.add("off"); setTab(S.tab || "home"); }
+else renderOb();
 fit();
-setTab("home");
 </script>
 </body>
 </html>
