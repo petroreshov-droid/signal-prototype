@@ -472,6 +472,14 @@ svg{display:block}
 <script>
 /* ===== справочники ===== */
 const IMG = n => `img/${n}.jpg`;
+/* если сеть оборвала загрузку, Safari оставляет «?» вместо фото: пробуем ещё до трёх раз */
+document.addEventListener("error", e => {
+  const im = e.target;
+  if (im.tagName !== "IMG" || im.src.startsWith("data:") || +(im.dataset.retry || 0) >= 3) return;
+  const n = +(im.dataset.retry || 0) + 1;
+  im.dataset.retry = n;
+  setTimeout(() => { im.src = im.getAttribute("src").split("?")[0] + "?r=" + n; }, 400 * n);
+}, true);
 const rub = n => n.toLocaleString("ru-RU") + " ₽";
 const esc = s => String(s).replace(/[&<>"]/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]));
 const ME = "Алексей";
