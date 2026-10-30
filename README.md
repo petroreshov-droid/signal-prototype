@@ -92,3 +92,5 @@
 - 2023 Pluszowy miś.jpg · Jacek Halicki · CC BY-SA 4.0 · https://commons.wikimedia.org/wiki/File:2023_Pluszowy_mi%C5%9B.jpg
 - Inglesina Marco Polo car seat.jpg · Niklitov · CC BY-SA 4.0 · https://commons.wikimedia.org/wiki/File:Inglesina_Marco_Polo_car_seat.jpg
 - Toy train 3.jpg · ProjectManhattan · CC BY-SA 3.0 · https://commons.wikimedia.org/wiki/File:Toy_train_3.jpg
+- Brooks Ghost 14 GTX.jpg · Petar Milošević · CC BY-SA 4.0 · https://commons.wikimedia.org/wiki/File:Brooks_Ghost_14_GTX.jpg
+- Salomon Outline Prism GTX tursko herre.jpg · Ssu · CC BY-SA 4.0 · https://commons.wikimedia.org/wiki/File:Salomon_Outline_Prism_GTX_tursko_herre.jpg
