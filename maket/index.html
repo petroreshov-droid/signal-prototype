@@ -1,0 +1,186 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="robots" content="noindex">
+<meta name="theme-color" content="#eceef2">
+<title>Авито Сигнал · макеты</title>
+<meta name="description" content="Итоговые макеты Сигнала по видео Сони 30.10: лента обсуждений, знатоки, близкие, карточка объявления.">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Авито Сигнал · макеты">
+<meta property="og:description" content="Итоговые макеты по видео Сони: лента обсуждений, знатоки, близкие и карточка объявления.">
+<meta property="og:image" content="https://petroreshov-droid.github.io/signal-prototype/maket/cover.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<style>
+:root{--ink:#111114;--ink2:#3c3c43;--muted:#6e6e76;--line:#e1e2e7;--bg:#eceef2;--sig:#7a4cff;--sig-s:#f2edff;--green-t:#0b8a4a;--red-t:#c2410c}
+*{box-sizing:border-box;margin:0;padding:0}
+html{-webkit-text-size-adjust:100%;scroll-behavior:smooth}
+body{background:var(--bg);color:var(--ink);font-family:-apple-system,BlinkMacSystemFont,"SF Pro Text","Inter",Roboto,Arial,sans-serif;-webkit-font-smoothing:antialiased;line-height:1.45}
+a{color:var(--sig)}
+.wrap{max-width:1180px;margin:0 auto;padding:0 16px}
+.top{padding:30px 0 6px}
+.k{font-size:12.5px;font-weight:700;letter-spacing:.6px;text-transform:uppercase;color:var(--sig)}
+h1{font-size:31px;line-height:1.1;letter-spacing:-.6px;margin:7px 0 10px}
+.lead{font-size:16px;color:var(--ink2);max-width:760px}
+.toc{display:flex;gap:8px;overflow-x:auto;margin:16px -16px 0;padding:0 16px 6px;scrollbar-width:none}
+.toc::-webkit-scrollbar{display:none}
+.toc a{flex:none;font-size:14px;font-weight:600;color:var(--ink);background:#fff;border:1px solid var(--line);border-radius:18px;padding:8px 13px;text-decoration:none}
+.toc a.hi{background:var(--sig);border-color:var(--sig);color:#fff}
+section{padding:28px 0 4px;scroll-margin-top:8px}
+h2{font-size:24px;line-height:1.18;letter-spacing:-.35px;margin:5px 0 8px}
+.bp{font-size:15px;color:var(--ink2);max-width:780px}
+.dgrid{display:grid;gap:10px;margin-top:12px}
+@media (min-width:760px){.dgrid{grid-template-columns:1fr 1fr}}
+.dc{display:block;background:#fff;border:1px solid var(--line);border-radius:18px;padding:14px 15px 15px;text-decoration:none;color:inherit}
+.dc .h{display:flex;align-items:center;gap:9px}
+.num{display:inline-flex;flex:none;min-width:28px;height:28px;padding:0 6px;border-radius:9px;background:var(--sig);color:#fff;font-weight:800;font-size:14px;align-items:center;justify-content:center}
+.dc b{font-size:17px;line-height:1.2}
+.dc .o{font-size:13px;color:var(--muted);margin-top:1px}
+.dc p{font-size:14.5px;color:var(--ink2);margin-top:9px}
+.dc .dec{font-size:15px;font-weight:600;color:var(--ink);margin-top:10px}
+.dc .why{font-size:14px;color:var(--muted);margin-top:6px}
+.dc .go{display:inline-block;margin-top:9px;font-size:14px;font-weight:700;color:var(--sig)}
+.rail{display:flex;gap:14px;overflow-x:auto;scroll-snap-type:x mandatory;margin:14px -16px 0;padding:2px 16px 10px;scroll-padding:0 16px;scrollbar-width:thin}
+.card{flex:none;width:min(86vw,350px);scroll-snap-align:start}
+.card img{display:block;width:100%;height:auto;aspect-ratio:975/2113;cursor:zoom-in}
+figcaption{padding:10px 4px 0;font-size:14.5px;color:#4a4a50}
+figcaption .n{display:inline-flex;min-width:26px;height:26px;padding:0 6px;border-radius:8px;background:var(--sig);color:#fff;font-weight:800;font-size:13.5px;align-items:center;justify-content:center;margin-right:7px;vertical-align:1px}
+figcaption b{font-size:17px;color:var(--ink)}
+figcaption p{margin-top:6px}
+.pro{color:var(--green-t)}
+.con{color:var(--red-t)}
+.cnt{font-size:13px;color:var(--muted);padding:0 2px}
+.more details{background:#fff;border:1px solid var(--line);border-radius:18px;padding:0 15px;margin-top:10px}
+.more summary{font-weight:700;font-size:16px;padding:15px 22px 15px 0;cursor:pointer;list-style:none;position:relative}
+.more summary::-webkit-details-marker{display:none}
+.more summary::after{content:"+";position:absolute;right:0;top:12px;font-size:22px;line-height:1;color:var(--sig);font-weight:700}
+.more details[open] summary::after{content:"×"}
+.cl{list-style:none;padding-bottom:6px}
+.cl li{border-top:1px solid var(--line);padding:10px 0;font-size:14.5px}
+.cl .t{font-weight:700;color:var(--sig);font-variant-numeric:tabular-nums;margin-right:6px}
+.cl .w{display:block;color:var(--muted);font-size:13.5px;margin-top:3px}
+.md{padding-bottom:10px}
+.md h3{font-size:15.5px;margin:10px 0 4px}
+.md ul{padding-left:18px;margin-bottom:10px}
+.md li{font-size:14.5px;margin:4px 0}
+footer{padding:28px 0 44px;font-size:13px;color:var(--muted)}
+.lb{position:fixed;inset:0;z-index:9;background:rgba(12,12,16,.93);overflow:auto;padding:14px 10px 28px;text-align:center}
+.lb[hidden]{display:none}
+.lb img{width:100%;max-width:560px;height:auto}
+.lb .x{position:fixed;top:10px;right:12px;width:40px;height:40px;border-radius:20px;border:0;background:rgba(255,255,255,.16);color:#fff;font-size:22px}
+</style>
+</head>
+<body>
+<div class="wrap">
+<header class="top">
+  <div class="k">Changellenge Cup Moscow 2026 · ООО «Коммерсы»</div>
+  <h1>Авито Сигнал: макеты</h1>
+  <p class="lead">По видео Сони 30.10: сначала макеты, потом код. Итоговый вариант: 7 досок, 20 экранов на одном сценарии «зимние кроссовки до 5 000». Экраны листаются вбок, нажмите на экран, чтобы рассмотреть.</p>
+  <nav class="toc"><a class="hi" href="#decide">Решения</a><a href="#s01">01 Лента</a><a href="#s02">02 Где живёт</a><a href="#s03">03 Спросить</a><a href="#s04">04 Ответить</a><a href="#s05">05 Близкие</a><a href="#s06">06 Карточка</a><a href="#s07">07 Знатоки</a><a href="#alt">Варианты</a><a href="#more">Чек-лист</a></nav>
+</header>
+
+<section id="decide">
+  <div class="k">4 решения</div>
+  <h2>Что выбрали и почему</h2>
+  <p class="bp">Итоговый вариант по всем пунктам из видео. Все 10 видов ленты и другие места для Сигнала - в конце страницы, если захочется сравнить.</p>
+  <div class="dgrid"><a class="dc" href="#s01"><div class="h"><span class="num">01</span><b>Лента обсуждений</b></div><p class="dec">Вариант 3 «Вопрос и лучший ответ» с блоком «Сейчас обсуждают» из варианта 5. В лучшем ответе видна вещь, к которой он ведёт</p><p class="why">Польза видна без клика, знатоки на виду, обсуждение ведёт к объявлению: механика двигает продажи (23:30). Блок сверху поднимает самое интересное (02:13)</p><span class="go">К экранам →</span></a><a class="dc" href="#s02"><div class="h"><span class="num">02</span><b>Где живёт Сигнал</b></div><p class="dec">Вкладка на месте Избранного. Избранное: сердечко рядом с поиском и первый пункт Профиля</p><p class="why">Вкладка - самый заметный вход, при этом Объявления и Сообщения на своих местах (11:41). Избранное остаётся в одно касание</p><span class="go">К экранам →</span></a><a class="dc" href="#s05"><div class="h"><span class="num">05</span><b>Близкие</b></div><p class="dec">Переписка в Сообщениях, близкие закреплены сверху. В Сигнале кружок, только когда кто-то просит помочь</p><p class="why">Одно место для чатов, Сигнал не перегружен (14:47-15:20). Кружок из видео (13:51) открывает тот же чат</p><span class="go">К экранам →</span></a><a class="dc" href="#s06"><div class="h"><span class="num">06</span><b>Опыт владельцев</b></div><p class="dec">До 10 отзывов о модели одна цитата, от 10 сводка Ави с плюсами и минусами</p><p class="why">Сводка по 2-3 отзывам ненадёжна. Яндекс тоже включает ИИ-сводку от 10 отзывов</p><span class="go">К экранам →</span></a></div>
+</section>
+
+<section id="s01"><div class="k">01 · Решение · лента обсуждений</div><h2>Лента обсуждений в Сигнале</h2><p class="bp">Из 10 вариантов взяли 3 «Вопрос и лучший ответ» и добавили сверху блок «Сейчас обсуждают» из 5. Польза видна без клика: под вопросом сразу лучший ответ знатока, а в ответе вещь, к которой он ведёт. Так обсуждения двигают продажи, о чём говорила Соня (23:30). Все 10 вариантов в конце страницы.</p><div class="rail"><figure class="card"><img src="img/01_feed_01.webp" width="975" height="2113" loading="eager" alt="Открыли Сигнал"><figcaption><span class="n">1</span><b>Открыли Сигнал</b><p>Сверху два главных обсуждения дня, ниже вопросы с лучшим ответом. Кольцо отмечает знатока, а в ответе видна вещь: обсуждение ведёт к покупке.</p></figcaption></figure><figure class="card"><img src="img/01_feed_02.webp" width="975" height="2113" loading="eager" alt="Когда нужна ваша помощь"><figcaption><span class="n">2</span><b>Когда нужна ваша помощь</b><p>Кружки близких появляются, только когда кто-то просит помочь или прислал вещи. Вопросы вашей категории без ответа поднимаются выше, за первый ответ двойной прогресс уровня.</p></figcaption></figure></div><div class="cnt"></div></section>
+<section id="s02"><div class="k">02 · Решение · нижняя панель</div><h2>Где живёт Сигнал</h2><p class="bp">Пять вкладок, как в Авито сейчас: Сигнал встаёт на место Избранного. Объявления и Сообщения остаются на своих местах (Соня, 11:41). Избранное не теряется: сердечко рядом с поиском и первый пункт Профиля с меткой «Теперь здесь».</p><div class="rail"><figure class="card"><img src="img/02_nav_01.webp" width="975" height="2113" loading="lazy" alt="Сигнал вместо Избранного"><figcaption><span class="n">1</span><b>Сигнал вместо Избранного</b><p>Пять вкладок: Поиск, Сигнал, Объявления, Сообщения, Профиль. Сердечко рядом с поиском открывает Избранное в одно касание. <span class="pro">Сигнал виден с любого экрана и не спорит с Объявлениями и Сообщениями.</span></p></figcaption></figure><figure class="card"><img src="img/02_nav_02.webp" width="975" height="2113" loading="lazy" alt="Избранное в Профиле"><figcaption><span class="n">2</span><b>Избранное в Профиле</b><p>Избранное первым пунктом профиля с меткой «Теперь здесь», рядом «Знаток в Сигнале». <span class="pro">Профиль Авито не переделываем, только добавляем пункт.</span></p></figcaption></figure></div><div class="cnt"></div></section>
+<section id="s03"><div class="k">03 · Задание из видео · создать обсуждение</div><h2>Спросить совета за два касания</h2><p class="bp">Как в Threads: только поле для текста и «Кого спросить». Категорию и бюджет Ави понимает из текста сам. После отправки экран читается сверху вниз: сначала ответы (или «пока не ответили»), ниже подборка Ави, ещё ниже похожие обсуждения. «Позвать круг» и «Готово» убраны: круг выбирается до отправки, назад - свайпом.</p><div class="rail"><figure class="card"><img src="img/03_create_01.webp" width="975" height="2113" loading="lazy" alt="Только текст"><figcaption><span class="n">1</span><b>Только текст</b><p>Пишете как в мессенджере, Ави сам ставит категорию, бюджет и размер (можно поправить касанием). Кого спросить: знатоков категории, близких или всех.</p></figcaption></figure><figure class="card"><img src="img/03_create_02.webp" width="975" height="2113" loading="lazy" alt="Сразу после отправки"><figcaption><span class="n">2</span><b>Сразу после отправки</b><p>Не пустой экран: понятно, что вопрос ушёл, ниже подборка Ави и похожие обсуждения. Каждый скролл уводит глубже в Сигнал.</p></figcaption></figure><figure class="card"><img src="img/03_create_03.webp" width="975" height="2113" loading="lazy" alt="Когда пришли ответы"><figcaption><span class="n">3</span><b>Когда пришли ответы</b><p>Ответы как ветка комментариев. Сверху владельцы и знатоки, продавцы ниже с пометкой «реклама». Подборка Ави и похожие обсуждения уезжают ниже ответов.</p></figcaption></figure></div><div class="cnt"></div></section>
+<section id="s04"><div class="k">04 · Задание из видео · обсуждение изнутри</div><h2>Обсуждение и ответ</h2><p class="bp">Обсуждение выглядит как ветка комментариев (Reddit, комментарии в Telegram). Знаток отмечен кольцом вокруг аватара, а не надписью. Ответ пишется одной строкой внизу, объявление прикрепляется через «+»: из Избранного, из недавно просмотренных или кнопкой «Подобрать», которая открывает ленту под запрос человека.</p><div class="rail"><figure class="card"><img src="img/04_thread_01.webp" width="975" height="2113" loading="lazy" alt="Ветка ответов"><figcaption><span class="n">1</span><b>Ветка ответов</b><p>Сверху то, что помогло автору, с ответами на ответы. Кольцо вокруг аватара: фиолетовое у знатока, золотое у эксперта. Ответ пишется прямо здесь.</p></figcaption></figure><figure class="card"><img src="img/04_thread_02.webp" width="975" height="2113" loading="lazy" alt="Плюс вместо списка"><figcaption><span class="n">2</span><b>Плюс вместо списка</b><p>Объявление прикрепляется по желанию. «Подобрать» открывает ленту уже с фильтрами из вопроса, «Из избранного» - то, что вы сами сохраняли.</p></figcaption></figure><figure class="card"><img src="img/04_thread_03.webp" width="975" height="2113" loading="lazy" alt="Подобрать в ленте"><figcaption><span class="n">3</span><b>Подобрать в ленте</b><p>Знаток листает объявления, уже отфильтрованные по вопросу, и отмечает подходящие. Так ответ сразу ведёт к покупке.</p></figcaption></figure><figure class="card"><img src="img/04_thread_04.webp" width="975" height="2113" loading="lazy" alt="Ответ с вещью"><figcaption><span class="n">4</span><b>Ответ с вещью</b><p>Текст и прикреплённая карточка уходят одним сообщением. Если прикрепить своё объявление, ответ получит пометку «реклама».</p></figcaption></figure></div><div class="cnt"></div></section>
+<section id="s05"><div class="k">05 · Решение · близкие</div><h2>Близкие вместо групп</h2><p class="bp">Групп по интересам нет: только семья и друзья, которых вы позвали сами. Переписка живёт в Сообщениях, близкие закреплены сверху. В Сигнале кружок близкого появляется, только когда он просит помочь, и открывает тот же чат (Соня, 14:47). Свайп остался мелочью: быстро разобрать, что прислал папа.</p><div class="rail"><figure class="card"><img src="img/05_close_01.webp" width="975" height="2113" loading="lazy" alt="Близкие в Сообщениях"><figcaption><span class="n">1</span><b>Близкие в Сообщениях</b><p>Чаты с близкими закреплены сверху и отделены от продавцов. <span class="pro">Переписка там, где её и ищут, Сигнал не перегружен.</span></p></figcaption></figure><figure class="card"><img src="img/05_close_02.webp" width="975" height="2113" loading="lazy" alt="Чат с папой"><figcaption><span class="n">2</span><b>Чат с папой</b><p>Пересылаем друг другу обсуждения и объявления. Что прислал папа, можно разобрать свайпом «нравится / мимо» прямо в чате, он увидит результат.</p></figcaption></figure><figure class="card"><img src="img/05_close_03.webp" width="975" height="2113" loading="lazy" alt="Просьба близкого в Сигнале"><figcaption><span class="n">3</span><b>Просьба близкого в Сигнале</b><p>Кружок появляется, только когда кто-то просит помочь или прислал вещи. Нажали - открылся тот же чат, что в Сообщениях, поверх ленты.</p></figcaption></figure></div><div class="cnt"></div></section>
+<section id="s06"><div class="k">06 · Решение · карточка объявления</div><h2>Опыт владельцев, который не мешает покупке</h2><p class="bp">Блок спокойный: серый фон, одинаковая высота, цитаты сменяются сами, как подсказки с отзывами в Лавке, которые видела Соня. До 10 отзывов о модели показываем одну цитату, от 10 - сводку Ави с плюсами и минусами (Яндекс тоже включает ИИ-сводку от 10 отзывов). Вместо «Спросить владельцев» одна строка с обсуждением модели и ссылка «Начать обсуждение».</p><div class="rail"><figure class="card"><img src="img/06_item_01.webp" width="975" height="2113" loading="lazy" alt="До 10 отзывов: одна цитата"><figcaption><span class="n">1</span><b>До 10 отзывов: одна цитата</b><p>Фиксированная высота в две строки, точки показывают, что отзывов несколько. Ниже одна строка с обсуждением модели. <span class="pro">Не спорит с ценой и кнопками.</span></p></figcaption></figure><figure class="card"><img src="img/06_item_02.webp" width="975" height="2113" loading="lazy" alt="От 10 отзывов: сводка Ави"><figcaption><span class="n">2</span><b>От 10 отзывов: сводка Ави</b><p>Плюсы и минусы модели по отзывам владельцев и одна цитата. Так Яндекс показывает сводку отзывов в Маркете, от 10 отзывов. <span class="pro">Работает и для авто, и для техники.</span></p></figcaption></figure><figure class="card"><img src="img/06_item_03.webp" width="975" height="2113" loading="lazy" alt="Обсуждение из карточки"><figcaption><span class="n">3</span><b>Обсуждение из карточки</b><p>Вопрос о модели в один шаг. Это закрывает риск, который заметила Соня: нельзя написать гадость про конкретного продавца, к вопросу прикрепляется модель.</p></figcaption></figure></div><div class="cnt"></div></section>
+<section id="s07"><div class="k">07 · Задание из видео · знатоки и награды</div><h2>Знаток: за что дают и что это даёт</h2><p class="bp">Вкладка «Знаток» внутри существующего профиля Авито. Статус свой в каждой категории и растёт только от отметок «помогло» и покупок по совету, а не от числа комментариев: так нечего накручивать. Знак - кольцо вокруг аватара (серое, фиолетовое, золотое), без надписей в ответах. Чтобы ответ получил каждый, вопросы без ответа уходят знатокам категории и дают двойной прогресс.</p><div class="rail"><figure class="card"><img src="img/07_expert_01.webp" width="975" height="2113" loading="lazy" alt="Вкладка «Знаток» в профиле"><figcaption><span class="n">1</span><b>Вкладка «Знаток» в профиле</b><p>Профиль не переделываем, добавляем вкладку рядом с Объявлениями и Отзывами. Здесь же «вы помогли 20 людям» и достижения, а не в ленте обсуждений.</p></figcaption></figure><figure class="card"><img src="img/07_expert_02.webp" width="975" height="2113" loading="lazy" alt="Кольцо вместо надписи"><figcaption><span class="n">2</span><b>Кольцо вместо надписи</b><p>Статус видно по кольцу вокруг аватара, как значки авторов отзывов на маркетплейсах. Пороги считаются от «помогло», а не от числа комментариев.</p></figcaption></figure><figure class="card"><img src="img/07_expert_03.webp" width="975" height="2113" loading="lazy" alt="Чтобы ответ получил каждый"><figcaption><span class="n">3</span><b>Чтобы ответ получил каждый</b><p>Вопросы без ответа идут знатокам категории по лесенке: лента, затем мягкое уведомление. За первый ответ на такой вопрос двойной прогресс и шаг к «Спасателю».</p></figcaption></figure></div><div class="cnt"></div></section>
+
+<section id="alt" style="padding-top:40px">
+  <div class="k">Что ещё рассматривали</div>
+  <h2>Варианты, которые не вошли в итог</h2>
+  <p class="bp">Оставили для сравнения: если захочется другую подачу ленты или другое место для Сигнала, всё здесь.</p>
+</section>
+
+<section id="s08"><div class="k">08 · Варианты · лента</div><h2>10 вариантов ленты обсуждений</h2><p class="bp">Все варианты по заданию Сони. В итог взяли 3 «Вопрос и лучший ответ» и добавили сверху блок «Сейчас обсуждают» из 5. Остальные оставили для сравнения: везде крупный заголовок, нет «горит», мягкие метки, кружок «Мои запросы» и кнопка «Спросить» внизу.</p><div class="rail"><figure class="card"><img src="img/08_feed_variants_01.webp" width="975" height="2113" loading="lazy" alt="Лента-тред"><figcaption><span class="n">1</span><b>Лента-тред</b><p>Как обсуждения в Threads: аватар, заголовок, фото вещей, ответы и «интересно». <span class="pro">Читается быстрее всего.</span> <span class="con">Фото есть не у каждого вопроса.</span></p></figcaption></figure><figure class="card"><img src="img/08_feed_variants_02.webp" width="975" height="2113" loading="lazy" alt="Карточки с голосами"><figcaption><span class="n">2</span><b>Карточки с голосами</b><p>Как на Reddit: тема, крупная обложка, голоса «полезно». <span class="pro">Лучшее поднимается само.</span> <span class="con">Помещается 1-2 вопроса на экран.</span></p></figcaption></figure><figure class="card"><img src="img/08_feed_variants_03.webp" width="975" height="2113" loading="lazy" alt="Вопрос и лучший ответ"><figcaption><span class="n">3</span><b>Вопрос и лучший ответ</b><p>Под заголовком сразу ответ знатока. <span class="pro">Польза видна без клика, знатоки на виду.</span> <span class="con">Длиннее карточки, меньше вопросов на экране.</span></p></figcaption></figure><figure class="card"><img src="img/08_feed_variants_04.webp" width="975" height="2113" loading="lazy" alt="Обложка дня + список"><figcaption><span class="n">4</span><b>Обложка дня + список</b><p>Самое интересное крупно, остальное компактно. <span class="pro">Цепляет с первого экрана.</span> <span class="con">Нужен хороший алгоритм для обложки.</span></p></figcaption></figure><figure class="card"><img src="img/08_feed_variants_05.webp" width="975" height="2113" loading="lazy" alt="Топ дня + новые вопросы"><figcaption><span class="n">5</span><b>Топ дня + новые вопросы</b><p>Как тренды в X: сверху короткий топ, ниже лента. <span class="pro">Видно, о чём говорят прямо сейчас.</span> <span class="con">Топ похож на старое «горит», нужен мягкий тон.</span></p></figcaption></figure><figure class="card"><img src="img/08_feed_variants_06.webp" width="975" height="2113" loading="lazy" alt="Как переписка"><figcaption><span class="n">6</span><b>Как переписка</b><p>Вопрос и лучший ответ пузырями, как в мессенджере. <span class="pro">Знакомо, ощущается живым разговором.</span> <span class="con">Легко спутать с чатами в «Сообщениях».</span></p></figcaption></figure><figure class="card"><img src="img/08_feed_variants_07.webp" width="975" height="2113" loading="lazy" alt="Сетка как в Авито"><figcaption><span class="n">7</span><b>Сетка как в Авито</b><p>Обсуждения выглядят как рекомендации Авито. <span class="pro">Самый «родной» для Авито вид.</span> <span class="con">Мало текста, вопрос надо открыть, чтобы понять.</span></p></figcaption></figure><figure class="card"><img src="img/08_feed_variants_08.webp" width="975" height="2113" loading="lazy" alt="Кружки близких сверху"><figcaption><span class="n">8</span><b>Кружки близких сверху</b><p>Сверху «Мои запросы» и близкие, как сторис, ниже лента. <span class="pro">Свои ответы и близкие в один тап.</span> <span class="con">Без близких ряд пустой, нужен «Позвать».</span></p></figcaption></figure><figure class="card"><img src="img/08_feed_variants_09.webp" width="975" height="2113" loading="lazy" alt="Пост с объявлением"><figcaption><span class="n">9</span><b>Пост с объявлением</b><p>Вопрос сразу с карточкой вещи, как пост с вложением. <span class="pro">Прямой путь к покупке, растут контакты.</span> <span class="con">Плотнее по визуалу.</span></p></figcaption></figure><figure class="card"><img src="img/08_feed_variants_10.webp" width="975" height="2113" loading="lazy" alt="Полки по темам"><figcaption><span class="n">10</span><b>Полки по темам</b><p>Горизонтальные полки: для вас, ваша тема, остальные. <span class="pro">Знаток сразу видит свою категорию.</span> <span class="con">Меньше «залипания», больше выбора.</span></p></figcaption></figure></div><div class="cnt"></div></section>
+<section id="s09"><div class="k">09 · Варианты · навигация</div><h2>Другие места для Сигнала</h2><p class="bp">Не вошли в итог: внутри Поиска Сигнал легко не заметить, а вкладки внутри Сообщений спорят с перепиской с продавцами, главным в Авито.</p><div class="rail"><figure class="card"><img src="img/09_nav_variants_01.webp" width="975" height="2113" loading="lazy" alt="Внутри Поиска"><figcaption><span class="n">Б</span><b>Внутри Поиска</b><p>Нижняя панель как сейчас, на главной переключатель «Объявления / Обсуждения». <span class="pro">Ноль новых вкладок, люди и так начинают с поиска.</span> <span class="con">Сигнал легко не заметить, меньше заходов.</span></p></figcaption></figure><figure class="card"><img src="img/09_nav_variants_02.webp" width="975" height="2113" loading="lazy" alt="Внутри Сообщений"><figcaption><span class="n">В</span><b>Внутри Сообщений</b><p>Вкладки «Чаты / Близкие / Обсуждения». <span class="pro">Общение с близкими рядом с чатами, где оно и так идёт.</span> <span class="con">Конкурирует с перепиской с продавцами, это главное в Авито.</span></p></figcaption></figure></div><div class="cnt"></div></section>
+
+<section class="more" id="more">
+  <div class="k">Для проверки</div>
+  <h2>Чек-лист и системы</h2>
+  <details><summary>Что сказала Соня и где это в макетах</summary><ul class="cl"><li><span class="t">00:14</span>Нижняя панель переполнена, сделать аккуратно, как в Ozon<span class="w">02: пять пунктов, Сигнал вместо Избранного</span></li><li><span class="t">00:46, 17:09</span>Сигнал открывается сразу на обсуждениях, свайпы не первыми<span class="w">01: лента открывается на обсуждениях</span></li><li><span class="t">00:54-01:30</span>Визуал как у Reddit, X, Threads, чтобы хотелось провалиться<span class="w">08: варианты 1 (Threads), 2 (Reddit), 5 (тренды X), в итоге блок «Сейчас обсуждают» как тренды X</span></li><li><span class="t">01:33, 02:47-03:17</span>Убрать «горит» и оранжевые надписи, чисто и лаконично<span class="w">01: «горит» нет нигде</span></li><li><span class="t">01:40</span>Кнопка должна всегда быть внизу<span class="w">01: закреплённая кнопка «Спросить»</span></li><li><span class="t">01:56-02:11</span>Крупный цепляющий заголовок: тема обсуждения<span class="w">01: заголовок главный элемент карточки</span></li><li><span class="t">02:13-02:38</span>Алгоритм поднимает самое интересное наверх<span class="w">01: блок «Сейчас обсуждают» и раздел «Что наверху ленты» ниже</span></li><li><span class="t">03:30-04:08</span>Как каждый получит ответ, награды за ответ на старый вопрос<span class="w">01 экран 2, 07 экран 3 и раздел «Вопросы без ответа»</span></li><li><span class="t">04:09-04:49</span>За что дают «знатока», как у Ozon и WB<span class="w">07 экраны 1-2 и раздел «Знаток»</span></li><li><span class="t">04:50</span>«Знаток категории» не надписью, а вокруг аватара<span class="w">Кольцо вокруг аватара на 01, 03, 04, 07</span></li><li><span class="t">05:03</span>Ответы выглядят как обычное обсуждение<span class="w">04 экран 1: ветка с ответами на ответы</span></li><li><span class="t">05:14-05:44</span>«Ждут ответа» напрягает, нужно мягче<span class="w">01: «Нужен совет», «Ищут аналог», «Интересуются», «Можно ответить первым»</span></li><li><span class="t">05:50-06:27</span>Убрать категории и бюджет, оставить «Кого спросить», создать за два касания<span class="w">03 экран 1: только текст, категорию и бюджет понимает Ави</span></li><li><span class="t">06:31-06:52</span>Подборка Ави сама после отправки, поле как в Threads<span class="w">03 экраны 1-2</span></li><li><span class="t">06:56, 08:04</span>Убрать «Позвать круг» после отправки<span class="w">03: круг выбирается до отправки</span></li><li><span class="t">07:07-07:50</span>После отправки: ответы, ниже подборка Ави, ещё ниже похожие обсуждения<span class="w">03 экраны 2-3: «Вам пока не ответили», затем подборка и похожие</span></li><li><span class="t">07:51</span>«Готово» не нужно, назад свайпом<span class="w">03: кнопки нет</span></li><li><span class="t">08:14-08:38</span>Уведомления в целом нормально<span class="w">Не меняли</span></li><li><span class="t">08:48-09:51</span>Прикрепить объявление через «+»: из Избранного или «Подобрать» в ленте под запрос<span class="w">04 экраны 2-4</span></li><li><span class="t">09:54-10:28</span>«Ваши запросы» кружком, чтобы быстро открыть свои вопросы<span class="w">01: кружок с числом новых ответов слева от «Для вас»</span></li><li><span class="t">10:28-11:20</span>«Вы помогли 30 людям» в профиль, решённые в ленте не нужны<span class="w">07 экран 1</span></li><li><span class="t">11:20-11:41</span>Профиль Авито уже есть, добавить вкладку «Знаток»<span class="w">07 экран 1: вкладка рядом с Объявлениями и Отзывами</span></li><li><span class="t">11:41-12:30</span>Объявления и Сообщения не уходят на второй план<span class="w">02: Объявления и Сообщения на своих местах</span></li><li><span class="t">12:34-13:03</span>Избранное можно перенести в профиль<span class="w">02: сердечко рядом с поиском и Избранное в Профиле с меткой «Теперь здесь»</span></li><li><span class="t">13:18-13:51</span>Группы убрать, только семья и друзья<span class="w">05: «Близкие вместо групп»</span></li><li><span class="t">13:51-14:47</span>«Аня просит помочь» кружком, мини-чат как комментарии в Telegram<span class="w">01 экран 2 и 05 экран 3</span></li><li><span class="t">14:47-15:20</span>Близкие в Сообщениях или в Сигнале, подумать, как лучше<span class="w">05: чаты в Сообщениях, в Сигнале кружок по просьбе</span></li><li><span class="t">15:31-16:13</span>Реалистичные запросы и логичные ответы<span class="w">Все доски на одном сценарии с кроссовками</span></li><li><span class="t">16:48-17:09</span>10 вариантов вида обсуждений, это главное<span class="w">08: все 10, в итог взяли 3 с блоком из 5</span></li><li><span class="t">17:19-17:33</span>«Фото, вы знаток» выглядит неудачно, просто подсветить категорию цветом<span class="w">01: категория знатока подсвечена фиолетовым</span></li><li><span class="t">17:41-19:29</span>Опыт владельцев: одна высота, сменяется сам, не ярко, не отвлекает от покупки<span class="w">06 экраны 1-2</span></li><li><span class="t">19:45-20:38</span>Начать обсуждение из карточки, но не навредить продавцу<span class="w">06 экран 3: к вопросу прикрепляется модель, а не продавец</span></li><li><span class="t">20:38-21:22</span>Одна строка «обсуждают» и «начать обсуждение» вместо «Спросить владельцев»<span class="w">06 экран 1</span></li><li><span class="t">22:12-25:35</span>Свайпы убрать, оставить в чате с близкими и в подборке, стрелка «отправить своим»<span class="w">05 экран 2, кнопка «Близким» на 04 экран 1</span></li></ul></details>
+  <details><summary>Как работают системы: знатоки, вопросы без ответа, лента, свайпы</summary><div class="md"><h3>Знаток</h3>
+<ul>
+<li>Уровень свой в каждой категории: можно быть знатоком фото и новичком в беге.</li>
+<li>Новичок: первый ответ в категории.</li>
+<li>Советчик: 5 отметок «помогло», серое кольцо.</li>
+<li>Знаток: 10 «помогло» и своя покупка в этой категории на Авито, фиолетовое кольцо.</li>
+<li>Эксперт: 20 «помогло», 3 покупки по совету и «помогло» у 60% ответов, золотое кольцо.</li>
+<li>Считаем только «помогло» от автора вопроса и покупки по совету. За число комментариев ничего не даём, поэтому накручивать бессмысленно.</li>
+<li>Что даёт уровень: ответы выше в обсуждениях и бонус на Авито Доставку, когда по совету купили через Доставку.</li>
+<li>Пороги - наше допущение для прототипа, на пилоте подбираем по данным.</li>
+</ul>
+<h3>Вопросы без ответа</h3>
+<ul>
+<li>Новый вопрос сразу видят знатоки категории: у них он выше в ленте.</li>
+<li>3 часа без ответа: вопрос поднимается в ленте категории с меткой «Можно ответить первым».</li>
+<li>6 часов без ответа: мягкое уведомление трём знатокам категории. Не больше одного такого уведомления в день на человека.</li>
+<li>За первый ответ на такой вопрос: двойной прогресс уровня и шаг к достижению «Спасатель» (5 таких ответов).</li>
+</ul>
+<h3>Что наверху ленты</h3>
+<ul>
+<li>Темы из регистрации и того, что человек смотрит на Авито.</li>
+<li>Свежесть и сколько людей нажали «Интересно».</li>
+<li>Знатоку: вопросы его категории, где ещё нет ответа.</li>
+<li>Сверху один блок «Сейчас обсуждают» (вариант 5) вместо «горит».</li>
+</ul>
+<h3>Свайпы</h3>
+<ul>
+<li>Как отдельная механика убраны: по словам Сони (22:12-23:34), это не социальная механика и продажи не двигает.</li>
+<li>Остались мелочью там, где Соня их оставила: разобрать в чате, что прислал папа, и проголосовать в совместной подборке («мимо» или «нравится»).</li>
+<li>Идея на финал (23:12): отдельно предложить Авито свайпы в обычной ленте рекомендаций.</li>
+</ul></div></details>
+  <details><summary>Факты и источники</summary><div class="md"><ul>
+<li>YandexGPT пишет сводку отзывов о товаре в Яндекс Поиске и Маркете, если у товара от 10 качественных отзывов. <a href="https://ichip.ru/novosti/yandexgpt-nauchilsya-pisat-obobshchyonnye-otzyvy-na-tovary-v-poiskovike-yandeksa-i-na-yandeks-markete-838522">ichip.ru</a>, <a href="https://rozetked.me/news/30091-yandexgpt-obobschit-otzyvy-na-tovary-v-poiske-yandeksa-i-yandeks-markete">rozetked.me</a></li>
+<li>Wildberries ставит товару метку «Выбор покупателей»: рейтинг от 4,7, от 40 отзывов, товар в наличии. <a href="https://finratings.kz/news/5846-pokupateli-wildberries-uvidiat-metku-doveriia-na-populiarnykh-tovarakh/">finratings.kz</a></li>
+<li>Wildberries разбирает отзывы нейросетью: за последние 3 месяца или 100 последних отзывов. <a href="https://finratings.kz/news/2799-wildberries-vnedriaet-neiroset-dlia-analiza-otzyvov/">finratings.kz</a></li>
+<li>«Золотые крылья» у авторов отзывов на Ozon в открытых источниках не нашли, поэтому знак у нас свой: кольцо вокруг аватара.</li>
+<li>Лавка (отзывы внутри подсказок ИИ, Избранное в профиле) - со слов Сони, не проверяли.</li>
+</ul></div></details>
+</section>
+
+<footer>Концепт команды «ООО «Коммерсы»» для кейса Changellenge, не продукт Авито. Люди и объявления вымышлены. Фото товаров: Wikimedia Commons, авторы и лицензии <a href="https://github.com/petroreshov-droid/signal-prototype#фото">в описании репозитория</a>.</footer>
+</div>
+
+<div class="lb" id="lb" hidden><button class="x" aria-label="Закрыть">×</button><img alt=""></div>
+<script>
+/* если сеть оборвала загрузку, Safari оставляет «?» вместо картинки: пробуем ещё до трёх раз */
+document.addEventListener("error", e => {
+  const im = e.target;
+  if (im.tagName !== "IMG" || +(im.dataset.retry || 0) >= 3) return;
+  const n = +(im.dataset.retry || 0) + 1;
+  im.dataset.retry = n;
+  setTimeout(() => { im.src = im.getAttribute("src").split("?")[0] + "?r=" + n; }, 400 * n);
+}, true);
+const lb = document.getElementById("lb"), lbi = lb.querySelector("img");
+const closeLb = () => { lb.hidden = true; document.body.style.overflow = ""; };
+document.addEventListener("click", e => {
+  const im = e.target.closest(".card img");
+  if (im) { lbi.src = im.currentSrc || im.src; lbi.alt = im.alt; lb.hidden = false; lb.scrollTop = 0; document.body.style.overflow = "hidden"; return; }
+  if (e.target.closest("#lb")) closeLb();
+});
+document.addEventListener("keydown", e => { if (e.key === "Escape" && !lb.hidden) closeLb(); });
+document.querySelectorAll(".rail").forEach(r => {
+  const c = r.nextElementSibling, n = r.children.length;
+  const upd = () => {
+    const w = r.children[0].getBoundingClientRect().width + 14;
+    const i = Math.min(n, Math.round(r.scrollLeft / w) + 1);
+    const vis = Math.max(1, Math.floor(r.clientWidth / w));
+    c.textContent = vis >= n ? `${n} ${n < 5 ? "экрана" : "экранов"}` : `${i} из ${n} · листайте вбок`;
+  };
+  r.addEventListener("scroll", () => requestAnimationFrame(upd), { passive: true });
+  addEventListener("resize", upd); upd();
+});
+</script>
+</body>
+</html>
